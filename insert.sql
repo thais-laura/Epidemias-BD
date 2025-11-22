@@ -17,25 +17,25 @@ insert into transmissor (
    regiaovivencia
 ) values ( 'MOSQUITO ANOPHELES',
            'MOSQUITO',
-           'BIÓTICO',
+           'BIOTICO',
            null,
            'ANOPHELES DARLINGI',
            30,
-           'REGIÕES TROPICAIS E ÚMIDAS' ),( 'AR',
-                                            'GOTÍCULAS DE AR',
-                                            'ABIÓTICO',
+           'REGIOES TROPICAIS E UMIDAS' ),( 'AR',
+                                            'GOTICULAS DE AR',
+                                            'ABIOTICO',
                                             'INVERNO',
                                             null,
                                             null,
                                             'AMBIENTES FECHADOS E FRIOS' ),( 'CONTATO DIRETO',
-                                                                             'CONTATO FÍSICO',
-                                                                             'ABIÓTICO',
+                                                                             'CONTATO FISICO',
+                                                                             'ABIOTICO',
                                                                              'TODAS',
                                                                              null,
                                                                              null,
                                                                              'AMBIENTES URBANOS' ),( 'PESSOA INFECTADA',
                                                                                                      'HUMANO',
-                                                                                                     'BIÓTICO',
+                                                                                                     'BIOTICO',
                                                                                                      null,
                                                                                                      'HOMO SAPIENS',
                                                                                                      70,
@@ -48,9 +48,9 @@ insert into doenca (
    sazonalidade,
    cid10
 ) values ( 'PLASMODIUM FALCIPARUM',
-           'MALÁRIA',
+           'MALARIA',
            0.2,
-           'VERÃO',
+           'VERAO',
            'B50' ),( 'MYCOBACTERIUM TUBERCULOSIS',
                      'TUBERCULOSE',
                      0.15,
@@ -64,7 +64,7 @@ insert into doenca (
                                          0.03,
                                          'INVERNO',
                                          'U07.1' );
--- NÃO COLOQUEI TEMPO MÉDIO PQ SERIA CALCULADO COM BASE NOS CASOS
+-- N COLOQUEI TEMPO MEDIO PQ SERIA CALCULADO COM BASE NOS CASOS
 
 insert into sintomas (
    nomecientif,
@@ -76,11 +76,11 @@ insert into sintomas (
                                                              ,
                                                                                                  'PERDA DE PESO E FADIGA' ),(
                                                                                                  'INFLUENZA VIRUS A',
-                                                                                                                          'FEBRE E DOR DE CABEÇA'
+                                                                                                                          'FEBRE E DOR DE CABECA'
                                                                                                                           ),(
                                                                                                                           'INFLUENZA VIRUS A'
                                                                                                                           ,
-                                                                                                                                                  'CONGESTÃO NASAL E DOR MUSCULAR'
+                                                                                                                                                  'CONGESTAO NASAL E DOR MUSCULAR'
                                                                                                                                                   )
                                                                                                                                                   ,
                                                                                                                                                   (
@@ -100,10 +100,10 @@ insert into agente (
    nomecientif,
    agente
 ) values ( 'PLASMODIUM FALCIPARUM',
-           'PROTOZOÁRIO' ),( 'MYCOBACTERIUM TUBERCULOSIS',
-                             'BACTÉRIA' ),( 'INFLUENZA VIRUS A',
-                                            'VÍRUS' ),( 'SARS-COV-2',
-                                                        'VÍRUS' );
+           'PROTOZOARIO' ),( 'MYCOBACTERIUM TUBERCULOSIS',
+                             'BACTERIA' ),( 'INFLUENZA VIRUS A',
+                                            'VIRUS' ),( 'SARS-COV-2',
+                                                        'VIRUS' );
 
 insert into metodoprevencao (
    nomecientif,
@@ -111,11 +111,11 @@ insert into metodoprevencao (
 ) values ( 'PLASMODIUM FALCIPARUM',
            'USO DE MOSQUITEIROS' ),( 'PLASMODIUM FALCIPARUM',
                                      'REPELENTES' ),( 'MYCOBACTERIUM TUBERCULOSIS',
-                                                      'VACINAÇÃO BCG' ),( 'INFLUENZA VIRUS A',
-                                                                          'VACINAÇÃO ANUAL' ),( 'INFLUENZA VIRUS A',
-                                                                                                'HIGIENE DAS MÃOS' ),( 'SARS-COV-2'
+                                                      'VACINACAO BCG' ),( 'INFLUENZA VIRUS A',
+                                                                          'VACINACAO ANUAL' ),( 'INFLUENZA VIRUS A',
+                                                                                                'HIGIENE DAS MAOS' ),( 'SARS-COV-2'
                                                                                                 ,
-                                                                                                                       'USO DE MÁSCARAS'
+                                                                                                                       'USO DE MASCARAS'
                                                                                                                        ),( 'SARS-COV-2'
                                                                                                                        ,
                                                                                                                                          'ISOLAMENTO EM CASOS SUSPEITOS'
@@ -126,12 +126,12 @@ insert into requer (
    doenca,
    tratamento
 ) values ( 'PLASMODIUM FALCIPARUM',
-           'TRATAMENTO DA MALÁRIA' ),( 'MYCOBACTERIUM TUBERCULOSIS',
+           'TRATAMENTO DA MALARIA' ),( 'MYCOBACTERIUM TUBERCULOSIS',
                                        'TRATAMENTO DA TUBERCULOSE' ),( 'INFLUENZA VIRUS A',
                                                                        'TRATAMENTO DA GRIPE' ),( 'SARS-COV-2',
                                                                                                  'TRATAMENTO DA COVID-19' ),(
                                                                                                  'SARS-COV-2',
-                                                                                                                          'HEMODIÁLISE'
+                                                                                                                          'HEMODIALISE'
                                                                                                                           );
 
 insert into tratamento (
@@ -142,43 +142,43 @@ insert into tratamento (
    duracaomedia,
    isolamento,
    maquina
-) values ( 'TRATAMENTO DA MALÁRIA',
+) values ( 'TRATAMENTO DA MALARIA',
            'MEDICAMENTO',
            'ARTEMISININA',
            150.00,
            14,
-           'NÃO',
+           'N',
            'NENHUMA' ),( 'TRATAMENTO DA TUBERCULOSE',
                          'MEDICAMENTO',
                          'RIFAMPICINA',
                          300.00,
                          180,
-                         'NÃO',
+                         'N',
                          'NENHUMA' ),( 'TRATAMENTO DA GRIPE',
                                        'MEDICAMENTO DE SUPORTE',
                                        'OSELTAMIVIR',
                                        80.00,
                                        7,
-                                       'NÃO',
+                                       'N',
                                        'NENHUMA' ),( 'TRATAMENTO DA COVID-19',
                                                      'SUPORTE INTENSIVO',
                                                      'ANTIVIRAIS E CORTICOIDES',
                                                      500.00,
                                                      14,
-                                                     'SIM',
+                                                     'S',
                                                      'RESPIRADOR' ),( 'QUIMIOTERAPIA',
-                                                                      'ONCOLÓGICO',
+                                                                      'ONCOLOGICO',
                                                                       'CISPLATINA',
                                                                       5000.00,
                                                                       120,
-                                                                      'NÃO',
-                                                                      'BOMBA DE INFUSÃO' ),( 'HEMODIÁLISE',
+                                                                      'N',
+                                                                      'BOMBA DE INFUSAO' ),( 'HEMODIALISE',
                                                                                              'SUPORTE RENAL',
                                                                                              'NENHUM',
                                                                                              800.00,
                                                                                              1,
-                                                                                             'NÃO',
-                                                                                             'MÁQUINA DE HEMODIÁLISE' );
+                                                                                             'N',
+                                                                                             'MAQUINA DE HEMODIALISE' );
 
 insert into sessao (
    idsessao,
@@ -194,30 +194,30 @@ insert into sessao (
            'TRATAMENTO DA GRIPE',
            to_date('12/03/24','DD/MM/YY'),
            to_date('09:30','HH24:MI'),
-           '12.345.678/0001-90',
+           '12345678000190',
            'PACIENTE APRESENTOU FEBRE LEVE, RECEITADO OSELTAMIVIR.',
-           'RECUPERAÇÃO TOTAL' ),( 2,
+           'RECUPERACAO TOTAL' ),( 2,
                                    2,
                                    'TRATAMENTO DA DENGUE',
                                    to_date('07/01/25','DD/MM/YY'),
                                    to_date('10:00','HH24:MI'),
-                                   '12.345.678/0001-90',
-                                   'HIDRATAÇÃO VENOSA E CONTROLE DE PLAQUETAS.',
-                                   'ESTABILIZAÇÃO DO QUADRO' ),( 3,
+                                   '12345678000190',
+                                   'HIDRATACAO VENOSA E CONTROLE DE PLAQUETAS.',
+                                   'ESTABILIZACAO DO QUADRO' ),( 3,
                                                                  3,
                                                                  'TRATAMENTO DA COVID-19',
                                                                  to_date('15/02/23','DD/MM/YY'),
                                                                  to_date('14:15','HH24:MI'),
-                                                                 '23.456.789/0001-80',
-                                                                 'MONITORAMENTO RESPIRATÓRIO E USO DE ANTIVIRAIS.',
-                                                                 'ALTA MÉDICA APÓS 10 DIAS' ),( 4,
+                                                                 '23456789000180',
+                                                                 'MONITORAMENTO RESPIRATORIO E USO DE ANTIVIRAIS.',
+                                                                 'ALTA MEDICA APOS 10 DIAS' ),( 4,
                                                                                                 4,
                                                                                                 'TRATAMENTO DA COVID-19',
                                                                                                 to_date('20/06/24','DD/MM/YY'
                                                                                                 ),
                                                                                                 to_date('09:45','HH24:MI'),
-                                                                                                '23.456.789/0001-80',
-                                                                                                'INTERNAÇÃO EM UTI LEVE, SEM NECESSIDADE DE VENTILAÇÃO MECÂNICA.'
+                                                                                                '23456789000180',
+                                                                                                'INTERNACAO EM UTI LEVE, SEM NECESSIDADE DE VENTILACAO MECANICA.'
                                                                                                 ,
                                                                                                 'MELHORA PROGRESSIVA' ),( 5,
                                                                                                                         5,
@@ -231,11 +231,11 @@ insert into sessao (
                                                                                                                         ('08:30'
                                                                                                                         ,'HH24:MI'
                                                                                                                         ),
-                                                                                                                        '12.345.678/0001-90'
+                                                                                                                        '12345678000190'
                                                                                                                         ,
-                                                                                                                        'INÍCIO DO USO DE RIFAMPICINA, ACOMPANHAMENTO MENSAL.'
+                                                                                                                        'INICIO DO USO DE RIFAMPICINA, ACOMPANHAMENTO MENSAL.'
                                                                                                                         ,
-                                                                                                                        'REDUÇÃO GRADUAL DOS SINTOMAS'
+                                                                                                                        'REDUCAO GRADUAL DOS SINTOMAS'
                                                                                                                         ),( 6
                                                                                                                         ,
                                                                                                                                                        6
@@ -256,11 +256,11 @@ insert into sessao (
                                                                                                                                                        'HH24:MI'
                                                                                                                                                        )
                                                                                                                                                        ,
-                                                                                                                                                       '23.456.789/0001-80'
+                                                                                                                                                       '23456789000180'
                                                                                                                                                        ,
-                                                                                                                                                       'SINTOMAS LEVES, TRATADO EM AMBULATÓRIO.'
+                                                                                                                                                       'SINTOMAS LEVES, TRATADO EM AMBULATORIO.'
                                                                                                                                                        ,
-                                                                                                                                                       'RECUPERAÇÃO SEM COMPLICAÇÕES'
+                                                                                                                                                       'RECUPERACAO SEM COMPLICACOES'
                                                                                                                                                        )
                                                                                                                                                        ,
                                                                                                                                                        (
@@ -284,11 +284,11 @@ insert into sessao (
                                                                                                                                                                                       'HH24:MI'
                                                                                                                                                                                       )
                                                                                                                                                                                       ,
-                                                                                                                                                                                      '12.345.678/0001-90'
+                                                                                                                                                                                      '12345678000190'
                                                                                                                                                                                       ,
-                                                                                                                                                                                      'PACIENTE COM INSUFICIÊNCIA RESPIRATÓRIA GRAVE, ENTUBADO.'
+                                                                                                                                                                                      'PACIENTE COM INSUFICIENCIA RESPIRATORIA GRAVE, ENTUBADO.'
                                                                                                                                                                                       ,
-                                                                                                                                                                                      'ÓBITO PROVÁVEL'
+                                                                                                                                                                                      'OBITO PROVAVEL'
                                                                                                                                                                                       )
                                                                                                                                                                                       ,
                                                                                                                                                                                       (
@@ -312,11 +312,11 @@ insert into sessao (
                                                                                                                                                                                                        'HH24:MI'
                                                                                                                                                                                                        )
                                                                                                                                                                                                        ,
-                                                                                                                                                                                                       '12.345.678/0001-90'
+                                                                                                                                                                                                       '12345678000190'
                                                                                                                                                                                                        ,
-                                                                                                                                                                                                       'HIDRATAÇÃO VENOSA E REPOUSO DOMICILIAR.'
+                                                                                                                                                                                                       'HIDRATACAO VENOSA E REPOUSO DOMICILIAR.'
                                                                                                                                                                                                        ,
-                                                                                                                                                                                                       'MELHORA CLÍNICA'
+                                                                                                                                                                                                       'MELHORA CLINICA'
                                                                                                                                                                                                        )
                                                                                                                                                                                                        ,
                                                                                                                                                                                                        (
@@ -340,11 +340,11 @@ insert into sessao (
                                                                                                                                                                                                                          'HH24:MI'
                                                                                                                                                                                                                          )
                                                                                                                                                                                                                          ,
-                                                                                                                                                                                                                         '12.345.678/0001-90'
+                                                                                                                                                                                                                         '12345678000190'
                                                                                                                                                                                                                          ,
-                                                                                                                                                                                                                         'RECORRÊNCIA LEVE, PACIENTE ORIENTADO A REPOUSO E HIDRATAÇÃO.'
+                                                                                                                                                                                                                         'RECORRENCIA LEVE, PACIENTE ORIENTADO A REPOUSO E HIDRATACAO.'
                                                                                                                                                                                                                          ,
-                                                                                                                                                                                                                         'RECUPERAÇÃO RÁPIDA'
+                                                                                                                                                                                                                         'RECUPERACAO RAPIDA'
                                                                                                                                                                                                                          )
                                                                                                                                                                                                                          ,
                                                                                                                                                                                                                          (
@@ -368,11 +368,11 @@ insert into sessao (
                                                                                                                                                                                                                                               'HH24:MI'
                                                                                                                                                                                                                                               )
                                                                                                                                                                                                                                               ,
-                                                                                                                                                                                                                                              '12.345.678/0001-90'
+                                                                                                                                                                                                                                              '12345678000190'
                                                                                                                                                                                                                                               ,
-                                                                                                                                                                                                                                              'CONTINUAÇÃO DO USO DE RIFAMPICINA E EXAMES DE CONTROLE.'
+                                                                                                                                                                                                                                              'CONTINUACAO DO USO DE RIFAMPICINA E EXAMES DE CONTROLE.'
                                                                                                                                                                                                                                               ,
-                                                                                                                                                                                                                                              'REMISSÃO DA INFECÇÃO'
+                                                                                                                                                                                                                                              'REMISSAO DA INFECCAO'
                                                                                                                                                                                                                                               )
                                                                                                                                                                                                                                               ;
 
@@ -392,7 +392,7 @@ insert into caso (
            to_date('10/03/24','DD/MM/YY'),
            to_date('20/03/24','DD/MM/YY'),
            'MODERADO',
-           '12.345.678/0001-90',
+           '12345678000190',
            0,
            0 ),( 2,
                  2,
@@ -400,7 +400,7 @@ insert into caso (
                  to_date('05/01/25','DD/MM/YY'),
                  null,
                  'GRAVE',
-                 '12.345.678/0001-90',
+                 '12345678000190',
                  0,
                  0 ),( 3,
                        3,
@@ -408,7 +408,7 @@ insert into caso (
                        to_date('12/02/23','DD/MM/YY'),
                        to_date('26/02/23','DD/MM/YY'),
                        'LEVE',
-                       '23.456.789/0001-80',
+                       '23456789000180',
                        0,
                        0 ),( 4,
                              3,
@@ -416,7 +416,7 @@ insert into caso (
                              to_date('15/06/24','DD/MM/YY'),
                              to_date('28/06/24','DD/MM/YY'),
                              'MODERADO',
-                             '23.456.789/0001-80',
+                             '23456789000180',
                              0,
                              1 ),( 5,
                                    4,
@@ -424,7 +424,7 @@ insert into caso (
                                    to_date('10/10/23','DD/MM/YY'),
                                    null,
                                    'GRAVE',
-                                   '12.345.678/0001-90',
+                                   '12345678000190',
                                    0,
                                    0 ),( 6,
                                          5,
@@ -432,7 +432,7 @@ insert into caso (
                                          to_date('01/08/24','DD/MM/YY'),
                                          to_date('08/08/24','DD/MM/YY'),
                                          'LEVE',
-                                         '23.456.789/0001-80',
+                                         '23456789000180',
                                          0,
                                          0 ),( 7,
                                                6,
@@ -440,7 +440,7 @@ insert into caso (
                                                to_date('03/04/25','DD/MM/YY'),
                                                null,
                                                'GRAVE',
-                                               '12.345.678/0001-90',
+                                               '12345678000190',
                                                1,
                                                0 ),( 8,
                                                      7,
@@ -448,7 +448,7 @@ insert into caso (
                                                      to_date('10/02/25','DD/MM/YY'),
                                                      to_date('25/02/25','DD/MM/YY'),
                                                      'MODERADO',
-                                                     '12.345.678/0001-90',
+                                                     '12345678000190',
                                                      0,
                                                      0 ),( 9,
                                                            7,
@@ -456,7 +456,7 @@ insert into caso (
                                                            to_date('30/06/25','DD/MM/YY'),
                                                            null,
                                                            'LEVE',
-                                                           '12.345.678/0001-90',
+                                                           '12345678000190',
                                                            0,
                                                            1 ),( 10,
                                                                  8,
@@ -464,7 +464,7 @@ insert into caso (
                                                                  to_date('15/05/24','DD/MM/YY'),
                                                                  to_date('15/09/24','DD/MM/YY'),
                                                                  'GRAVE',
-                                                                 '12.345.678/0001-90',
+                                                                 '12345678000190',
                                                                  0,
                                                                  0 );
 
@@ -475,19 +475,19 @@ insert into metricas_sessoes (
 ) values ( 1,
            'TEMPERATURA CORPORAL',
            '38.1 °C' ),( 1,
-                         'PRESSÃO ARTERIAL',
+                         'PRESSAO ARTERIAL',
                          '120/80 MMHG' ),( 1,
-                                           'FREQUÊNCIA CARDÍACA',
+                                           'FREQUENCIA CARDIACA',
                                            '82 BPM' ),( 2,
                                                         'TEMPERATURA CORPORAL',
                                                         '39.0 °C' ),( 2,
                                                                       'PLAQUETAS',
                                                                       '95.000 /ΜL' ),( 2,
-                                                                                       'PRESSÃO ARTERIAL',
+                                                                                       'PRESSAO ARTERIAL',
                                                                                        '110/70 MMHG' ),( 3,
-                                                                                                         'SATURAÇÃO DE O₂',
+                                                                                                         'SATURACAO DE O2',
                                                                                                          '96 %' ),( 3,
-                                                                                                                    'FREQUÊNCIA RESPIRATÓRIA'
+                                                                                                                    'FREQUENCIA RESPIRATORIA'
                                                                                                                     ,
                                                                                                                     '18 IRPM'
                                                                                                                     ),( 3,
@@ -499,7 +499,7 @@ insert into metricas_sessoes (
                                                                                                                               (
                                                                                                                               4
                                                                                                                               ,
-                                                                                                                                        'SATURAÇÃO DE O₂'
+                                                                                                                                        'SATURACAO DE O2'
                                                                                                                                         ,
                                                                                                                                         '93 %'
                                                                                                                                         )
@@ -507,7 +507,7 @@ insert into metricas_sessoes (
                                                                                                                                         (
                                                                                                                                         4
                                                                                                                                         ,
-                                                                                                                                               'FREQUÊNCIA RESPIRATÓRIA'
+                                                                                                                                               'FREQUENCIA RESPIRATORIA'
                                                                                                                                                ,
                                                                                                                                                '22 IRPM'
                                                                                                                                                )
@@ -515,7 +515,7 @@ insert into metricas_sessoes (
                                                                                                                                                (
                                                                                                                                                4
                                                                                                                                                ,
-                                                                                                                                                         'PRESSÃO ARTERIAL'
+                                                                                                                                                         'PRESSAO ARTERIAL'
                                                                                                                                                          ,
                                                                                                                                                          '118/76 MMHG'
                                                                                                                                                          )
@@ -533,129 +533,129 @@ insert into metricas_sessoes (
                                                                                                                                                                        ,
                                                                                                                                                                                'TOSSE PRODUTIVA'
                                                                                                                                                                                ,
-                                                                                                                                                                               'SIM'
+                                                                                                                                                                               'S'
                                                                                                                                                                                )
                                                                                                                                                                                ,
                                                                                                                                                                                (
                                                                                                                                                                                5
                                                                                                                                                                                ,
-                                                                                                                                                                                     'TEMPERATURA CORPORAL'
-                                                                                                                                                                                     ,
-                                                                                                                                                                                     '37.8 °C'
-                                                                                                                                                                                     )
-                                                                                                                                                                                     ,
-                                                                                                                                                                                     (
-                                                                                                                                                                                     6
-                                                                                                                                                                                     ,
-                                                                                                                                                                                               'TEMPERATURA CORPORAL'
-                                                                                                                                                                                               ,
-                                                                                                                                                                                               '36.9 °C'
-                                                                                                                                                                                               )
-                                                                                                                                                                                               ,
-                                                                                                                                                                                               (
-                                                                                                                                                                                               6
-                                                                                                                                                                                               ,
-                                                                                                                                                                                                         'PRESSÃO ARTERIAL'
-                                                                                                                                                                                                         ,
-                                                                                                                                                                                                         '115/75 MMHG'
-                                                                                                                                                                                                         )
-                                                                                                                                                                                                         ,
-                                                                                                                                                                                                         (
-                                                                                                                                                                                                         7
-                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                       'SATURAÇÃO DE O₂'
-                                                                                                                                                                                                                       ,
-                                                                                                                                                                                                                       '82 %'
-                                                                                                                                                                                                                       )
-                                                                                                                                                                                                                       ,
-                                                                                                                                                                                                                       (
-                                                                                                                                                                                                                       7
-                                                                                                                                                                                                                       ,
-                                                                                                                                                                                                                              'FREQUÊNCIA RESPIRATÓRIA'
-                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                              '28 IRPM'
-                                                                                                                                                                                                                              )
-                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                              (
-                                                                                                                                                                                                                              7
-                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                                        'PRESSÃO ARTERIAL'
-                                                                                                                                                                                                                                        ,
-                                                                                                                                                                                                                                        '95/60 MMHG'
-                                                                                                                                                                                                                                        )
-                                                                                                                                                                                                                                        ,
-                                                                                                                                                                                                                                        (
-                                                                                                                                                                                                                                        8
-                                                                                                                                                                                                                                        ,
-                                                                                                                                                                                                                                                     'TEMPERATURA CORPORAL'
-                                                                                                                                                                                                                                                     ,
-                                                                                                                                                                                                                                                     '38.2 °C'
-                                                                                                                                                                                                                                                     )
-                                                                                                                                                                                                                                                     ,
-                                                                                                                                                                                                                                                     (
-                                                                                                                                                                                                                                                     8
-                                                                                                                                                                                                                                                     ,
-                                                                                                                                                                                                                                                               'PLAQUETAS'
-                                                                                                                                                                                                                                                               ,
-                                                                                                                                                                                                                                                               '120.000 /ΜL'
-                                                                                                                                                                                                                                                               )
-                                                                                                                                                                                                                                                               ,
-                                                                                                                                                                                                                                                               (
-                                                                                                                                                                                                                                                               8
-                                                                                                                                                                                                                                                               ,
-                                                                                                                                                                                                                                                                             'PRESSÃO ARTERIAL'
-                                                                                                                                                                                                                                                                             ,
-                                                                                                                                                                                                                                                                             '110/70 MMHG'
-                                                                                                                                                                                                                                                                             )
-                                                                                                                                                                                                                                                                             ,
-                                                                                                                                                                                                                                                                             (
-                                                                                                                                                                                                                                                                             9
-                                                                                                                                                                                                                                                                             ,
-                                                                                                                                                                                                                                                                                           'TEMPERATURA CORPORAL'
-                                                                                                                                                                                                                                                                                           ,
-                                                                                                                                                                                                                                                                                           '37.2 °C'
-                                                                                                                                                                                                                                                                                           )
-                                                                                                                                                                                                                                                                                           ,
-                                                                                                                                                                                                                                                                                           (
-                                                                                                                                                                                                                                                                                           9
-                                                                                                                                                                                                                                                                                           ,
-                                                                                                                                                                                                                                                                                                     'PLAQUETAS'
-                                                                                                                                                                                                                                                                                                     ,
-                                                                                                                                                                                                                                                                                                     '145.000 /ΜL'
-                                                                                                                                                                                                                                                                                                     )
-                                                                                                                                                                                                                                                                                                     ,
-                                                                                                                                                                                                                                                                                                     (
-                                                                                                                                                                                                                                                                                                     9
-                                                                                                                                                                                                                                                                                                     ,
-                                                                                                                                                                                                                                                                                                                   'PRESSÃO ARTERIAL'
-                                                                                                                                                                                                                                                                                                                   ,
-                                                                                                                                                                                                                                                                                                                   '115/72 MMHG'
-                                                                                                                                                                                                                                                                                                                   )
-                                                                                                                                                                                                                                                                                                                   ,
-                                                                                                                                                                                                                                                                                                                   (
-                                                                                                                                                                                                                                                                                                                   10
-                                                                                                                                                                                                                                                                                                                   ,
-                                                                                                                                                                                                                                                                                                                                 'TEMPERATURA CORPORAL'
-                                                                                                                                                                                                                                                                                                                                 ,
-                                                                                                                                                                                                                                                                                                                                 '37.5 °C'
-                                                                                                                                                                                                                                                                                                                                 )
-                                                                                                                                                                                                                                                                                                                                 ,
-                                                                                                                                                                                                                                                                                                                                 (
-                                                                                                                                                                                                                                                                                                                                 10
-                                                                                                                                                                                                                                                                                                                                 ,
-                                                                                                                                                                                                                                                                                                                                           'PESO CORPORAL'
-                                                                                                                                                                                                                                                                                                                                           ,
-                                                                                                                                                                                                                                                                                                                                           '70 KG'
-                                                                                                                                                                                                                                                                                                                                           )
-                                                                                                                                                                                                                                                                                                                                           ,
-                                                                                                                                                                                                                                                                                                                                           (
-                                                                                                                                                                                                                                                                                                                                           10
-                                                                                                                                                                                                                                                                                                                                           ,
-                                                                                                                                                                                                                                                                                                                                                   'TOSSE PRODUTIVA'
-                                                                                                                                                                                                                                                                                                                                                   ,
-                                                                                                                                                                                                                                                                                                                                                   'NÃO'
-                                                                                                                                                                                                                                                                                                                                                   )
-                                                                                                                                                                                                                                                                                                                                                   ;
+                                                                                                                                                                                   'TEMPERATURA CORPORAL'
+                                                                                                                                                                                   ,
+                                                                                                                                                                                   '37.8 °C'
+                                                                                                                                                                                   )
+                                                                                                                                                                                   ,
+                                                                                                                                                                                   (
+                                                                                                                                                                                   6
+                                                                                                                                                                                   ,
+                                                                                                                                                                                             'TEMPERATURA CORPORAL'
+                                                                                                                                                                                             ,
+                                                                                                                                                                                             '36.9 °C'
+                                                                                                                                                                                             )
+                                                                                                                                                                                             ,
+                                                                                                                                                                                             (
+                                                                                                                                                                                             6
+                                                                                                                                                                                             ,
+                                                                                                                                                                                                       'PRESSAO ARTERIAL'
+                                                                                                                                                                                                       ,
+                                                                                                                                                                                                       '115/75 MMHG'
+                                                                                                                                                                                                       )
+                                                                                                                                                                                                       ,
+                                                                                                                                                                                                       (
+                                                                                                                                                                                                       7
+                                                                                                                                                                                                       ,
+                                                                                                                                                                                                                     'SATURACAO DE O2'
+                                                                                                                                                                                                                     ,
+                                                                                                                                                                                                                     '82 %'
+                                                                                                                                                                                                                     )
+                                                                                                                                                                                                                     ,
+                                                                                                                                                                                                                     (
+                                                                                                                                                                                                                     7
+                                                                                                                                                                                                                     ,
+                                                                                                                                                                                                                            'FREQUENCIA RESPIRATORIA'
+                                                                                                                                                                                                                            ,
+                                                                                                                                                                                                                            '28 IRPM'
+                                                                                                                                                                                                                            )
+                                                                                                                                                                                                                            ,
+                                                                                                                                                                                                                            (
+                                                                                                                                                                                                                            7
+                                                                                                                                                                                                                            ,
+                                                                                                                                                                                                                                      'PRESSAO ARTERIAL'
+                                                                                                                                                                                                                                      ,
+                                                                                                                                                                                                                                      '95/60 MMHG'
+                                                                                                                                                                                                                                      )
+                                                                                                                                                                                                                                      ,
+                                                                                                                                                                                                                                      (
+                                                                                                                                                                                                                                      8
+                                                                                                                                                                                                                                      ,
+                                                                                                                                                                                                                                                   'TEMPERATURA CORPORAL'
+                                                                                                                                                                                                                                                   ,
+                                                                                                                                                                                                                                                   '38.2 °C'
+                                                                                                                                                                                                                                                   )
+                                                                                                                                                                                                                                                   ,
+                                                                                                                                                                                                                                                   (
+                                                                                                                                                                                                                                                   8
+                                                                                                                                                                                                                                                   ,
+                                                                                                                                                                                                                                                             'PLAQUETAS'
+                                                                                                                                                                                                                                                             ,
+                                                                                                                                                                                                                                                             '120.000 /ΜL'
+                                                                                                                                                                                                                                                             )
+                                                                                                                                                                                                                                                             ,
+                                                                                                                                                                                                                                                             (
+                                                                                                                                                                                                                                                             8
+                                                                                                                                                                                                                                                             ,
+                                                                                                                                                                                                                                                                           'PRESSAO ARTERIAL'
+                                                                                                                                                                                                                                                                           ,
+                                                                                                                                                                                                                                                                           '110/70 MMHG'
+                                                                                                                                                                                                                                                                           )
+                                                                                                                                                                                                                                                                           ,
+                                                                                                                                                                                                                                                                           (
+                                                                                                                                                                                                                                                                           9
+                                                                                                                                                                                                                                                                           ,
+                                                                                                                                                                                                                                                                                         'TEMPERATURA CORPORAL'
+                                                                                                                                                                                                                                                                                         ,
+                                                                                                                                                                                                                                                                                         '37.2 °C'
+                                                                                                                                                                                                                                                                                         )
+                                                                                                                                                                                                                                                                                         ,
+                                                                                                                                                                                                                                                                                         (
+                                                                                                                                                                                                                                                                                         9
+                                                                                                                                                                                                                                                                                         ,
+                                                                                                                                                                                                                                                                                                   'PLAQUETAS'
+                                                                                                                                                                                                                                                                                                   ,
+                                                                                                                                                                                                                                                                                                   '145.000 /ΜL'
+                                                                                                                                                                                                                                                                                                   )
+                                                                                                                                                                                                                                                                                                   ,
+                                                                                                                                                                                                                                                                                                   (
+                                                                                                                                                                                                                                                                                                   9
+                                                                                                                                                                                                                                                                                                   ,
+                                                                                                                                                                                                                                                                                                                 'PRESSAO ARTERIAL'
+                                                                                                                                                                                                                                                                                                                 ,
+                                                                                                                                                                                                                                                                                                                 '115/72 MMHG'
+                                                                                                                                                                                                                                                                                                                 )
+                                                                                                                                                                                                                                                                                                                 ,
+                                                                                                                                                                                                                                                                                                                 (
+                                                                                                                                                                                                                                                                                                                 10
+                                                                                                                                                                                                                                                                                                                 ,
+                                                                                                                                                                                                                                                                                                                               'TEMPERATURA CORPORAL'
+                                                                                                                                                                                                                                                                                                                               ,
+                                                                                                                                                                                                                                                                                                                               '37.5 °C'
+                                                                                                                                                                                                                                                                                                                               )
+                                                                                                                                                                                                                                                                                                                               ,
+                                                                                                                                                                                                                                                                                                                               (
+                                                                                                                                                                                                                                                                                                                               10
+                                                                                                                                                                                                                                                                                                                               ,
+                                                                                                                                                                                                                                                                                                                                         'PESO CORPORAL'
+                                                                                                                                                                                                                                                                                                                                         ,
+                                                                                                                                                                                                                                                                                                                                         '70 KG'
+                                                                                                                                                                                                                                                                                                                                         )
+                                                                                                                                                                                                                                                                                                                                         ,
+                                                                                                                                                                                                                                                                                                                                         (
+                                                                                                                                                                                                                                                                                                                                         10
+                                                                                                                                                                                                                                                                                                                                         ,
+                                                                                                                                                                                                                                                                                                                                                 'TOSSE PRODUTIVA'
+                                                                                                                                                                                                                                                                                                                                                 ,
+                                                                                                                                                                                                                                                                                                                                                 'N'
+                                                                                                                                                                                                                                                                                                                                                 )
+                                                                                                                                                                                                                                                                                                                                                 ;
 
 insert into paciente (
    idpaciente,
@@ -667,45 +667,43 @@ insert into paciente (
            '12345678901',
            to_date('12/03/1985','DD/MM/YYYY'),
            'F',
-           'SIM' ),( 2,
-                     '98765432100',
-                     to_date('25/07/1992','DD/MM/YYYY'),
-                     'M',
-                     'NÃO' ),( 3,
-                               '45678912345',
-                               to_date('03/11/1970','DD/MM/YYYY'),
-                               'M',
-                               'SIM' ),( 4,
-                                         '32165498700',
-                                         to_date('14/05/2001','DD/MM/YYYY'),
-                                         'F',
-                                         'NÃO' ),( 5,
-                                                   '74185296300',
-                                                   to_date('09/09/1958','DD/MM/YYYY'),
-                                                   'M',
-                                                   'SIM' ),( 6,
-                                                             '85296374100',
-                                                             to_date('20/12/1989','DD/MM/YYYY'),
-                                                             'F',
-                                                             'NÃO' ),( 7,
-                                                                       '36925814700',
-                                                                       to_date('17/02/2003','DD/MM/YYYY'),
-                                                                       'F',
-                                                                       'NÃO' ),( 8,
-                                                                                 '15975348600',
-                                                                                 to_date('28/10/1976','DD/MM/YYYY'),
-                                                                                 'M',
-                                                                                 'SIM' ),( 9,
-                                                                                           '25814736900',
-                                                                                           to_date('05/06/1999','DD/MM/YYYY')
-                                                                                           ,
-                                                                                           'F',
-                                                                                           'NÃO' ),( 10,
-                                                                                                     '96385274100',
-                                                                                                     to_date('01/01/1960','DD/MM/YYYY'
-                                                                                                     ),
-                                                                                                     'M',
-                                                                                                     'SIM' );
+           'S' ),( 2,
+                   '98765432100',
+                   to_date('25/07/1992','DD/MM/YYYY'),
+                   'M',
+                   'N' ),( 3,
+                           '45678912345',
+                           to_date('03/11/1970','DD/MM/YYYY'),
+                           'M',
+                           'S' ),( 4,
+                                   '32165498700',
+                                   to_date('14/05/2001','DD/MM/YYYY'),
+                                   'F',
+                                   'N' ),( 5,
+                                           '74185296300',
+                                           to_date('09/09/1958','DD/MM/YYYY'),
+                                           'M',
+                                           'S' ),( 6,
+                                                   '85296374100',
+                                                   to_date('20/12/1989','DD/MM/YYYY'),
+                                                   'F',
+                                                   'N' ),( 7,
+                                                           '36925814700',
+                                                           to_date('17/02/2003','DD/MM/YYYY'),
+                                                           'F',
+                                                           'N' ),( 8,
+                                                                   '15975348600',
+                                                                   to_date('28/10/1976','DD/MM/YYYY'),
+                                                                   'M',
+                                                                   'S' ),( 9,
+                                                                           '25814736900',
+                                                                           to_date('05/06/1999','DD/MM/YYYY'),
+                                                                           'F',
+                                                                           'N' ),( 10,
+                                                                                   '96385274100',
+                                                                                   to_date('01/01/1960','DD/MM/YYYY'),
+                                                                                   'M',
+                                                                                   'S' );
 
 insert into vacinas (
    idpaciente,
@@ -726,31 +724,31 @@ insert into orgao (
    nro,
    telefone1,
    telefone2
-) values ( '12.345.678/0001-90',
-           'HOSPITAL SÃO LUCAS',
+) values ( '12345678000190',
+           'HOSPITAL SAO LUCAS',
            '13560-970',
            'CENTRO',
-           'RUA MAJOR JOSÉ INÁCIO',
+           'RUA MAJOR JOSE INACIO',
            450,
            '(16) 3362-1234',
-           '(16) 3362-5678' ),( '23.456.789/0001-80',
-                                'CLÍNICA VIDA SAUDÁVEL',
+           '(16) 3362-5678' ),( '23456789000180',
+                                'CLINICA VIDA SAUDAVEL',
                                 '30140-120',
                                 'SAVASSI',
-                                'AV. CRISTÓVÃO COLOMBO',
+                                'AV. CRISTOVAO COLOMBO',
                                 900,
                                 '(31) 3254-7788',
-                                '(31) 3254-8899' ),( '34.567.890/0001-70',
-                                                     'INSTITUTO ESPERANÇA',
+                                '(31) 3254-8899' ),( '34567890000170',
+                                                     'INSTITUTO ESPERANCA',
                                                      '20040-001',
                                                      'CENTRO',
                                                      'RUA DA CARIOCA',
                                                      120,
                                                      '(21) 2223-4455',
-                                                     '(21) 98888-1122' ),( '45.678.901/0001-60',
-                                                                           'ONG SAÚDE PARA TODOS',
+                                                     '(21) 98888-1122' ),( '45678901000160',
+                                                                           'ONG SAUDE PARA TODOS',
                                                                            '04012-090',
-                                                                           'PARAÍSO',
+                                                                           'PARAISO',
                                                                            'RUA VERGUEIRO',
                                                                            1500,
                                                                            '(11) 3333-4444',
@@ -759,11 +757,11 @@ insert into orgao (
 insert into tipo (
    orgao,
    tipo
-) values ( '12.345.678/0001-90',
-           'REDE DE SAUDE' ),( '12.345.678/0001-90',
-                               'BENEFICENTE' ),( '23.456.789/0001-80',
-                                                 'REDE DE SAUDE' ),( '34.567.890/0001-70',
-                                                                     'BENEFICENTE' ),( '45.678.901/0001-60',
+) values ( '12345678000190',
+           'REDE DE SAUDE' ),( '12345678000190',
+                               'BENEFICENTE' ),( '23456789000180',
+                                                 'REDE DE SAUDE' ),( '34567890000170',
+                                                                     'BENEFICENTE' ),( '45678901000160',
                                                                                        'BENEFICENTE' );
 
 
@@ -772,7 +770,7 @@ insert into cidade (
    estado,
    qtdhab,
    areaterrit
-) values ( 'SÃO CARLOS',
+) values ( 'SAO CARLOS',
            'SP',
            254000,
            1137.00 ),( 'IPATINGA',
@@ -781,13 +779,13 @@ insert into cidade (
                        165.00 ),( 'FORTALEZA',
                                   'CE',
                                   2687000,
-                                  314.93 ),( 'BRASÍLIA',
+                                  314.93 ),( 'BRASILIA',
                                              'DF',
                                              3055000,
-                                             5802.00 ),( 'JACAREÍ',
+                                             5802.00 ),( 'JACAREI',
                                                          'SP',
                                                          242000,
-                                                         464.27 ),( 'SÃO PAULO',
+                                                         464.27 ),( 'SAO PAULO',
                                                                     'SP',
                                                                     12300000,
                                                                     1521.11 ),( 'RIO DE JANEIRO',
@@ -818,27 +816,26 @@ insert into beneficente (
    qtdvolunt,
    datafundacao,
    areaatuacao
-) values ( '12.345.678/0001-90',
+) values ( '12345678000190',
            100,
            to_date('07/10/2004','DD/MM/YYYY'),
-           'CAMPANHAS SOBRE CÂNCER DE MAMA' ),( '34.567.890/0001-70',
+           'CAMPANHAS SOBRE CANCER DE MAMA' ),( '34567890000170',
                                                 45,
                                                 to_date('12/03/2005','DD/MM/YYYY'),
-                                                'APOIO A FAMÍLIAS CARENTES E CAMPANHAS DE VACINAÇÃO' ),( '45.678.901/0001-60'
-                                                ,
+                                                'APOIO A FAMILIAS CARENTES E CAMPANHAS DE VACINACAO' ),( '45678901000160',
                                                                                                          80,
                                                                                                          to_date('25/08/2010'
                                                                                                          ,'DD/MM/YYYY'),
-                                                                                                         'AÇÕES DE SAÚDE COMUNITÁRIA E DOAÇÃO DE SANGUE'
+                                                                                                         'ACOES DE SAUDE COMUNITARIA E DOACAO DE SANGUE'
                                                                                                          );
 
 insert into rede_de_saude (
    cnpj,
    qtdleitos,
    qtdfuncion
-) values ( '12.345.678/0001-90',
+) values ( '12345678000190',
            250,
-           500 ),( '23.456.789/0001-80',
+           500 ),( '23456789000180',
                    120,
                    200 );
 
@@ -848,59 +845,58 @@ insert into regiao (
    densidpop,
    nomecidade,
    estadocidade
-) values ( '12.345.678/0001-90',
+) values ( '12345678000190',
            15.0,
            223.5,
-           'SÃO CARLOS',
-           'SP' ),( '23.456.789/0001-80',
+           'SAO CARLOS',
+           'SP' ),( '23456789000180',
                     30.0,
                     526.7,
-                    'BRASÍLIA',
+                    'BRASILIA',
                     'DF' );
 
 
 insert into programa (
    beneficente,
    programa
-) values ( '12.345.678/0001-90',
-           'OUTUBRO ROSA – CONSCIENTIZAÇÃO SOBRE CÂNCER DE MAMA' ),( '12.345.678/0001-90',
-                                                                     'MUTIRÃO DE EXAMES PREVENTIVOS' ),( '34.567.890/0001-70'
-                                                                     ,
-                                                                                                         'CAMPANHA DE VACINAÇÃO INFANTIL'
-                                                                                                         ),( '34.567.890/0001-70'
+) values ( '12345678000190',
+           'OUTUBRO ROSA – CONSCIENTIZACAO SOBRE CANCER DE MAMA' ),( '12345678000190',
+                                                                     'MUTIRAO DE EXAMES PREVENTIVOS' ),( '34567890000170',
+                                                                                                         'CAMPANHA DE VACINACAO INFANTIL'
+                                                                                                         ),( '34567890000170'
                                                                                                          ,
-                                                                                                                                          'DISTRIBUIÇÃO DE CESTAS BÁSICAS'
+                                                                                                                                          'DISTRIBUICAO DE CESTAS BASICAS'
                                                                                                                                           )
                                                                                                                                           ,
                                                                                                                                           (
-                                                                                                                                          '45.678.901/0001-60'
+                                                                                                                                          '45678901000160'
                                                                                                                                           ,
-                                                                                                                                                                           'CAMPANHA DE DOAÇÃO DE SANGUE'
+                                                                                                                                                                           'CAMPANHA DE DOACAO DE SANGUE'
                                                                                                                                                                            )
                                                                                                                                                                            ,
                                                                                                                                                                            (
-                                                                                                                                                                           '45.678.901/0001-60'
+                                                                                                                                                                           '45678901000160'
                                                                                                                                                                            ,
-                                                                                                                                                                                                          'FEIRA DE SAÚDE E PREVENÇÃO DE DOENÇAS'
+                                                                                                                                                                                                          'FEIRA DE SAUDE E PREVENCAO DE DOENCAS'
                                                                                                                                                                                                           )
                                                                                                                                                                                                           ,
                                                                                                                                                                                                           (
-                                                                                                                                                                                                          '45.678.901/0001-60'
+                                                                                                                                                                                                          '45678901000160'
                                                                                                                                                                                                           ,
-                                                                                                                                                                                                                                                  'ATENDIMENTO MÉDICO GRATUITO EM COMUNIDADES CARENTES'
+                                                                                                                                                                                                                                                  'ATENDIMENTO MEDICO GRATUITO EM COMUNIDADES CARENTES'
                                                                                                                                                                                                                                                   )
                                                                                                                                                                                                                                                   ;
 
 insert into especialidades (
    rede_de_saude,
    especialidade
-) values ( '12.345.678/0001-90',
-           'CLÍNICA GERAL' ),( '12.345.678/0001-90',
-                               'PEDIATRIA' ),( '12.345.678/0001-90',
-                                               'INFECTOLOGIA' ),( '12.345.678/0001-90',
-                                                                  'CARDIOLOGIA' ),( '23.456.789/0001-80',
-                                                                                    'ORTOPEDIA' ),( '23.456.789/0001-80',
-                                                                                                    'GINECOLOGIA' ),( '23.456.789/0001-80'
+) values ( '12345678000190',
+           'CLINICA GERAL' ),( '12345678000190',
+                               'PEDIATRIA' ),( '12345678000190',
+                                               'INFECTOLOGIA' ),( '12345678000190',
+                                                                  'CARDIOLOGIA' ),( '23456789000180',
+                                                                                    'ORTOPEDIA' ),( '23456789000180',
+                                                                                                    'GINECOLOGIA' ),( '23456789000180'
                                                                                                     ,
                                                                                                                       'DERMATOLOGIA'
                                                                                                                       ),( '44.256.789/0001-20'
@@ -932,78 +928,74 @@ insert into alerta (
    canalprinc,
    prioridade
 ) values ( 1,
-           '12.345.678/0001-90',
+           '12345678000190',
            'SARS-COV-2',
            to_date('05/02/25','DD/MM/YY'),
            to_date('20/02/25','DD/MM/YY'),
-           'PREVENÇÃO',
-           'CAMPANHA DE CONSCIENTIZAÇÃO SOBRE A IMPORTÂNCIA DO USO DE MÁSCARAS E VACINAÇÃO CONTRA A COVID-19.',
+           'PREVENCAO',
+           'CAMPANHA DE CONSCIENTIZACAO SOBRE A IMPORTANCIA DO USO DE MASCARAS E VACINACAO CONTRA A COVID-19.',
            'REDES SOCIAIS',
            'ALTA' ),( 2,
-                      '34.567.890/0001-70',
+                      '34567890000170',
                       'DENV',
                       to_date('10/01/25','DD/MM/YY'),
                       to_date('31/03/25','DD/MM/YY'),
                       'CONTROLE VETORIAL',
-                      'MUTIRÃO DE COMBATE AO MOSQUITO AEDES AEGYPTI EM BAIRROS DE MAIOR INCIDÊNCIA DE DENGUE.',
-                      'RÁDIO COMUNITÁRIA',
+                      'MUTIRAO DE COMBATE AO MOSQUITO AEDES AEGYPTI EM BAIRROS DE MAIOR INCIDENCIA DE DENGUE.',
+                      'RADIO COMUNITARIA',
                       'ALTA' ),( 3,
-                                 '45.678.901/0001-60',
+                                 '45678901000160',
                                  'MYCOBACTERIUM TUBERCULOSIS',
                                  to_date('15/03/25','DD/MM/YY'),
                                  to_date('30/04/25','DD/MM/YY'),
-                                 'CONSCIENTIZAÇÃO',
-                                 'CAMPANHA INFORMATIVA SOBRE SINTOMAS E TRATAMENTO DA TUBERCULOSE, COM FOCO EM DIAGNÓSTICO PRECOCE.'
+                                 'CONSCIENTIZACAO',
+                                 'CAMPANHA INFORMATIVA SOBRE SINTOMAS E TRATAMENTO DA TUBERCULOSE, COM FOCO EM DIAGNOSTICO PRECOCE.'
                                  ,
-                                 'TELEVISÃO LOCAL',
-                                 'MÉDIA' ),( 4,
-                                             '34.567.890/0001-70',
+                                 'TELEVISAO LOCAL',
+                                 'MEDIA' ),( 4,
+                                             '34567890000170',
                                              'INFLUENZA VIRUS A',
                                              to_date('01/05/25','DD/MM/YY'),
                                              to_date('30/06/25','DD/MM/YY'),
-                                             'VACINAÇÃO',
-                                             'CAMPANHA DE VACINAÇÃO CONTRA A GRIPE PARA GRUPOS DE RISCO.',
-                                             'POSTOS DE SAÚDE',
+                                             'VACINACAO',
+                                             'CAMPANHA DE VACINACAO CONTRA A GRIPE PARA GRUPOS DE RISCO.',
+                                             'POSTOS DE SAUDE',
                                              'ALTA' ),( 5,
-                                                        '45.678.901/0001-60',
+                                                        '45678901000160',
                                                         'SARS-COV-2',
                                                         to_date('10/07/25','DD/MM/YY'),
                                                         null,
                                                         'ACOMPANHAMENTO',
-                                                        'MONITORAMENTO DE NOVOS CASOS DE COVID-19 E REFORÇO DA VACINAÇÃO DE REFORÇO.'
+                                                        'MONITORAMENTO DE NOVOS CASOS DE COVID-19 E REFORCO DA VACINACAO DE REFORCO.'
                                                         ,
-                                                        'APLICATIVO DE SAÚDE',
-                                                        'MÉDIA' );
+                                                        'APLICATIVO DE SAUDE',
+                                                        'MEDIA' );
 
 
 insert into abrange (
    idalerta,
    rede_de_saude
 ) values ( 1,
-           '12.345.678/0001-90' ),( 1,
-                                    '23.456.789/0001-80' ),( 2,
-                                                             '12.345.678/0001-90' ),( 3,
-                                                                                      '23.456.789/0001-80' ),( 3,
-                                                                                                               '44.256.789/0001-20'
-                                                                                                               ),( 4,
-                                                                                                                                    '44.256.789/0001-20'
-                                                                                                                                    )
-                                                                                                                                    ,
-                                                                                                                                    (
-                                                                                                                                    4
-                                                                                                                                    ,
-                                                                                                                                                         '12.345.678/0001-90'
-                                                                                                                                                         )
-                                                                                                                                                         ,
-                                                                                                                                                         (
-                                                                                                                                                         5
-                                                                                                                                                         ,
-                                                                                                                                                                              '12.345.678/0001-90'
-                                                                                                                                                                              )
-                                                                                                                                                                              ,
-                                                                                                                                                                              (
-                                                                                                                                                                              5
-                                                                                                                                                                              ,
-                                                                                                                                                                                                   '23.456.789/0001-80'
-                                                                                                                                                                                                   )
-                                                                                                                                                                                                   ;
+           '12345678000190' ),( 1,
+                                '23456789000180' ),( 2,
+                                                     '12345678000190' ),( 3,
+                                                                          '23456789000180' ),( 3,
+                                                                                               '44.256.789/0001-20' ),( 4,
+                                                                                                                        '44.256.789/0001-20'
+                                                                                                                        ),( 4
+                                                                                                                        ,
+                                                                                                                                             '12345678000190'
+                                                                                                                                             )
+                                                                                                                                             ,
+                                                                                                                                             (
+                                                                                                                                             5
+                                                                                                                                             ,
+                                                                                                                                                              '12345678000190'
+                                                                                                                                                              )
+                                                                                                                                                              ,
+                                                                                                                                                              (
+                                                                                                                                                              5
+                                                                                                                                                              ,
+                                                                                                                                                                               '23456789000180'
+                                                                                                                                                                               )
+                                                                                                                                                                               ;
