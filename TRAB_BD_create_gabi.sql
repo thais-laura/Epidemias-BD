@@ -2,7 +2,7 @@ CREATE TABLE cidade (
     nome        VARCHAR2(100) NOT NULL,
     estado      CHAR(2) NOT NULL,
     qtdhab      NUMBER NOT NULL,
-    areaTerrit  NUMBER(10,2) NOT NULL,
+    areaterrit  NUMBER(10,2) NOT NULL,
 
     -- chave primaria composta
     CONSTRAINT pk_cidade PRIMARY KEY (nome, estado),
@@ -15,7 +15,7 @@ CREATE TABLE cidade (
         CHECK (qtdhab >= 0),
 
     CONSTRAINT chk_areaterrit_nao_negativa
-        CHECK (areaTerrit >= 0)
+        CHECK (areaterrit >= 0)
 );
 
 CREATE TABLE paciente (
@@ -23,7 +23,7 @@ CREATE TABLE paciente (
     cpf          VARCHAR2(11) UNIQUE NOT NULL,
     datanascim   DATE NOT NULL,
     sexo         CHAR(1) NOT NULL,
-    gruporisco   VARCHAR2(3) NOT NULL,
+    gruporisco   CHAR(1) NOT NULL,
 
     -- sexo deve ser M ou F
     CONSTRAINT chk_paciente_sexo
@@ -31,7 +31,7 @@ CREATE TABLE paciente (
 
     -- grupo de risco deve ser 'sim' ou 'não'
     CONSTRAINT chk_paciente_gruporisco
-        CHECK (gruporisco IN ('sim', 'não')),
+        CHECK (gruporisco IN ('S', 'N')),
 
     -- CPF precisa ter exatamente 11 digitos numericos
     CONSTRAINT chk_paciente_cpf
@@ -63,6 +63,7 @@ CREATE TABLE doenca (
     letalidade    NUMBER(4,2)   NOT NULL,
     sazonalidade  VARCHAR2(20)  NOT NULL,
     cid10         VARCHAR2(10)  NOT NULL,
+    tempomedio      NUMBER(10,2),
 
     -- chave primaria
     CONSTRAINT pk_doenca PRIMARY KEY (nomecientif),
@@ -73,7 +74,7 @@ CREATE TABLE doenca (
 
     -- sazonalidade deve ser uma das estacoes
     CONSTRAINT chk_doenca_sazonalidade
-        CHECK (sazonalidade IN ('Verão', 'Outono', 'Inverno', 'Primavera')),
+        CHECK (sazonalidade IN ('VERAO', 'OUTONO', 'INVERNO', 'PRIMAVERA')),
 
     -- CID-10 no formato (letra + numeros + opcional ponto)
     CONSTRAINT chk_doenca_cid10
@@ -140,7 +141,7 @@ CREATE TABLE tratamento (
     remedio       VARCHAR2(120) NOT NULL,  
     customedio    NUMBER(10,2)  NOT NULL,  
     duracaomedia  NUMBER        NOT NULL,  
-    isolamento    VARCHAR2(3)   NOT NULL,  
+    isolamento    CHAR(1)   NOT NULL,  
     maquina       VARCHAR2(120) NOT NULL,  
 
     -- chave primaria
@@ -157,7 +158,7 @@ CREATE TABLE tratamento (
 
     -- isolamento limitado a 'sim' ou 'não'
     CONSTRAINT chk_tratamento_isolamento
-        CHECK (isolamento IN ('sim', 'não'))
+        CHECK (isolamento IN ('S', 'N'))
 );
 
 CREATE TABLE regiao (
@@ -190,3 +191,5 @@ CREATE TABLE regiao (
     CONSTRAINT chk_regiao_densidade
         CHECK (densidpop >= 0)
 );
+
+
