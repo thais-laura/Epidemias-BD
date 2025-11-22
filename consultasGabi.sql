@@ -49,3 +49,48 @@ SELECT
 FROM obitos_por_cidade
 GROUP BY nomecidade, estadocidade, nomepopular
 ORDER BY total_obitos DESC;
+
+
+
+-- Consulta 2 – Gabi
+-- Objetivo:
+-- Identificar, para cada rede de saúde, as duas doenças mais frequentes
+-- com base na contagem de casos registrados.
+
+WITH contagem_doencas AS (
+    -- Conta quantos casos de cada doença ocorreram dentro de cada rede
+    SELECT 
+        c.cnpj AS rede_de_saude,
+        c.doenca,
+        COUNT(*) AS total_casos
+    FROM caso c
+    GROUP BY c.cnpj, c.doenca
+),
+
+ranking AS (
+    -- Dentro de cada rede, ordena as doenças da mais frequente para a menos frequente
+    SELECT
+        cd.rede_de_saude,
+        cd.doenca,
+        cd.total_casos,
+        -- Cria uma numeração dentro de cada rede de saúde
+        -- PARTITION BY separa os dados por rede (uma lista para cada rede)
+        -- ORDER BY organiza as doenças pela frequência
+        ROW_NUMBER() OVER (
+            PARTITION BY cd.rede_de_saude
+            ORDER BY cd.total_casos DESC
+        ) AS pos              -- posição da doença no ranking da rede (1 = mais frequente)
+
+    FROM contagem_doencas cd  
+)
+
+-- Seleciona apenas as duas doenças mais comuns por rede
+SELECT
+    r.rede_de_saude,
+    d.nomepopular AS doenca,
+    r.total_casos
+FROM ranking r
+JOIN doenca d
+  ON d.nomecientif = r.doenca
+WHERE r.pos <= 2
+ORDER BY r.rede_de_saude, r.total_casos DESC;
