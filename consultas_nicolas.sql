@@ -4,8 +4,6 @@
 -- listando cada órgão que compõe a rede (tabela REDE_DE_SAUDE) e
 -- agregando suas especialidades cadastradas.
 -- A consulta relaciona REDE_DE_SAUDE com ORGAO e ESPECIALIDADES.
---
--- Resultado: um registro por órgão (CNPJ, Nome) com a lista de especialidades.
 SELECT
     o.cnpj,
     o.nome,
@@ -27,9 +25,6 @@ ORDER BY o.nome;
 -- alcançadas” é estimada somando a população (qtdHab) das cidades das regiões
 -- abrangidas por cada Alerta.
 -- A consulta cruza ALERTA, DOENCA, ABRANGE, REGIAO, CIDADE e BENEFICENTE.
---
--- Observação: Ajuste o valor do limite de letalidade na linha comentada
---             (ex.: 0.60, 0.80) conforme necessidade do estudo.
 WITH alcance_por_alerta AS (
     -- Para cada alerta, calcula a soma de habitantes das cidades alcançadas
     SELECT
