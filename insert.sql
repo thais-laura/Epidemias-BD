@@ -1,1001 +1,186 @@
-insert into transmite (
-   doenca,
-   transmissor
-) values ( 'PLASMODIUM FACILPARUM',
-           'MOSQUITO ANOPHELES' ),( 'MYCOBACTERIUM TUBERCULOSIS',
-                                    'PESSOA INFECTADA' ),( 'INFLUENZA VIRUS A',
-                                                           'AR' ),( 'SARS-COV-2',
-                                                                    'AR' );
+insert into transmite (doenca, transmissor) values ('PLASMODIUM FACILPARUM','MOSQUITO ANOPHELES');
+insert into transmite (doenca, transmissor) values ('MYCOBACTERIUM TUBERCULOSIS','PESSOA INFECTADA');
+insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
+insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
 
-insert into transmissor (
-   nome,
-   vetor,
-   tipo,
-   estacaoanopred,
-   nomecientif,
-   tempovida,
-   regiaovivencia
-) values ( 'MOSQUITO ANOPHELES',
-           'MOSQUITO',
-           'BIOTICO',
-           null,
-           'ANOPHELES DARLINGI',
-           30,
-           'REGIOES TROPICAIS E UMIDAS' ),( 'AR',
-                                            'GOTICULAS DE AR',
-                                            'ABIOTICO',
-                                            'INVERNO',
-                                            null,
-                                            null,
-                                            'AMBIENTES FECHADOS E FRIOS' ),( 'CONTATO DIRETO',
-                                                                             'CONTATO FISICO',
-                                                                             'ABIOTICO',
-                                                                             'TODAS',
-                                                                             null,
-                                                                             null,
-                                                                             'AMBIENTES URBANOS' ),( 'PESSOA INFECTADA',
-                                                                                                     'HUMANO',
-                                                                                                     'BIOTICO',
-                                                                                                     null,
-                                                                                                     'HOMO SAPIENS',
-                                                                                                     70,
-                                                                                                     'MUNDO TODO' );
+insert into transmissor (nome, vetor, tipo, estacaoanopred, nomecientif, tempovida, regiaovivencia) values ( 'MOSQUITO ANOPHELES','MOSQUITO','BIOTICO',null,'ANOPHELES DARLINGI',30,'REGIOES TROPICAIS E UMIDAS' );
+insert into transmissor (nome, vetor, tipo, estacaoanopred, nomecientif, tempovida, regiaovivencia) values ( 'AR','GOTICULAS DE AR','ABIOTICO', 'INVERNO', null, null, 'AMBIENTES FECHADOS E FRIOS' );
+insert into transmissor (nome, vetor, tipo, estacaoanopred, nomecientif, tempovida, regiaovivencia) values ( 'CONTATO DIRETO','CONTATO FISICO','ABIOTICO', 'TODAS',null,null,'AMBIENTES URBANOS' );
+insert into transmissor (nome, vetor, tipo, estacaoanopred, nomecientif, tempovida, regiaovivencia) values ( 'PESSOA INFECTADA', 'HUMANO', 'BIOTICO', null, 'HOMO SAPIENS', 70, 'MUNDO TODO' );
 
-insert into doenca (
-   nomecientif,
-   nomepopular,
-   letalidade,
-   sazonalidade,
-   cid10
-) values ( 'PLASMODIUM FALCIPARUM',
-           'MALARIA',
-           0.2,
-           'VERAO',
-           'B50' ),( 'MYCOBACTERIUM TUBERCULOSIS',
-                     'TUBERCULOSE',
-                     0.15,
-                     'INVERNO',
-                     'A15' ),( 'INFLUENZA VIRUS A',
-                               'GRIPE',
-                               0.01,
-                               'OUTONO',
-                               'J10' ),( 'SARS-COV-2',
-                                         'COVID-19',
-                                         0.03,
-                                         'INVERNO',
-                                         'U07.1' );
--- N COLOQUEI TEMPO MEDIO PQ SERIA CALCULADO COM BASE NOS CASOS
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10) values( 'PLASMODIUM FALCIPARUM','MALARIA',0.2,'VERAO','B50' );
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10) values ( 'MYCOBACTERIUM TUBERCULOSIS','TUBERCULOSE', 0.15,'INVERNO','A15' );
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10) values ( 'INFLUENZA VIRUS A','GRIPE', 0.01,'OUTONO','J10' );
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10) values ( 'SARS-COV-2','COVID-19', 0.03, 'INVERNO', 'U07.1' );
 
-insert into sintomas (
-   nomecientif,
-   sintoma
-) values ( 'PLASMODIUM FALCIPARUM',
-           'FEBRE ALTA' ),( 'PLASMODIUM FALCIPARUM',
-                            'CALAFRIOS E SUOR EXCESSIVO' ),( 'MYCOBACTERIUM TUBERCULOSIS',
-                                                             'TOSSE PERSISTENTE COM CATARRO' ),( 'MYCOBACTERIUM TUBERCULOSIS'
-                                                             ,
-                                                                                                 'PERDA DE PESO E FADIGA' ),(
-                                                                                                 'INFLUENZA VIRUS A',
-                                                                                                                          'FEBRE E DOR DE CABECA'
-                                                                                                                          ),(
-                                                                                                                          'INFLUENZA VIRUS A'
-                                                                                                                          ,
-                                                                                                                                                  'CONGESTAO NASAL E DOR MUSCULAR'
-                                                                                                                                                  )
-                                                                                                                                                  ,
-                                                                                                                                                  (
-                                                                                                                                                  'SARS-COV-2'
-                                                                                                                                                  ,
-                                                                                                                                                                                   'FEBRE E PERDA DE OLFATO'
-                                                                                                                                                                                   )
-                                                                                                                                                                                   ,
-                                                                                                                                                                                   (
-                                                                                                                                                                                   'SARS-COV-2'
-                                                                                                                                                                                   ,
-                                                                                                                                                                                                             'TOSSE SECA E DIFICULDADE PARA RESPIRAR'
-                                                                                                                                                                                                             )
-                                                                                                                                                                                                             ;
+insert into sintomas (nomecientif, sintoma) values ( 'PLASMODIUM FALCIPARUM', 'FEBRE ALTA' );
+insert into sintomas (nomecientif, sintoma) values ( 'PLASMODIUM FALCIPARUM', 'CALAFRIOS E SUOR EXCESSIVO' );
+insert into sintomas (nomecientif, sintoma) values ( 'MYCOBACTERIUM TUBERCULOSIS', 'TOSSE PERSISTENTE COM CATARRO' );
+insert into sintomas (nomecientif, sintoma) values ( 'MYCOBACTERIUM TUBERCULOSIS','PERDA DE PESO E FADIGA' );
+insert into sintomas (nomecientif, sintoma) values ('INFLUENZA VIRUS A','FEBRE E DOR DE CABECA' );
+insert into sintomas (nomecientif, sintoma) values ( 'INFLUENZA VIRUS A' , 'CONGESTAO NASAL E DOR MUSCULAR' );
+insert into sintomas (nomecientif, sintoma) values ('SARS-COV-2','FEBRE E PERDA DE OLFATO' );
+insert into sintomas (nomecientif, sintoma) values ('SARS-COV-2', 'TOSSE SECA E DIFICULDADE PARA RESPIRAR');
 
-insert into agente (
-   nomecientif,
-   agente
-) values ( 'PLASMODIUM FALCIPARUM',
-           'PROTOZOARIO' ),( 'MYCOBACTERIUM TUBERCULOSIS',
-                             'BACTERIA' ),( 'INFLUENZA VIRUS A',
-                                            'VIRUS' ),( 'SARS-COV-2',
-                                                        'VIRUS' );
+insert into agente (nomecientif,agente) values ( 'PLASMODIUM FALCIPARUM', 'PROTOZOARIO' );
+insert into agente (nomecientif,agente) values ( 'MYCOBACTERIUM TUBERCULOSIS', 'BACTERIA' );
+insert into agente (nomecientif,agente) values ( 'INFLUENZA VIRUS A', 'VIRUS' );
+insert into agente (nomecientif,agente) values ( 'SARS-COV-2', 'VIRUS' );
 
-insert into metodoprevencao (
-   nomecientif,
-   metodoprevencao
-) values ( 'PLASMODIUM FALCIPARUM',
-           'USO DE MOSQUITEIROS' ),( 'PLASMODIUM FALCIPARUM',
-                                     'REPELENTES' ),( 'MYCOBACTERIUM TUBERCULOSIS',
-                                                      'VACINACAO BCG' ),( 'INFLUENZA VIRUS A',
-                                                                          'VACINACAO ANUAL' ),( 'INFLUENZA VIRUS A',
-                                                                                                'HIGIENE DAS MAOS' ),( 'SARS-COV-2'
-                                                                                                ,
-                                                                                                                       'USO DE MASCARAS'
-                                                                                                                       ),( 'SARS-COV-2'
-                                                                                                                       ,
-                                                                                                                                         'ISOLAMENTO EM CASOS SUSPEITOS'
-                                                                                                                                         )
-                                                                                                                                         ;
-
-insert into requer (
-   doenca,
-   tratamento
-) values ( 'PLASMODIUM FALCIPARUM',
-           'TRATAMENTO DA MALARIA' ),( 'MYCOBACTERIUM TUBERCULOSIS',
-                                       'TRATAMENTO DA TUBERCULOSE' ),( 'INFLUENZA VIRUS A',
-                                                                       'TRATAMENTO DA GRIPE' ),( 'SARS-COV-2',
-                                                                                                 'TRATAMENTO DA COVID-19' ),(
-                                                                                                 'SARS-COV-2',
-                                                                                                                          'HEMODIALISE'
-                                                                                                                          );
-
-insert into tratamento (
-   nome,
-   tipo,
-   remedio,
-   customedio,
-   duracaomedia,
-   isolamento,
-   maquina
-) values ( 'TRATAMENTO DA MALARIA',
-           'MEDICAMENTO',
-           'ARTEMISININA',
-           150.00,
-           14,
-           'N',
-           'NENHUMA' ),( 'TRATAMENTO DA TUBERCULOSE',
-                         'MEDICAMENTO',
-                         'RIFAMPICINA',
-                         300.00,
-                         180,
-                         'N',
-                         'NENHUMA' ),( 'TRATAMENTO DA GRIPE',
-                                       'MEDICAMENTO DE SUPORTE',
-                                       'OSELTAMIVIR',
-                                       80.00,
-                                       7,
-                                       'N',
-                                       'NENHUMA' ),( 'TRATAMENTO DA COVID-19',
-                                                     'SUPORTE INTENSIVO',
-                                                     'ANTIVIRAIS E CORTICOIDES',
-                                                     500.00,
-                                                     14,
-                                                     'S',
-                                                     'RESPIRADOR' ),( 'QUIMIOTERAPIA',
-                                                                      'ONCOLOGICO',
-                                                                      'CISPLATINA',
-                                                                      5000.00,
-                                                                      120,
-                                                                      'N',
-                                                                      'BOMBA DE INFUSAO' ),( 'HEMODIALISE',
-                                                                                             'SUPORTE RENAL',
-                                                                                             'NENHUM',
-                                                                                             800.00,
-                                                                                             1,
-                                                                                             'N',
-                                                                                             'MAQUINA DE HEMODIALISE' );
-
-insert into sessao (
-   idsessao,
-   idcaso,
-   tratamento,
-   data,
-   hora,
-   rede_de_saude,
-   obsmedicas,
-   resultadoesperado
-) values ( 1,
-           1,
-           'TRATAMENTO DA GRIPE',
-           to_date('12/03/24','DD/MM/YY'),
-           to_date('09:30','HH24:MI'),
-           '12345678000190',
-           'PACIENTE APRESENTOU FEBRE LEVE, RECEITADO OSELTAMIVIR.',
-           'RECUPERACAO TOTAL' ),( 2,
-                                   2,
-                                   'TRATAMENTO DA DENGUE',
-                                   to_date('07/01/25','DD/MM/YY'),
-                                   to_date('10:00','HH24:MI'),
-                                   '12345678000190',
-                                   'HIDRATACAO VENOSA E CONTROLE DE PLAQUETAS.',
-                                   'ESTABILIZACAO DO QUADRO' ),( 3,
-                                                                 3,
-                                                                 'TRATAMENTO DA COVID-19',
-                                                                 to_date('15/02/23','DD/MM/YY'),
-                                                                 to_date('14:15','HH24:MI'),
-                                                                 '23456789000180',
-                                                                 'MONITORAMENTO RESPIRATORIO E USO DE ANTIVIRAIS.',
-                                                                 'ALTA MEDICA APOS 10 DIAS' ),( 4,
-                                                                                                4,
-                                                                                                'TRATAMENTO DA COVID-19',
-                                                                                                to_date('20/06/24','DD/MM/YY'
-                                                                                                ),
-                                                                                                to_date('09:45','HH24:MI'),
-                                                                                                '23456789000180',
-                                                                                                'INTERNACAO EM UTI LEVE, SEM NECESSIDADE DE VENTILACAO MECANICA.'
-                                                                                                ,
-                                                                                                'MELHORA PROGRESSIVA' ),( 5,
-                                                                                                                        5,
-                                                                                                                        'TRATAMENTO DA TUBERCULOSE'
-                                                                                                                        ,
-                                                                                                                        to_date
-                                                                                                                        ('15/10/23'
-                                                                                                                        ,'DD/MM/YY'
-                                                                                                                        ),
-                                                                                                                        to_date
-                                                                                                                        ('08:30'
-                                                                                                                        ,'HH24:MI'
-                                                                                                                        ),
-                                                                                                                        '12345678000190'
-                                                                                                                        ,
-                                                                                                                        'INICIO DO USO DE RIFAMPICINA, ACOMPANHAMENTO MENSAL.'
-                                                                                                                        ,
-                                                                                                                        'REDUCAO GRADUAL DOS SINTOMAS'
-                                                                                                                        ),( 6
-                                                                                                                        ,
-                                                                                                                                                       6
-                                                                                                                                                       ,
-                                                                                                                                                       'TRATAMENTO DA GRIPE'
-                                                                                                                                                       ,
-                                                                                                                                                       to_date
-                                                                                                                                                       (
-                                                                                                                                                       '03/08/24'
-                                                                                                                                                       ,
-                                                                                                                                                       'DD/MM/YY'
-                                                                                                                                                       )
-                                                                                                                                                       ,
-                                                                                                                                                       to_date
-                                                                                                                                                       (
-                                                                                                                                                       '11:20'
-                                                                                                                                                       ,
-                                                                                                                                                       'HH24:MI'
-                                                                                                                                                       )
-                                                                                                                                                       ,
-                                                                                                                                                       '23456789000180'
-                                                                                                                                                       ,
-                                                                                                                                                       'SINTOMAS LEVES, TRATADO EM AMBULATORIO.'
-                                                                                                                                                       ,
-                                                                                                                                                       'RECUPERACAO SEM COMPLICACOES'
-                                                                                                                                                       )
-                                                                                                                                                       ,
-                                                                                                                                                       (
-                                                                                                                                                       7
-                                                                                                                                                       ,
-                                                                                                                                                                                      7
-                                                                                                                                                                                      ,
-                                                                                                                                                                                      'TRATAMENTO DA COVID-19'
-                                                                                                                                                                                      ,
-                                                                                                                                                                                      to_date
-                                                                                                                                                                                      (
-                                                                                                                                                                                      '05/04/25'
-                                                                                                                                                                                      ,
-                                                                                                                                                                                      'DD/MM/YY'
-                                                                                                                                                                                      )
-                                                                                                                                                                                      ,
-                                                                                                                                                                                      to_date
-                                                                                                                                                                                      (
-                                                                                                                                                                                      '16:00'
-                                                                                                                                                                                      ,
-                                                                                                                                                                                      'HH24:MI'
-                                                                                                                                                                                      )
-                                                                                                                                                                                      ,
-                                                                                                                                                                                      '12345678000190'
-                                                                                                                                                                                      ,
-                                                                                                                                                                                      'PACIENTE COM INSUFICIENCIA RESPIRATORIA GRAVE, ENTUBADO.'
-                                                                                                                                                                                      ,
-                                                                                                                                                                                      'OBITO PROVAVEL'
-                                                                                                                                                                                      )
-                                                                                                                                                                                      ,
-                                                                                                                                                                                      (
-                                                                                                                                                                                      8
-                                                                                                                                                                                      ,
-                                                                                                                                                                                                       8
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       'TRATAMENTO DA DENGUE'
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       to_date
-                                                                                                                                                                                                       (
-                                                                                                                                                                                                       '15/02/25'
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       'DD/MM/YY'
-                                                                                                                                                                                                       )
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       to_date
-                                                                                                                                                                                                       (
-                                                                                                                                                                                                       '13:00'
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       'HH24:MI'
-                                                                                                                                                                                                       )
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       '12345678000190'
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       'HIDRATACAO VENOSA E REPOUSO DOMICILIAR.'
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       'MELHORA CLINICA'
-                                                                                                                                                                                                       )
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       (
-                                                                                                                                                                                                       9
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                                         9
-                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                         'TRATAMENTO DA DENGUE'
-                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                         to_date
-                                                                                                                                                                                                                         (
-                                                                                                                                                                                                                         '02/07/25'
-                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                         'DD/MM/YY'
-                                                                                                                                                                                                                         )
-                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                         to_date
-                                                                                                                                                                                                                         (
-                                                                                                                                                                                                                         '09:10'
-                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                         'HH24:MI'
-                                                                                                                                                                                                                         )
-                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                         '12345678000190'
-                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                         'RECORRENCIA LEVE, PACIENTE ORIENTADO A REPOUSO E HIDRATACAO.'
-                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                         'RECUPERACAO RAPIDA'
-                                                                                                                                                                                                                         )
-                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                         (
-                                                                                                                                                                                                                         10
-                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                                              10
-                                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                                              'TRATAMENTO DA TUBERCULOSE'
-                                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                                              to_date
-                                                                                                                                                                                                                                              (
-                                                                                                                                                                                                                                              '20/05/24'
-                                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                                              'DD/MM/YY'
-                                                                                                                                                                                                                                              )
-                                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                                              to_date
-                                                                                                                                                                                                                                              (
-                                                                                                                                                                                                                                              '10:00'
-                                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                                              'HH24:MI'
-                                                                                                                                                                                                                                              )
-                                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                                              '12345678000190'
-                                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                                              'CONTINUACAO DO USO DE RIFAMPICINA E EXAMES DE CONTROLE.'
-                                                                                                                                                                                                                                              ,
-                                                                                                                                                                                                                                              'REMISSAO DA INFECCAO'
-                                                                                                                                                                                                                                              )
-                                                                                                                                                                                                                                              ;
-
-insert into caso (
-   idcaso,
-   paciente,
-   doenca,
-   datainicio,
-   datafim,
-   gravidade,
-   rede_de_saude,
-   obito,
-   reincidente
-) values ( 1,
-           1,
-           'INFLUENZA VIRUS A',
-           to_date('10/03/24','DD/MM/YY'),
-           to_date('20/03/24','DD/MM/YY'),
-           'MODERADO',
-           '12345678000190',
-           0,
-           0 ),( 2,
-                 2,
-                 'DENV',
-                 to_date('05/01/25','DD/MM/YY'),
-                 null,
-                 'GRAVE',
-                 '12345678000190',
-                 0,
-                 0 ),( 3,
-                       3,
-                       'SARS-COV-2',
-                       to_date('12/02/23','DD/MM/YY'),
-                       to_date('26/02/23','DD/MM/YY'),
-                       'LEVE',
-                       '23456789000180',
-                       0,
-                       0 ),( 4,
-                             3,
-                             'SARS-COV-2',
-                             to_date('15/06/24','DD/MM/YY'),
-                             to_date('28/06/24','DD/MM/YY'),
-                             'MODERADO',
-                             '23456789000180',
-                             0,
-                             1 ),( 5,
-                                   4,
-                                   'MYCOBACTERIUM TUBERCULOSIS',
-                                   to_date('10/10/23','DD/MM/YY'),
-                                   null,
-                                   'GRAVE',
-                                   '12345678000190',
-                                   0,
-                                   0 ),( 6,
-                                         5,
-                                         'INFLUENZA VIRUS A',
-                                         to_date('01/08/24','DD/MM/YY'),
-                                         to_date('08/08/24','DD/MM/YY'),
-                                         'LEVE',
-                                         '23456789000180',
-                                         0,
-                                         0 ),( 7,
-                                               6,
-                                               'SARS-COV-2',
-                                               to_date('03/04/25','DD/MM/YY'),
-                                               null,
-                                               'GRAVE',
-                                               '12345678000190',
-                                               1,
-                                               0 ),( 8,
-                                                     7,
-                                                     'DENV',
-                                                     to_date('10/02/25','DD/MM/YY'),
-                                                     to_date('25/02/25','DD/MM/YY'),
-                                                     'MODERADO',
-                                                     '12345678000190',
-                                                     0,
-                                                     0 ),( 9,
-                                                           7,
-                                                           'DENV',
-                                                           to_date('30/06/25','DD/MM/YY'),
-                                                           null,
-                                                           'LEVE',
-                                                           '12345678000190',
-                                                           0,
-                                                           1 ),( 10,
-                                                                 8,
-                                                                 'MYCOBACTERIUM TUBERCULOSIS',
-                                                                 to_date('15/05/24','DD/MM/YY'),
-                                                                 to_date('15/09/24','DD/MM/YY'),
-                                                                 'GRAVE',
-                                                                 '12345678000190',
-                                                                 0,
-                                                                 0 );
-
-insert into metricas_sessoes (
-   sessao,
-   metrica,
-   valor
-) values ( 1,
-           'TEMPERATURA CORPORAL',
-           '38.1 °C' ),( 1,
-                         'PRESSAO ARTERIAL',
-                         '120/80 MMHG' ),( 1,
-                                           'FREQUENCIA CARDIACA',
-                                           '82 BPM' ),( 2,
-                                                        'TEMPERATURA CORPORAL',
-                                                        '39.0 °C' ),( 2,
-                                                                      'PLAQUETAS',
-                                                                      '95.000 /ΜL' ),( 2,
-                                                                                       'PRESSAO ARTERIAL',
-                                                                                       '110/70 MMHG' ),( 3,
-                                                                                                         'SATURACAO DE O2',
-                                                                                                         '96 %' ),( 3,
-                                                                                                                    'FREQUENCIA RESPIRATORIA'
-                                                                                                                    ,
-                                                                                                                    '18 IRPM'
-                                                                                                                    ),( 3,
-                                                                                                                              'TEMPERATURA CORPORAL'
-                                                                                                                              ,
-                                                                                                                              '37.4 °C'
-                                                                                                                              )
-                                                                                                                              ,
-                                                                                                                              (
-                                                                                                                              4
-                                                                                                                              ,
-                                                                                                                                        'SATURACAO DE O2'
-                                                                                                                                        ,
-                                                                                                                                        '93 %'
-                                                                                                                                        )
-                                                                                                                                        ,
-                                                                                                                                        (
-                                                                                                                                        4
-                                                                                                                                        ,
-                                                                                                                                               'FREQUENCIA RESPIRATORIA'
-                                                                                                                                               ,
-                                                                                                                                               '22 IRPM'
-                                                                                                                                               )
-                                                                                                                                               ,
-                                                                                                                                               (
-                                                                                                                                               4
-                                                                                                                                               ,
-                                                                                                                                                         'PRESSAO ARTERIAL'
-                                                                                                                                                         ,
-                                                                                                                                                         '118/76 MMHG'
-                                                                                                                                                         )
-                                                                                                                                                         ,
-                                                                                                                                                         (
-                                                                                                                                                         5
-                                                                                                                                                         ,
-                                                                                                                                                                       'PESO CORPORAL'
-                                                                                                                                                                       ,
-                                                                                                                                                                       '72 KG'
-                                                                                                                                                                       )
-                                                                                                                                                                       ,
-                                                                                                                                                                       (
-                                                                                                                                                                       5
-                                                                                                                                                                       ,
-                                                                                                                                                                               'TOSSE PRODUTIVA'
-                                                                                                                                                                               ,
-                                                                                                                                                                               'S'
-                                                                                                                                                                               )
-                                                                                                                                                                               ,
-                                                                                                                                                                               (
-                                                                                                                                                                               5
-                                                                                                                                                                               ,
-                                                                                                                                                                                   'TEMPERATURA CORPORAL'
-                                                                                                                                                                                   ,
-                                                                                                                                                                                   '37.8 °C'
-                                                                                                                                                                                   )
-                                                                                                                                                                                   ,
-                                                                                                                                                                                   (
-                                                                                                                                                                                   6
-                                                                                                                                                                                   ,
-                                                                                                                                                                                             'TEMPERATURA CORPORAL'
-                                                                                                                                                                                             ,
-                                                                                                                                                                                             '36.9 °C'
-                                                                                                                                                                                             )
-                                                                                                                                                                                             ,
-                                                                                                                                                                                             (
-                                                                                                                                                                                             6
-                                                                                                                                                                                             ,
-                                                                                                                                                                                                       'PRESSAO ARTERIAL'
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       '115/75 MMHG'
-                                                                                                                                                                                                       )
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                       (
-                                                                                                                                                                                                       7
-                                                                                                                                                                                                       ,
-                                                                                                                                                                                                                     'SATURACAO DE O2'
-                                                                                                                                                                                                                     ,
-                                                                                                                                                                                                                     '82 %'
-                                                                                                                                                                                                                     )
-                                                                                                                                                                                                                     ,
-                                                                                                                                                                                                                     (
-                                                                                                                                                                                                                     7
-                                                                                                                                                                                                                     ,
-                                                                                                                                                                                                                            'FREQUENCIA RESPIRATORIA'
-                                                                                                                                                                                                                            ,
-                                                                                                                                                                                                                            '28 IRPM'
-                                                                                                                                                                                                                            )
-                                                                                                                                                                                                                            ,
-                                                                                                                                                                                                                            (
-                                                                                                                                                                                                                            7
-                                                                                                                                                                                                                            ,
-                                                                                                                                                                                                                                      'PRESSAO ARTERIAL'
-                                                                                                                                                                                                                                      ,
-                                                                                                                                                                                                                                      '95/60 MMHG'
-                                                                                                                                                                                                                                      )
-                                                                                                                                                                                                                                      ,
-                                                                                                                                                                                                                                      (
-                                                                                                                                                                                                                                      8
-                                                                                                                                                                                                                                      ,
-                                                                                                                                                                                                                                                   'TEMPERATURA CORPORAL'
-                                                                                                                                                                                                                                                   ,
-                                                                                                                                                                                                                                                   '38.2 °C'
-                                                                                                                                                                                                                                                   )
-                                                                                                                                                                                                                                                   ,
-                                                                                                                                                                                                                                                   (
-                                                                                                                                                                                                                                                   8
-                                                                                                                                                                                                                                                   ,
-                                                                                                                                                                                                                                                             'PLAQUETAS'
-                                                                                                                                                                                                                                                             ,
-                                                                                                                                                                                                                                                             '120.000 /ΜL'
-                                                                                                                                                                                                                                                             )
-                                                                                                                                                                                                                                                             ,
-                                                                                                                                                                                                                                                             (
-                                                                                                                                                                                                                                                             8
-                                                                                                                                                                                                                                                             ,
-                                                                                                                                                                                                                                                                           'PRESSAO ARTERIAL'
-                                                                                                                                                                                                                                                                           ,
-                                                                                                                                                                                                                                                                           '110/70 MMHG'
-                                                                                                                                                                                                                                                                           )
-                                                                                                                                                                                                                                                                           ,
-                                                                                                                                                                                                                                                                           (
-                                                                                                                                                                                                                                                                           9
-                                                                                                                                                                                                                                                                           ,
-                                                                                                                                                                                                                                                                                         'TEMPERATURA CORPORAL'
-                                                                                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                                                                                         '37.2 °C'
-                                                                                                                                                                                                                                                                                         )
-                                                                                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                                                                                         (
-                                                                                                                                                                                                                                                                                         9
-                                                                                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                                                                                                   'PLAQUETAS'
-                                                                                                                                                                                                                                                                                                   ,
-                                                                                                                                                                                                                                                                                                   '145.000 /ΜL'
-                                                                                                                                                                                                                                                                                                   )
-                                                                                                                                                                                                                                                                                                   ,
-                                                                                                                                                                                                                                                                                                   (
-                                                                                                                                                                                                                                                                                                   9
-                                                                                                                                                                                                                                                                                                   ,
-                                                                                                                                                                                                                                                                                                                 'PRESSAO ARTERIAL'
-                                                                                                                                                                                                                                                                                                                 ,
-                                                                                                                                                                                                                                                                                                                 '115/72 MMHG'
-                                                                                                                                                                                                                                                                                                                 )
-                                                                                                                                                                                                                                                                                                                 ,
-                                                                                                                                                                                                                                                                                                                 (
-                                                                                                                                                                                                                                                                                                                 10
-                                                                                                                                                                                                                                                                                                                 ,
-                                                                                                                                                                                                                                                                                                                               'TEMPERATURA CORPORAL'
-                                                                                                                                                                                                                                                                                                                               ,
-                                                                                                                                                                                                                                                                                                                               '37.5 °C'
-                                                                                                                                                                                                                                                                                                                               )
-                                                                                                                                                                                                                                                                                                                               ,
-                                                                                                                                                                                                                                                                                                                               (
-                                                                                                                                                                                                                                                                                                                               10
-                                                                                                                                                                                                                                                                                                                               ,
-                                                                                                                                                                                                                                                                                                                                         'PESO CORPORAL'
-                                                                                                                                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                                                                                                                                         '70 KG'
-                                                                                                                                                                                                                                                                                                                                         )
-                                                                                                                                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                                                                                                                                         (
-                                                                                                                                                                                                                                                                                                                                         10
-                                                                                                                                                                                                                                                                                                                                         ,
-                                                                                                                                                                                                                                                                                                                                                 'TOSSE PRODUTIVA'
-                                                                                                                                                                                                                                                                                                                                                 ,
-                                                                                                                                                                                                                                                                                                                                                 'N'
-                                                                                                                                                                                                                                                                                                                                                 )
-                                                                                                                                                                                                                                                                                                                                                 ;
-
-insert into paciente (
-   idpaciente,
-   cpf,
-   datanascim,
-   sexo,
-   gruporisco
-) values ( 1,
-           '12345678901',
-           to_date('12/03/1985','DD/MM/YYYY'),
-           'F',
-           'S' ),( 2,
-                   '98765432100',
-                   to_date('25/07/1992','DD/MM/YYYY'),
-                   'M',
-                   'N' ),( 3,
-                           '45678912345',
-                           to_date('03/11/1970','DD/MM/YYYY'),
-                           'M',
-                           'S' ),( 4,
-                                   '32165498700',
-                                   to_date('14/05/2001','DD/MM/YYYY'),
-                                   'F',
-                                   'N' ),( 5,
-                                           '74185296300',
-                                           to_date('09/09/1958','DD/MM/YYYY'),
-                                           'M',
-                                           'S' ),( 6,
-                                                   '85296374100',
-                                                   to_date('20/12/1989','DD/MM/YYYY'),
-                                                   'F',
-                                                   'N' ),( 7,
-                                                           '36925814700',
-                                                           to_date('17/02/2003','DD/MM/YYYY'),
-                                                           'F',
-                                                           'N' ),( 8,
-                                                                   '15975348600',
-                                                                   to_date('28/10/1976','DD/MM/YYYY'),
-                                                                   'M',
-                                                                   'S' ),( 9,
-                                                                           '25814736900',
-                                                                           to_date('05/06/1999','DD/MM/YYYY'),
-                                                                           'F',
-                                                                           'N' ),( 10,
-                                                                                   '96385274100',
-                                                                                   to_date('01/01/1960','DD/MM/YYYY'),
-                                                                                   'M',
-                                                                                   'S' );
-
-insert into vacinas (
-   idpaciente,
-   vacina
-) values ( 1,
-           'BCG' ),( 2,
-                     'INFLUENZA' ),( 3,
-                                     'COVID-19' ),( 5,
-                                                    'FEBRE AMARELA' ),( 8,
-                                                                        'COVID-19' );
-
-insert into orgao (
-   cnpj,
-   nome,
-   cep,
-   bairro,
-   logradouro,
-   nro,
-   telefone1,
-   telefone2
-) values ( '12345678000190',
-           'HOSPITAL SAO LUCAS',
-           '13560-970',
-           'CENTRO',
-           'RUA MAJOR JOSE INACIO',
-           450,
-           '(16) 3362-1234',
-           '(16) 3362-5678' ),( '23456789000180',
-                                'CLINICA VIDA SAUDAVEL',
-                                '30140-120',
-                                'SAVASSI',
-                                'AV. CRISTOVAO COLOMBO',
-                                900,
-                                '(31) 3254-7788',
-                                '(31) 3254-8899' ),( '34567890000170',
-                                                     'INSTITUTO ESPERANCA',
-                                                     '20040-001',
-                                                     'CENTRO',
-                                                     'RUA DA CARIOCA',
-                                                     120,
-                                                     '(21) 2223-4455',
-                                                     '(21) 98888-1122' ),( '45678901000160',
-                                                                           'ONG SAUDE PARA TODOS',
-                                                                           '04012-090',
-                                                                           'PARAISO',
-                                                                           'RUA VERGUEIRO',
-                                                                           1500,
-                                                                           '(11) 3333-4444',
-                                                                           '(11) 99999-5555' );
-
-insert into tipo (
-   orgao,
-   tipo
-) values ( '12345678000190',
-           'REDE DE SAUDE' ),( '12345678000190',
-                               'BENEFICENTE' ),( '23456789000180',
-                                                 'REDE DE SAUDE' ),( '34567890000170',
-                                                                     'BENEFICENTE' ),( '45678901000160',
-                                                                                       'BENEFICENTE' );
+insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'PLASMODIUM FALCIPARUM', 'USO DE MOSQUITEIROS' );
+insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'PLASMODIUM FALCIPARUM', 'REPELENTES' );
+insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'MYCOBACTERIUM TUBERCULOSIS','VACINACAO BCG' );
+insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'INFLUENZA VIRUS A','VACINACAO ANUAL' );
+insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'INFLUENZA VIRUS A','HIGIENE DAS MAOS' );
+insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'SARS-COV-2','USO DE MASCARAS');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'SARS-COV-2','ISOLAMENTO EM CASOS SUSPEITOS') ;
 
 
-insert into cidade (
-   nome,
-   estado,
-   qtdhab,
-   areaterrit
-) values ( 'SAO CARLOS',
-           'SP',
-           254000,
-           1137.00 ),( 'IPATINGA',
-                       'MG',
-                       270000,
-                       165.00 ),( 'FORTALEZA',
-                                  'CE',
-                                  2687000,
-                                  314.93 ),( 'BRASILIA',
-                                             'DF',
-                                             3055000,
-                                             5802.00 ),( 'JACAREI',
-                                                         'SP',
-                                                         242000,
-                                                         464.27 ),( 'SAO PAULO',
-                                                                    'SP',
-                                                                    12300000,
-                                                                    1521.11 ),( 'RIO DE JANEIRO',
-                                                                                'RJ',
-                                                                                6775000,
-                                                                                1200.27 ),( 'BELO HORIZONTE',
-                                                                                            'MG',
-                                                                                            2533000,
-                                                                                            331.40 ),( 'CURITIBA',
-                                                                                                       'PR',
-                                                                                                       1964000,
-                                                                                                       434.89 ),( 'PORTO ALEGRE'
-                                                                                                       ,
-                                                                                                                  'RS',
-                                                                                                                  1493000,
-                                                                                                                  497.00 ),( 'RECIFE'
-                                                                                                                  ,
-                                                                                                                         'PE'
-                                                                                                                         ,
-                                                                                                                         1653000
-                                                                                                                         ,
-                                                                                                                         218.84
-                                                                                                                         );
+insert into requer (doenca, tratamento) values ('PLASMODIUM FALCIPARUM','TRATAMENTO DA MALARIA' );
+insert into requer (doenca, tratamento) values ('MYCOBACTERIUM TUBERCULOSIS', 'TRATAMENTO DA GRIPE' );
+insert into requer (doenca, tratamento) values ('SARS-COV-2', 'TRATAMENTO DA COVID-19' );
+insert into requer (doenca, tratamento) values ('SARS-COV-2','HEMODIALISE' );
 
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA MALARIA', 'MEDICAMENTO', 'ARTEMISININA', 150.00, 14, 'N', 'NENHUMA' );
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA TUBERCULOSE', 'MEDICAMENTO', 'RIFAMPICINA', 300.00, 180, 'N', 'NENHUMA' );
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA GRIPE', 'MEDICAMENTO DE SUPORTE', 'OSELTAMIVIR', 80.00, 7, 'N', 'NENHUMA' );
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA COVID-19', 'SUPORTE INTENSIVO', 'ANTIVIRAIS E CORTICOIDES', 500.00, 14, 'S', 'RESPIRADOR' );
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('QUIMIOTERAPIA', 'ONCOLOGICO', 'CISPLATINA', 5000.00, 120, 'N', 'BOMBA DE INFUSAO' );
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('HEMODIALISE', 'SUPORTE RENAL', 'NENHUM', 800.00, 1, 'N', 'MAQUINA DE HEMODIALISE' );
 
-insert into beneficente (
-   cnpj,
-   qtdvolunt,
-   datafundacao,
-   areaatuacao
-) values ( '12345678000190',
-           100,
-           to_date('07/10/2004','DD/MM/YYYY'),
-           'CAMPANHAS SOBRE CANCER DE MAMA' ),( '34567890000170',
-                                                45,
-                                                to_date('12/03/2005','DD/MM/YYYY'),
-                                                'APOIO A FAMILIAS CARENTES E CAMPANHAS DE VACINACAO' ),( '45678901000160',
-                                                                                                         80,
-                                                                                                         to_date('25/08/2010'
-                                                                                                         ,'DD/MM/YYYY'),
-                                                                                                         'ACOES DE SAUDE COMUNITARIA E DOACAO DE SANGUE'
-                                                                                                         );
+insert into sessao ( idsessao, idcaso, tratamento, data, hora, rede_de_saude, obsmedicas, resultadoesperado) values ( 1, 1, 'TRATAMENTO DA GRIPE', to_date('12/03/24','DD/MM/YY'), to_date('09:30','HH24:MI'), '12345678000190', 'PACIENTE APRESENTOU FEBRE LEVE, RECEITADO OSELTAMIVIR.', 'RECUPERACAO TOTAL' );
+insert into sessao ( idsessao, idcaso, tratamento, data, hora, rede_de_saude, obsmedicas, resultadoesperado) values ( 2, 2, 'TRATAMENTO DA DENGUE', to_date('07/01/25','DD/MM/YY'), to_date('10:00','HH24:MI'), '12345678000190', 'HIDRATACAO VENOSA E CONTROLE DE PLAQUETAS.', 'ESTABILIZACAO DO QUADRO' );
+insert into sessao ( idsessao, idcaso, tratamento, data, hora, rede_de_saude, obsmedicas, resultadoesperado) values ( 3, 3, 'TRATAMENTO DA COVID-19',  to_date('15/02/23','DD/MM/YY'), to_date('14:15','HH24:MI'), '23456789000180', 'MONITORAMENTO RESPIRATORIO E USO DE ANTIVIRAIS.', 'ALTA MEDICA APOS 10 DIAS' );
+insert into sessao ( idsessao, idcaso, tratamento, data, hora, rede_de_saude, obsmedicas, resultadoesperado) values ( 4, 4, 'TRATAMENTO DA COVID-19', to_date('20/06/24','DD/MM/YY' ), to_date('09:45','HH24:MI'), '23456789000180', 'INTERNACAO EM UTI LEVE, SEM NECESSIDADE DE VENTILACAO MECANICA.' , 'MELHORA PROGRESSIVA' );
+insert into sessao ( idsessao, idcaso, tratamento, data, hora, rede_de_saude, obsmedicas, resultadoesperado) values ( 5, 5, 'TRATAMENTO DA TUBERCULOSE' , to_date ('15/10/23' ,'DD/MM/YY' ), to_date ('08:30' ,'HH24:MI' ), '12345678000190' , 'INICIO DO USO DE RIFAMPICINA, ACOMPANHAMENTO MENSAL.' , 'REDUCAO GRADUAL DOS SINTOMAS' );
+insert into sessao ( idsessao, idcaso, tratamento, data, hora, rede_de_saude, obsmedicas, resultadoesperado) values ( 6 , 6 , 'TRATAMENTO DA GRIPE' , to_date ( '03/08/24' , 'DD/MM/YY') , to_date ( '11:20' , 'HH24:MI' ) , '23456789000180' , 'SINTOMAS LEVES, TRATADO EM AMBULATORIO.' , 'RECUPERACAO SEM COMPLICACOES' );
+insert into sessao ( idsessao, idcaso, tratamento, data, hora, rede_de_saude, obsmedicas, resultadoesperado) values ( 7 , 7 , 'TRATAMENTO DA COVID-19' , to_date ( '05/04/25' , 'DD/MM/YY' ) , to_date ( '16:00' , 'HH24:MI' ) , '12345678000190' , 'PACIENTE COM INSUFICIENCIA RESPIRATORIA GRAVE, ENTUBADO.' , 'OBITO PROVAVEL' );
+insert into sessao ( idsessao, idcaso, tratamento, data, hora, rede_de_saude, obsmedicas, resultadoesperado) values ( 8 , 8 , 'TRATAMENTO DA DENGUE' , to_date ( '15/02/25' , 'DD/MM/YY' ) , to_date ( '13:00' , 'HH24:MI' ) , '12345678000190' , 'HIDRATACAO VENOSA E REPOUSO DOMICILIAR.' , 'MELHORA CLINICA' ); 
+insert into sessao ( idsessao, idcaso, tratamento, data, hora, rede_de_saude, obsmedicas, resultadoesperado) values ( 9 , 9 , 'TRATAMENTO DA DENGUE' , to_date ( '02/07/25' , 'DD/MM/YY' ) , to_date ( '09:10' , 'HH24:MI' ) , '12345678000190' , 'RECORRENCIA LEVE, PACIENTE ORIENTADO A REPOUSO E HIDRATACAO.' , 'RECUPERACAO RAPIDA' );
+insert into sessao ( idsessao, idcaso, tratamento, data, hora, rede_de_saude, obsmedicas, resultadoesperado) values (10 , 10 , 'TRATAMENTO DA TUBERCULOSE' , to_date ( '20/05/24' , 'DD/MM/YY' ) , to_date ( '10:00' , 'HH24:MI' ) , '12345678000190' , 'CONTINUACAO DO USO DE RIFAMPICINA E EXAMES DE CONTROLE.' , 'REMISSAO DA INFECCAO');
 
-insert into rede_de_saude (
-   cnpj,
-   qtdleitos,
-   qtdfuncion
-) values ( '12345678000190',
-           250,
-           500 ),( '23456789000180',
-                   120,
-                   200 );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (1, 1, 'INFLUENZA VIRUS A', to_date('10/03/24','DD/MM/YY'), to_date('20/03/24','DD/MM/YY'), 'MODERADO', '12345678000190', 0, 0 );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (2, 2, 'DENV', to_date('05/01/25','DD/MM/YY'), null, 'GRAVE', '12345678000190', 0, 0 );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (3, 3, 'SARS-COV-2', to_date('12/02/23','DD/MM/YY'), to_date('26/02/23','DD/MM/YY'), 'LEVE', '23456789000180', 0, 0 );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (4, 3, 'SARS-COV-2', to_date('15/06/24','DD/MM/YY'), to_date('28/06/24','DD/MM/YY'), 'MODERADO', '23456789000180', 0, 1 );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (5, 4, 'MYCOBACTERIUM TUBERCULOSIS', to_date('10/10/23','DD/MM/YY'), null, 'GRAVE', '12345678000190', 0, 0 );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (6, 5, 'INFLUENZA VIRUS A', to_date('01/08/24','DD/MM/YY'), to_date('08/08/24','DD/MM/YY'), 'LEVE', '23456789000180', 0, 0 );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (7, 6, 'SARS-COV-2', to_date('03/04/25','DD/MM/YY'), null, 'GRAVE', '12345678000190', 1, 0 );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (8, 7, 'DENV', to_date('10/02/25','DD/MM/YY'), to_date('25/02/25','DD/MM/YY'), 'MODERADO', '12345678000190', 0, 0 );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (9, 7, 'DENV', to_date('30/06/25','DD/MM/YY'), null, 'LEVE', '12345678000190', 0, 1 );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (10, 8, 'MYCOBACTERIUM TUBERCULOSIS', to_date('15/05/24','DD/MM/YY'), to_date('15/09/24','DD/MM/YY'), 'GRAVE', '12345678000190', 0, 0 );
 
-insert into regiao (
-   rede_de_saude,
-   raio,
-   densidpop,
-   nomecidade,
-   estadocidade
-) values ( '12345678000190',
-           15.0,
-           223.5,
-           'SAO CARLOS',
-           'SP' ),( '23456789000180',
-                    30.0,
-                    526.7,
-                    'BRASILIA',
-                    'DF' );
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (1, 'TEMPERATURA CORPORAL', '38.1 °C');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (1, 'PRESSAO ARTERIAL', '120/80 MMHG');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (1, 'FREQUENCIA CARDIACA', '82 BPM');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (2, 'TEMPERATURA CORPORAL', '39.0 °C');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (2, 'PLAQUETAS', '95.000 /mL');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (2, 'PRESSAO ARTERIAL', '110/70 MMHG');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (3, 'SATURACAO DE O2', '96 %');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (3, 'FREQUENCIA RESPIRATORIA', '18 IRPM');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (3, 'TEMPERATURA CORPORAL', '37.4 °C');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (4, 'SATURACAO DE O2', '93 %');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (4, 'FREQUENCIA RESPIRATORIA', '22 IRPM');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (4, 'PRESSAO ARTERIAL', '118/76 MMHG');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (5, 'PESO CORPORAL', '72 KG');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (5, 'TOSSE PRODUTIVA', 'S');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (5, 'TEMPERATURA CORPORAL', '37.8 °C');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (6, 'TEMPERATURA CORPORAL', '36.9 °C');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (6, 'PRESSAO ARTERIAL', '115/75 MMHG');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (7, 'SATURACAO DE O2', '82 %');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (7, 'FREQUENCIA RESPIRATORIA', '28 IRPM');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (7, 'PRESSAO ARTERIAL', '95/60 MMHG');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (8, 'TEMPERATURA CORPORAL', '38.2 °C');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (8, 'PLAQUETAS', '120.000 /mL');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (8, 'PRESSAO ARTERIAL', '110/70 MMHG');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (9, 'TEMPERATURA CORPORAL', '37.2 °C');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (9, 'PLAQUETAS', '145.000 /mL');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (9, 'PRESSAO ARTERIAL', '115/72 MMHG');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (10, 'TEMPERATURA CORPORAL', '37.5 °C');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (10, 'PESO CORPORAL', '70 KG');
+INSERT INTO metricas_sessoes (sessao, metrica, valor) VALUES (10, 'TOSSE PRODUTIVA', 'N');
 
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (1, '12345678901', to_date('12/03/1985','DD/MM/YYYY'), 'F', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (2, '98765432100', to_date('25/07/1992','DD/MM/YYYY'), 'M', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (3, '45678912345', to_date('03/11/1970','DD/MM/YYYY'), 'M', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (4, '32165498700', to_date('14/05/2001','DD/MM/YYYY'), 'F', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (5, '74185296300', to_date('09/09/1958','DD/MM/YYYY'), 'M', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (6, '85296374100', to_date('20/12/1989','DD/MM/YYYY'), 'F', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (7, '36925814700', to_date('17/02/2003','DD/MM/YYYY'), 'F', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (8, '15975348600', to_date('28/10/1976','DD/MM/YYYY'), 'M', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (9, '25814736900', to_date('05/06/1999','DD/MM/YYYY'), 'F', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (10, '96385274100', to_date('01/01/1960','DD/MM/YYYY'), 'M', 'S');
 
-insert into programa (
-   beneficente,
-   programa
-) values ( '12345678000190',
-           'OUTUBRO ROSA – CONSCIENTIZACAO SOBRE CANCER DE MAMA' ),( '12345678000190',
-                                                                     'MUTIRAO DE EXAMES PREVENTIVOS' ),( '34567890000170',
-                                                                                                         'CAMPANHA DE VACINACAO INFANTIL'
-                                                                                                         ),( '34567890000170'
-                                                                                                         ,
-                                                                                                                                          'DISTRIBUICAO DE CESTAS BASICAS'
-                                                                                                                                          )
-                                                                                                                                          ,
-                                                                                                                                          (
-                                                                                                                                          '45678901000160'
-                                                                                                                                          ,
-                                                                                                                                                                           'CAMPANHA DE DOACAO DE SANGUE'
-                                                                                                                                                                           )
-                                                                                                                                                                           ,
-                                                                                                                                                                           (
-                                                                                                                                                                           '45678901000160'
-                                                                                                                                                                           ,
-                                                                                                                                                                                                          'FEIRA DE SAUDE E PREVENCAO DE DOENCAS'
-                                                                                                                                                                                                          )
-                                                                                                                                                                                                          ,
-                                                                                                                                                                                                          (
-                                                                                                                                                                                                          '45678901000160'
-                                                                                                                                                                                                          ,
-                                                                                                                                                                                                                                                  'ATENDIMENTO MEDICO GRATUITO EM COMUNIDADES CARENTES'
-                                                                                                                                                                                                                                                  )
-                                                                                                                                                                                                                                                  ;
+insert into vacinas (idpaciente, vacina) values (1, 'BCG');
+insert into vacinas (idpaciente, vacina) values (2, 'INFLUENZA' );
+insert into vacinas (idpaciente, vacina) values (3, 'COVID-19' );
+insert into vacinas (idpaciente, vacina) values (5, 'FEBRE AMARELA' );
+insert into vacinas (idpaciente, vacina) values (8, 'COVID-19' );
 
-insert into especialidades (
-   rede_de_saude,
-   especialidade
-) values ( '12345678000190',
-           'CLINICA GERAL' ),( '12345678000190',
-                               'PEDIATRIA' ),( '12345678000190',
-                                               'INFECTOLOGIA' ),( '12345678000190',
-                                                                  'CARDIOLOGIA' ),( '23456789000180',
-                                                                                    'ORTOPEDIA' ),( '23456789000180',
-                                                                                                    'GINECOLOGIA' ),( '23456789000180'
-                                                                                                    ,
-                                                                                                                      'DERMATOLOGIA'
-                                                                                                                      ),( '44.256.789/0001-20'
-                                                                                                                      ,
-                                                                                                                                     'NEUROLOGIA'
-                                                                                                                                     )
-                                                                                                                                     ,
-                                                                                                                                     (
-                                                                                                                                     '44.256.789/0001-20'
-                                                                                                                                     ,
-                                                                                                                                                  'PSIQUIATRIA'
-                                                                                                                                                  )
-                                                                                                                                                  ,
-                                                                                                                                                  (
-                                                                                                                                                  '44.256.789/0001-20'
-                                                                                                                                                  ,
-                                                                                                                                                                'ONCOLOGIA'
-                                                                                                                                                                )
-                                                                                                                                                                ;
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, nro, telefone1, telefone2) VALUES ('12345678000190', 'HOSPITAL SAO LUCAS', '13560-970', 'CENTRO', 'RUA MAJOR JOSE INACIO', 450, '(16) 3362-1234', '(16) 3362-5678');
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, nro, telefone1, telefone2) VALUES ('23456789000180', 'CLINICA VIDA SAUDAVEL', '30140-120', 'SAVASSI', 'AV. CRISTOVAO COLOMBO', 900, '(31) 3254-7788', '(31) 3254-8899');
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, nro, telefone1, telefone2) VALUES ('34567890000170', 'INSTITUTO ESPERANCA', '20040-001', 'CENTRO', 'RUA DA CARIOCA', 120, '(21) 2223-4455', '(21) 98888-1122');
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, nro, telefone1, telefone2) VALUES ('45678901000160', 'ONG SAUDE PARA TODOS', '04012-090', 'PARAISO', 'RUA VERGUEIRO', 1500, '(11) 3333-4444', '(11) 99999-5555');
 
-insert into alerta (
-   idalerta,
-   beneficente,
-   doenca,
-   datainicio,
-   datafim,
-   tipo,
-   mensagem,
-   canalprinc,
-   prioridade
-) values ( 1,
-           '12345678000190',
-           'SARS-COV-2',
-           to_date('05/02/25','DD/MM/YY'),
-           to_date('20/02/25','DD/MM/YY'),
-           'PREVENCAO',
-           'CAMPANHA DE CONSCIENTIZACAO SOBRE A IMPORTANCIA DO USO DE MASCARAS E VACINACAO CONTRA A COVID-19.',
-           'REDES SOCIAIS',
-           'ALTA' ),( 2,
-                      '34567890000170',
-                      'DENV',
-                      to_date('10/01/25','DD/MM/YY'),
-                      to_date('31/03/25','DD/MM/YY'),
-                      'CONTROLE VETORIAL',
-                      'MUTIRAO DE COMBATE AO MOSQUITO AEDES AEGYPTI EM BAIRROS DE MAIOR INCIDENCIA DE DENGUE.',
-                      'RADIO COMUNITARIA',
-                      'ALTA' ),( 3,
-                                 '45678901000160',
-                                 'MYCOBACTERIUM TUBERCULOSIS',
-                                 to_date('15/03/25','DD/MM/YY'),
-                                 to_date('30/04/25','DD/MM/YY'),
-                                 'CONSCIENTIZACAO',
-                                 'CAMPANHA INFORMATIVA SOBRE SINTOMAS E TRATAMENTO DA TUBERCULOSE, COM FOCO EM DIAGNOSTICO PRECOCE.'
-                                 ,
-                                 'TELEVISAO LOCAL',
-                                 'MEDIA' ),( 4,
-                                             '34567890000170',
-                                             'INFLUENZA VIRUS A',
-                                             to_date('01/05/25','DD/MM/YY'),
-                                             to_date('30/06/25','DD/MM/YY'),
-                                             'VACINACAO',
-                                             'CAMPANHA DE VACINACAO CONTRA A GRIPE PARA GRUPOS DE RISCO.',
-                                             'POSTOS DE SAUDE',
-                                             'ALTA' ),( 5,
-                                                        '45678901000160',
-                                                        'SARS-COV-2',
-                                                        to_date('10/07/25','DD/MM/YY'),
-                                                        null,
-                                                        'ACOMPANHAMENTO',
-                                                        'MONITORAMENTO DE NOVOS CASOS DE COVID-19 E REFORCO DA VACINACAO DE REFORCO.'
-                                                        ,
-                                                        'APLICATIVO DE SAUDE',
-                                                        'MEDIA' );
+insert into tipo (orgao, tipo) values ( '12345678000190', 'REDE DE SAUDE' );
+insert into tipo (orgao, tipo) values ('12345678000190', 'BENEFICENTE' );
+insert into tipo (orgao, tipo) values ('23456789000180', 'REDE DE SAUDE' );
+insert into tipo (orgao, tipo) values ('34567890000170', 'BENEFICENTE' );
+insert into tipo (orgao, tipo) values ('45678901000160', 'BENEFICENTE' );
 
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('SAO CARLOS', 'SP', 254000, 1137.00);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('IPATINGA', 'MG', 270000, 165.00);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('FORTALEZA', 'CE', 2687000, 314.93);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('BRASILIA', 'DF', 3055000, 5802.00);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('JACAREI', 'SP', 242000, 464.27);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('SAO PAULO', 'SP', 12300000, 1521.11);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('RIO DE JANEIRO', 'RJ', 6775000, 1200.27);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('BELO HORIZONTE', 'MG', 2533000, 331.40);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('CURITIBA', 'PR', 1964000, 434.89);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('PORTO ALEGRE', 'RS', 1493000, 497.00);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('RECIFE', 'PE', 1653000, 218.84);
 
-insert into abrange (
-   idalerta,
-   rede_de_saude
-) values ( 1,
-           '12345678000190' ),( 1,
-                                '23456789000180' ),( 2,
-                                                     '12345678000190' ),( 3,
-                                                                          '23456789000180' ),( 3,
-                                                                                               '44.256.789/0001-20' ),( 4,
-                                                                                                                        '44.256.789/0001-20'
-                                                                                                                        ),( 4
-                                                                                                                        ,
-                                                                                                                                             '12345678000190'
-                                                                                                                                             )
-                                                                                                                                             ,
-                                                                                                                                             (
-                                                                                                                                             5
-                                                                                                                                             ,
-                                                                                                                                                              '12345678000190'
-                                                                                                                                                              )
-                                                                                                                                                              ,
-                                                                                                                                                              (
-                                                                                                                                                              5
-                                                                                                                                                              ,
-                                                                                                                                                                               '23456789000180'
-                                                                                                                                                                               )
-                                                                                                                                                                               ;
+insert into beneficente (cnpj, qtdvolunt, datafundacao, areaatuacao) values ('12345678000190', 100, to_date('07/10/2004','DD/MM/YYYY'), 'CAMPANHAS SOBRE CANCER DE MAMA' );
+insert into beneficente (cnpj, qtdvolunt, datafundacao, areaatuacao) values ('34567890000170', 45, to_date('12/03/2005','DD/MM/YYYY'), 'APOIO A FAMILIAS CARENTES E CAMPANHAS DE VACINACAO' );
+insert into beneficente (cnpj, qtdvolunt, datafundacao, areaatuacao) values ('45678901000160', 80, to_date('25/08/2010' ,'DD/MM/YYYY'), 'ACOES DE SAUDE COMUNITARIA E DOACAO DE SANGUE' );
+
+insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('12345678000190', 250, 500);
+insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('23456789000180', 120, 200);
+
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('12345678000190', 15.0, 223.5, 'SAO CARLOS', 'SP' );
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('23456789000180', 30.0, 526.7, 'BRASILIA', 'DF' );
+
+INSERT INTO programa (beneficente, programa) VALUES ('12345678000190', 'OUTUBRO ROSA – CONSCIENTIZACAO SOBRE CANCER DE MAMA' );
+INSERT INTO programa (beneficente, programa) VALUES ('12345678000190', 'MUTIRAO DE EXAMES PREVENTIVOS' );
+INSERT INTO programa (beneficente, programa) VALUES ('34567890000170', 'CAMPANHA DE VACINACAO INFANTIL' );
+INSERT INTO programa (beneficente, programa) VALUES ('34567890000170', 'DISTRIBUICAO DE CESTAS BASICAS');
+INSERT INTO programa (beneficente, programa) VALUES ('45678901000160', 'CAMPANHA DE DOACAO DE SANGUE');
+INSERT INTO programa (beneficente, programa) VALUES ('45678901000160', 'FEIRA DE SAUDE E PREVENCAO DE DOENCAS');
+INSERT INTO programa (beneficente, programa) VALUES ('45678901000160', 'ATENDIMENTO MEDICO GRATUITO EM COMUNIDADES CARENTES');
+
+insert into especialidades ( rede_de_saude, especialidade) values ( '12345678000190', 'CLINICA GERAL' );
+insert into especialidades ( rede_de_saude, especialidade) values ( '12345678000190', 'PEDIATRIA' );
+insert into especialidades ( rede_de_saude, especialidade) values ( '12345678000190', 'INFECTOLOGIA' );
+insert into especialidades ( rede_de_saude, especialidade) values ( '12345678000190', 'CARDIOLOGIA' );
+insert into especialidades ( rede_de_saude, especialidade) values ( '23456789000180', 'ORTOPEDIA' );
+insert into especialidades ( rede_de_saude, especialidade) values ( '23456789000180', 'GINECOLOGIA' );
+insert into especialidades ( rede_de_saude, especialidade) values ( '23456789000180', 'DERMATOLOGIA' );
+insert into especialidades ( rede_de_saude, especialidade) values ( '44256789000120', 'NEUROLOGIA' );
+insert into especialidades ( rede_de_saude, especialidade) values ( '44256789000120', 'PSIQUIATRIA');
+insert into especialidades ( rede_de_saude, especialidade) values ( '44256789000120', 'ONCOLOGIA');
+
+insert into alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprinc, prioridade) values ( 1, '12345678000190', 'SARS-COV-2', to_date('05/02/25','DD/MM/YY'), to_date('20/02/25','DD/MM/YY'), 'PREVENCAO', 'CAMPANHA DE CONSCIENTIZACAO SOBRE A IMPORTANCIA DO USO DE MASCARAS E VACINACAO CONTRA A COVID-19.', 'REDES SOCIAIS', 'ALTA' );
+insert into alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprinc, prioridade) values ( 2, '34567890000170', 'DENV', to_date('10/01/25','DD/MM/YY'), to_date('31/03/25','DD/MM/YY'), 'CONTROLE VETORIAL', 'MUTIRAO DE COMBATE AO MOSQUITO AEDES AEGYPTI EM BAIRROS DE MAIOR INCIDENCIA DE DENGUE.', 'RADIO COMUNITARIA', 'ALTA' );
+insert into alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprinc, prioridade) values ( 3, '45678901000160', 'MYCOBACTERIUM TUBERCULOSIS', to_date('15/03/25','DD/MM/YY'), to_date('30/04/25','DD/MM/YY'), 'CONSCIENTIZACAO', 'CAMPANHA INFORMATIVA SOBRE SINTOMAS E TRATAMENTO DA TUBERCULOSE, COM FOCO EM DIAGNOSTICO PRECOCE.' , 'TELEVISAO LOCAL', 'MEDIA' );
+insert into alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprinc, prioridade) values ( 4, '34567890000170', 'INFLUENZA VIRUS A', to_date('01/05/25','DD/MM/YY'), to_date('30/06/25','DD/MM/YY'), 'VACINACAO', 'CAMPANHA DE VACINACAO CONTRA A GRIPE PARA GRUPOS DE RISCO.', 'POSTOS DE SAUDE', 'ALTA' );
+insert into alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprinc, prioridade) values ( 5, '45678901000160', 'SARS-COV-2', to_date('10/07/25','DD/MM/YY'), null, 'ACOMPANHAMENTO', 'MONITORAMENTO DE NOVOS CASOS DE COVID-19 E REFORCO DA VACINACAO DE REFORCO.', 'APLICATIVO DE SAUDE', 'MEDIA' );
+
+insert into abrange (idalerta, rede_de_saude) values (1, '12345678000190');
+insert into abrange (idalerta, rede_de_saude) values (1, '23456789000180');
+insert into abrange (idalerta, rede_de_saude) values (2, '12345678000190');
+insert into abrange (idalerta, rede_de_saude) values (3, '23456789000180');
+insert into abrange (idalerta, rede_de_saude) values (3, '44256789000120');
+insert into abrange (idalerta, rede_de_saude) values (4, '44256789000120');
+insert into abrange (idalerta, rede_de_saude) values (4, '12345678000190');
+insert into abrange (idalerta, rede_de_saude) values (5, '12345678000190');
+insert into abrange (idalerta, rede_de_saude) values (5, '23456789000180');
