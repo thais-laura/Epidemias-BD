@@ -1,9 +1,9 @@
 -- pesquisar histórico de campanhas realizadas na região
 -- para cada região, mostra a quantidade de alertas, a doença e o beneficente mais recorrentes
 select o_rs.nome as regiao,
-       al.qtd_alertas,      -- número real de alertas
-       dt.doenca,           -- doença mais recorrente
-       o_b.nome as beneficente
+      (case when al.qtd_alertas is null then 0 else al.qtd_alertas end) as qtd_alertas,      -- número real de alertas
+      dt.doenca,           -- doença mais recorrente
+       o_b.nome as beneficente_mais_freq
   from rede_de_saude rs
   LEFT join orgao o_rs
     on rs.cnpj = o_rs.cnpj
