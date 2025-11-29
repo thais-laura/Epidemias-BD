@@ -64,7 +64,9 @@ INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telef
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('23456789000180', 'CLINICA VIDA SAUDAVEL', '30140120', 'SAVASSI', 'AV. CRISTOVAO COLOMBO', '900', '3132547788', '3132548899');
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('34567890000170', 'INSTITUTO ESPERANCA', '20040001', 'CENTRO', 'RUA DA CARIOCA', '120', '2122234455', '21988881122');
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('45678901000160', 'ONG SAUDE PARA TODOS', '04012090', 'PARAISO', 'RUA VERGUEIRO', '1500', '1133334444', '11999995555');
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('23423789120180', 'HOSPITAL THAIS LAURA', '13560980', 'CENTRO', 'RUA MAJOR LEONARDO INACIO', '450', '3133621234', '3133645678');
 
+insert into tipo_orgao (orgao, tipo) values ( '23423789120180', 'REDE DE SAUDE' );
 insert into tipo_orgao (orgao, tipo) values ( '12345678000190', 'REDE DE SAUDE' );
 insert into tipo_orgao (orgao, tipo) values ('12345678000190', 'BENEFICENTE' );
 insert into tipo_orgao (orgao, tipo) values ('23456789000180', 'REDE DE SAUDE' );
@@ -89,7 +91,9 @@ insert into beneficente (cnpj, qtdvolunt, datafundacao, areaatuacao) values ('45
 
 insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('12345678000190', 250, 500);
 insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('23456789000180', 120, 200);
+insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('23423789120180', 100, 300);
 
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('23423789120180', 17.0, 223.5, 'IPATINGA', 'MG' );
 insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('12345678000190', 15.0, 223.5, 'SAO CARLOS', 'SP' );
 insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('23456789000180', 30.0, 526.7, 'BRASILIA', 'DF' );
 
@@ -119,6 +123,9 @@ insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede
 insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (8, 7, 'DENV', to_date('10/02/25','DD/MM/YY'), to_date('25/02/25','DD/MM/YY'), 'MODERADO', '12345678000190', 'N', 'N' );
 insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (9, 7, 'DENV', to_date('30/06/25','DD/MM/YY'), null, 'LEVE', '12345678000190', 'N', 'S' );
 insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (10, 8, 'MYCOBACTERIUM TUBERCULOSIS', to_date('15/05/24','DD/MM/YY'), to_date('15/09/24','DD/MM/YY'), 'GRAVE', '12345678000190', 'N', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (11, 8, 'MYCOBACTERIUM TUBERCULOSIS', to_date('30/10/24','DD/MM/YY'), to_date('25/12/24','DD/MM/YY'), 'GRAVE', '12345678000190', 'N', 'S' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (12, 8, 'MYCOBACTERIUM TUBERCULOSIS', to_date('01/03/25','DD/MM/YY'), to_date('15/06/25','DD/MM/YY'), 'GRAVE', '12345678000190', 'N', 'S' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (13, 8, 'MYCOBACTERIUM TUBERCULOSIS', to_date('30/10/25','DD/MM/YY'), null, 'GRAVE', '12345678000190', 'N', 'S' );
 
 insert into sessao (idsessao, idcaso, tratamento, datahora, rede_de_saude, obsmedicas, resultadoesperado) values ( 1, 1, 'TRATAMENTO DA GRIPE', TO_DATE('12/03/24 09:30', 'DD/MM/YY HH24:MI'), '12345678000190', 'PACIENTE APRESENTOU FEBRE LEVE, RECEITADO OSELTAMIVIR.', 'RECUPERACAO TOTAL' );
 insert into sessao (idsessao, idcaso, tratamento, datahora, rede_de_saude, obsmedicas, resultadoesperado) values ( 2, 2, 'TRATAMENTO DA DENGUE', to_date('07/01/25 10:00','DD/MM/YY HH24:MI'), '12345678000190', 'HIDRATACAO VENOSA E CONTROLE DE PLAQUETAS.', 'ESTABILIZACAO DO QUADRO' );
@@ -179,6 +186,5 @@ insert into transmite (doenca, transmissor) values ('PLASMODIUM FALCIPARUM','MOS
 insert into transmite (doenca, transmissor) values ('MYCOBACTERIUM TUBERCULOSIS','PESSOA INFECTADA');
 insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
-
 
 commit;
