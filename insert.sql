@@ -3,11 +3,11 @@ insert into transmissor (nome, vetor, tipo, estacaoanopredom, nomecientif, tempo
 insert into transmissor (nome, vetor, tipo, estacaoanopredom, nomecientif, tempovida, regiaovivencia) values ( 'CONTATO DIRETO','CONTATO FISICO','ABIOTICO', 'TODAS',null,null,null);
 insert into transmissor (nome, vetor, tipo, estacaoanopredom, nomecientif, tempovida, regiaovivencia) values ( 'PESSOA INFECTADA', 'HUMANO', 'BIOTICO', null, 'HOMO SAPIENS', '70 DIAS', 'MUNDO TODO' );
 
-insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10) values( 'PLASMODIUM FALCIPARUM','MALARIA',0.2,'VERAO','B50' );
-insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10) values ( 'MYCOBACTERIUM TUBERCULOSIS','TUBERCULOSE', 0.15,'INVERNO','A15' );
-insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10) values ( 'INFLUENZA VIRUS A','GRIPE', 0.01,'OUTONO','J10' );
-insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10) values ( 'SARS-COV-2','COVID-19', 0.03, 'INVERNO', 'U07.1' );
-insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10) values ( 'DENV','DENGUE', 0.01, 'VERAO', 'A90');
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values( 'PLASMODIUM FALCIPARUM','MALARIA',0.2,'VERAO','B50', 10);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ( 'MYCOBACTERIUM TUBERCULOSIS','TUBERCULOSE', 0.15,'INVERNO','A15', 90);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ( 'INFLUENZA VIRUS A','GRIPE', 0.01,'OUTONO','J10', 5 );
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ( 'SARS-COV-2','COVID-19', 0.03, 'INVERNO', 'U07.1' , 14);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ( 'DENV','DENGUE', 0.01, 'VERAO', 'A90', 14);
 
 insert into sintomas (nomecientif, sintoma) values ( 'PLASMODIUM FALCIPARUM', 'FEBRE ALTA' );
 insert into sintomas (nomecientif, sintoma) values ( 'PLASMODIUM FALCIPARUM', 'CALAFRIOS E SUOR EXCESSIVO' );
@@ -179,5 +179,6 @@ insert into transmite (doenca, transmissor) values ('PLASMODIUM FALCIPARUM','MOS
 insert into transmite (doenca, transmissor) values ('MYCOBACTERIUM TUBERCULOSIS','PESSOA INFECTADA');
 insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
+
 
 commit;
