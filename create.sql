@@ -168,9 +168,11 @@ CREATE TABLE requer (
   CONSTRAINT pk_requer PRIMARY KEY (doenca, tratamento),
 
   CONSTRAINT fk_requer_doenca
-    FOREIGN KEY (doenca) REFERENCES doenca (nomecientif),
+    FOREIGN KEY (doenca) REFERENCES doenca (nomecientif) 
+    on delete cascade,
   CONSTRAINT fk_requer_tratamento
-    FOREIGN KEY (tratamento) REFERENCES tratamento (nome)
+    FOREIGN KEY (tratamento) REFERENCES tratamento (nome) 
+    on delete cascade
 );
 
 CREATE TABLE infecta (
@@ -180,9 +182,11 @@ CREATE TABLE infecta (
   CONSTRAINT pk_infecta PRIMARY KEY (paciente, doenca),
 
   CONSTRAINT fk_infecta_paciente
-    FOREIGN KEY (paciente) REFERENCES paciente (idpaciente),
+    FOREIGN KEY (paciente) REFERENCES paciente (idpaciente) 
+    on delete cascade,
   CONSTRAINT fk_infecta_doenca
-    FOREIGN KEY (doenca)   REFERENCES doenca (nomecientif)
+    FOREIGN KEY (doenca)   REFERENCES doenca (nomecientif) 
+    on delete cascade
 );
 
 CREATE TABLE transmissor(
@@ -309,33 +313,31 @@ CREATE TABLE especialidades(
 
 CREATE TABLE regiao (
     rede_de_saude   CHAR(14) NOT NULL,   
-    raio            NUMBER NOT NULL,         
-    densidpop       NUMBER NOT NULL,         
+    raio            NUMBER,         
+    densidpop       NUMBER,         
     nomecidade      VARCHAR2(100) NOT NULL,  
     estadocidade    CHAR(2) NOT NULL,        
 
-    -- chave primaria
     CONSTRAINT pk_regiao 
         PRIMARY KEY (rede_de_saude),
 
-    -- FK 
     CONSTRAINT fk_regiao_rede
         FOREIGN KEY (rede_de_saude)
         REFERENCES rede_de_saude (cnpj)
         ON DELETE CASCADE,
 
-    -- FK 
     CONSTRAINT fk_regiao_cidade
         FOREIGN KEY (nomecidade, estadocidade)
-        REFERENCES cidade (nome, estado),
+        REFERENCES cidade (nome, estado)
+        on delete cascade, 
 
     -- raio deve ser positivo
     CONSTRAINT chk_regiao_raio
-        CHECK (raio > 0),
+        CHECK ((raio is not null and raio > 0) or raio is null),
 
     -- densidade populacional nao pode ser negativa
     CONSTRAINT chk_regiao_densidade
-        CHECK (densidpop >= 0)
+        CHECK ((densidadpop is not null and densidpop >= 0) or densidadpop is null)
 );
 
 
@@ -346,9 +348,11 @@ CREATE TABLE transmite (
   CONSTRAINT pk_transmite PRIMARY KEY (doenca, transmissor),
 
   CONSTRAINT fk_transmite_doenca
-    FOREIGN KEY (doenca) REFERENCES doenca (nomecientif),
+    FOREIGN KEY (doenca) REFERENCES doenca (nomecientif) 
+    on delete cascade,
   CONSTRAINT fk_transmite_transmissor
-    FOREIGN KEY (transmissor) REFERENCES transmissor (nome)
+    FOREIGN KEY (transmissor) REFERENCES transmissor (nome) 
+    on delete cascade
 );
 
 
@@ -369,9 +373,11 @@ CREATE TABLE alerta (
   CONSTRAINT uq_alerta_bdf UNIQUE (beneficente, doenca, datainicio),
 
   CONSTRAINT fk_alerta_beneficente
-    FOREIGN KEY (beneficente) REFERENCES beneficente (cnpj),
+    FOREIGN KEY (beneficente) REFERENCES beneficente (cnpj) 
+    on delete cascade,
   CONSTRAINT fk_alerta_doenca
-    FOREIGN KEY (doenca)      REFERENCES doenca (nomecientif),
+    FOREIGN KEY (doenca)      REFERENCES doenca (nomecientif) 
+    on delete cascade,
 
   CONSTRAINT ck_alerta_datas
     CHECK (datafim IS NULL OR datafim >= datainicio)
@@ -384,9 +390,11 @@ CREATE TABLE abrange (
   CONSTRAINT pk_abrange PRIMARY KEY (regiao_rede_de_saude, idalerta),
 
   CONSTRAINT fk_abrange_regiao
-    FOREIGN KEY (regiao_rede_de_saude) REFERENCES regiao (rede_de_saude),
+    FOREIGN KEY (regiao_rede_de_saude) REFERENCES regiao (rede_de_saude) 
+    on delete cascade,
   CONSTRAINT fk_abrange_alerta
-    FOREIGN KEY (idalerta)             REFERENCES alerta (idalerta)
+    FOREIGN KEY (idalerta)             REFERENCES alerta (idalerta) 
+    on delete cascade
 );
 
 CREATE TABLE caso (
@@ -406,11 +414,14 @@ CREATE TABLE caso (
   CONSTRAINT uq_caso_ep UNIQUE (paciente, doenca, datainicio),
 
   CONSTRAINT fk_caso_paciente
-    FOREIGN KEY (paciente) REFERENCES paciente (idpaciente),
+    FOREIGN KEY (paciente) REFERENCES paciente (idpaciente) 
+    on delete cascade,
   CONSTRAINT fk_caso_doenca
-    FOREIGN KEY (doenca)   REFERENCES doenca (nomecientif),
+    FOREIGN KEY (doenca)   REFERENCES doenca (nomecientif) 
+    on delete cascade,
   CONSTRAINT fk_caso_orgao
-    FOREIGN KEY (REDE_DE_SAUDE)     REFERENCES REDE_DE_SAUDE (cnpj),
+    FOREIGN KEY (REDE_DE_SAUDE)     REFERENCES REDE_DE_SAUDE (cnpj) 
+    on delete cascade,
 
   CONSTRAINT ck_caso_datas
     CHECK (datafim IS NULL OR datafim >= datainicio),
