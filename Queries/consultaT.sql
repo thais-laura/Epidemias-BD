@@ -1,115 +1,57 @@
--- Consulta 1 - Thaís Laura
--- pesquisar histórico de campanhas realizadas na região (com a quantidade de alertas, a doença e o beneficente mais recorrentes por região)
--- tabela usada como base para todas as outras consultas
-with base as (
-   select o.nome as regiao, -- join necessário devido à especialização
-          al.doenca,
-          al.beneficente as cnpj_beneficente
-     from alerta al
-     join abrange ab
-   on al.idalerta = ab.idalerta
-     join orgao o
-   on ab.regiao_rede_de_saude = o.cnpj
-),
-
--- escolhe a doença mais recorrente em alertas em cada região
-doenca_top as (
-   select regiao,
-          doenca
+-- pesquisar histórico de campanhas realizadas na região
+-- para cada região, mostra a quantidade de alertas, a doença e o beneficente mais recorrentes
+select o_rs.nome, -- nome da regiao
+       count(*),   -- quantidade de alertas
+       dt.doenca,  -- nome da doenca mais recorrente na regiao
+       o_b.nome    -- nome do beneficente mais recorrente na regiao
+  from rede_de_saude rs
+  join orgao o_rs          -- obtem o nome da regiao
+on rs.cnpj = o_rs.cnpj
+  join ( -- escolhe o beneficente mais recorrente em alertas em cada região
+   select *
      from (
-      select regiao,
-             doenca,
-             count(*) as qtd,
+      select ab.regiao_rede_de_saude as regiao, -- cnpj da regiao
+             al.beneficente,                    -- cnpj do beneficente
+             count(*) as qtd,                   -- qtd de vezes do beneficente em cada regiao
              row_number()
-             over(partition by regiao
+             over(partition by ab.regiao_rede_de_saude
                   order by count(*) desc -- ordena do maior para o menor
              ) as rn
-        from base
-       group by regiao,
-                doenca
+        from alerta al
+        join abrange ab
+      on al.idalerta = ab.idalerta
+       group by ab.regiao_rede_de_saude,
+                al.beneficente
    )
     where rn = 1 -- seleciona o máximo
-),
-
--- escolhe o beneficente mais recorrente em alertas em cada região
-benef_top as (
-   select br.regiao,
-          o.nome as nome_beneficente -- join necessário devido à especialização
+) bt
+on rs.cnpj = bt.regiao
+  join ( -- escolhe a doença mais recorrente em alertas em cada região
+   select *
      from (
-      select regiao,
-             cnpj_beneficente,
-             count(*) as qtd,
+      select ab.regiao_rede_de_saude as regiao, -- cnpj da regiao
+             al.doenca,                          -- doenca
+             count(*) as qtd,                    -- qtd de vezes em cada regiao
              row_number()
-             over(partition by regiao
+             over(partition by ab.regiao_rede_de_saude
                   order by count(*) desc -- ordena do maior para o menor
              ) as rn
-        from base
-       group by regiao,
-                cnpj_beneficente
-   ) br
-     join orgao o
-   on br.cnpj_beneficente = o.cnpj
-    where br.rn = 1 -- seleciona o máximo
-)
-
--- para cada região, mostra a quantidade de alertas, a doença e o beneficente mais recorrentes
-select b.regiao,
-       count(*) as total_alertas, -- realiza a contagem aqui
-       dt.doenca as doenca_mais_recorrente,
-       bt.nome_beneficente as beneficente_mais_recorrente
-  from base b
--- os joins são feitos com as tabelas intermediárias criadas acima
-  join doenca_top dt
-on dt.regiao = b.regiao
-  join benef_top bt
-on bt.regiao = b.regiao
- group by b.regiao,
+        from alerta al
+        join abrange ab
+      on al.idalerta = ab.idalerta
+       group by ab.regiao_rede_de_saude,
+                al.doenca
+   )
+    where rn = 1 -- seleciona o máximo
+) dt
+on rs.cnpj = dt.regiao
+  join orgao o_b          -- obtem o nome do beneficente
+on o_b.cnpj = bt.cnpj
+ group by o_rs.nome,
           dt.doenca,
-          bt.nome_beneficente
-having count(*) > 2; -- no caso de haver mais de dois alertas na região
+          o_b.nome
+having count(*) >= 2; -- seleciona regiao somente com mais de 2 alertas
 
-
--- Consulta 2 - Thaís Laura
--- verificar qual doenca tem o maior tempo medio para cada paciente (nomecientif e nomepopular), indicar qual é o tempo medio obtido
--- e ainda dizer se é maior que o tempo médio da doenca (para uma doença reincidente no paciente)
-
--- seleciona todas as doenças reincidentes de cada paciente
-with doencas_reincidentes as (
-   select distinct paciente,
-                   doenca
-     from caso
-    where reincidente = '1'
-),
-
--- calcula a média do período de infecção de cada doença, incluindo o primeiro caso da doença do paciente
-medias_paciente as (
-   select c.paciente,
-          c.doenca,
-          avg(c.data_fim - c.data_inicio) as tempo_medio_paciente
-     from caso c
-     join doencas_reincidentes dr
-   on dr.paciente = c.paciente
-      and dr.doenca = c.doenca
-    group by c.paciente,
-             c.doenca
-),
-
--- ordena o tempo médio de cada doença por paciente
-tempo_medio_top as (
-   select mp.paciente,
-          mp.doenca,
-          mp.tempo_medio_paciente,
-          d.nomepopular,
-          d.tempo_medio as tempo_medio_doenca,
-        -- dentro de cada partição (paciente), ordena o tempo médio de forma decrescente
-          row_number()
-          over(partition by mp.paciente
-               order by mp.tempo_medio_paciente desc
-          ) as rn
-     from medias_paciente mp
-     join doenca d
-   on d.nomecientif = mp.doenca
-)
 
 -- para cada paciente, indica a doença mais recorrente, o tempo médio de infecção e se este é maior ou menor que o tempo geral da doença
 select paciente,
@@ -123,5 +65,36 @@ select paciente,
           else
              'menor'
        end as comparacao
-  from tempo_medio_top
+  from (
+    -- ordena o tempo médio de cada doenca por paciente
+   select mp.paciente,
+          mp.doenca,
+          mp.tempo_medio_paciente,
+          d.nomepopular,
+          d.tempo_medio as tempo_medio_doenca,
+        -- dentro de cada partição (paciente), ordena o tempo médio de forma decrescente
+          row_number()
+          over(partition by mp.paciente
+               order by mp.tempo_medio_paciente desc
+          ) as rn
+     from ( -- para cada paciente com sua doenca, tem a media da duracao
+      select c.paciente,
+             c.doenca,
+             avg(c.data_fim - c.data_inicio) as tempo_medio_paciente
+        from caso c
+        join ( 
+            -- todas os casos que tem doenças reincidentes
+         select distinct paciente,
+                         doenca
+           from caso
+          where reincidente = '1'
+      ) dr
+      on dr.paciente = c.paciente
+         and dr.doenca = c.doenca
+       group by c.paciente,
+                c.doenca
+   ) mp
+     join doenca d
+   on d.nomecientif = mp.doenca
+)
  where rn = 1; -- seleciona o máximo
