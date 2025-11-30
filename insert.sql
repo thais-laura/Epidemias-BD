@@ -8,6 +8,16 @@ insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, t
 insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ( 'INFLUENZA VIRUS A','GRIPE', 0.01,'OUTONO','J10', 5 );
 insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ( 'SARS-COV-2','COVID-19', 0.03, 'INVERNO', 'U07.1' , 14);
 insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ( 'DENV','DENGUE', 0.01, 'VERAO', 'A90', 14);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ('CHIKUNGUNYA VIRUS','CHIKUNGUNYA',0.005,'VERAO','A92.0', 14);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ('ZIKA VIRUS','ZIKA',0.001,'VERAO','A92.5', 10);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ('NEISSERIA MENINGITIDIS','MENINGITE',0.10,'INVERNO','A39.0', 14);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ('MUMPS VIRUS','CAXUMBA',0.0001,'OUTONO','B26', 12);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ('VARICELLA ZOSTER VIRUS','CATAPORA',0.0005,'PRIMAVERA','B01', 7);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ('MEASLES VIRUS','SARAMPO',0.02,'OUTONO','B05', 10);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ('YELLOW FEVER VIRUS','FEBRE AMARELA',0.20,'VERAO','A95', 12);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ('LEPTOSPIRA INTERROGANS','LEPTOSPIROSE',0.05,'VERAO','A27', 14);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ('RUBELLA VIRUS','RUBEOLA',0.0002,'PRIMAVERA','B06', 14);
+insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values ('HEPATITIS A VIRUS','HEPATITE A',0.002,'VERAO','B15', 30);
 
 insert into sintomas (nomecientif, sintoma) values ( 'PLASMODIUM FALCIPARUM', 'FEBRE ALTA' );
 insert into sintomas (nomecientif, sintoma) values ( 'PLASMODIUM FALCIPARUM', 'CALAFRIOS E SUOR EXCESSIVO' );
@@ -17,6 +27,16 @@ insert into sintomas (nomecientif, sintoma) values ('INFLUENZA VIRUS A','FEBRE E
 insert into sintomas (nomecientif, sintoma) values ( 'INFLUENZA VIRUS A' , 'CONGESTAO NASAL E DOR MUSCULAR' );
 insert into sintomas (nomecientif, sintoma) values ('SARS-COV-2','FEBRE E PERDA DE OLFATO' );
 insert into sintomas (nomecientif, sintoma) values ('SARS-COV-2', 'TOSSE SECA E DIFICULDADE PARA RESPIRAR');
+insert into sintomas (nomecientif, sintoma) values ('DENV', 'DOR NOS OLHOS E DORES MUSCULARES INTENSAS');
+insert into sintomas (nomecientif, sintoma) values ('DENV', 'MANCHAS VERMELHAS NA PELE (EXANTEMA)');
+insert into sintomas (nomecientif, sintoma) values ('ZIKA VIRUS', 'ERUPCOES CUTANEAS E COCEIRA');
+insert into sintomas (nomecientif, sintoma) values ('ZIKA VIRUS', 'CONJUNTIVITE E LEVE MAL-ESTAR');
+insert into sintomas (nomecientif, sintoma) values ('CHIKUNGUNYA VIRUS', 'DORES ARTICULARES SEVERAS');
+insert into sintomas (nomecientif, sintoma) values ('CHIKUNGUNYA VIRUS', 'FEBRE ALTA E INCHACO NAS ARTICULACOES');
+insert into sintomas (nomecientif, sintoma) values ('NEISSERIA MENINGITIDIS', 'RIGIDEZ NA NUCA');
+insert into sintomas (nomecientif, sintoma) values ('NEISSERIA MENINGITIDIS', 'FOTOFobia E CONFUSAO MENTAL');
+insert into sintomas (nomecientif, sintoma) values ('LEPTOSPIRA INTERROGANS', 'DORES FORTES NAS PERNAS');
+insert into sintomas (nomecientif, sintoma) values ('LEPTOSPIRA INTERROGANS', 'OLHOS AMARELADOS E NAUSEAS');
 
 insert into agente (nomecientif,agente) values ( 'PLASMODIUM FALCIPARUM', 'PROTOZOARIO' );
 insert into agente (nomecientif,agente) values ( 'MYCOBACTERIUM TUBERCULOSIS', 'BACTERIA' );
@@ -37,6 +57,16 @@ insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolament
 insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA COVID-19', 'SUPORTE INTENSIVO', 'ANTIVIRAIS E CORTICOIDES', 500.00, 14, 'S', 'RESPIRADOR' );
 insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('QUIMIOTERAPIA', 'ONCOLOGICO', 'CISPLATINA', 5000.00, 120, 'N', 'BOMBA DE INFUSAO' );
 insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('HEMODIALISE', 'SUPORTE RENAL', 'NENHUM', 800.00, 1, 'N', 'MAQUINA DE HEMODIALISE' );
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA MENINGITE', 'ANTIBIOTICO', 'CEFTRIAXONA', 450.00, 10, 'S', 'NENHUMA');
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA FEBRE AMARELA', 'SUPORTE INTENSIVO', 'NENHUM', 700.00, 14, 'S', 'RESPIRADOR');
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA CATAPORA', 'MEDICAMENTO ANTIVIRAL', 'ACICLOVIR', 120.00, 7, 'N', 'NENHUMA');
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA RUBEOLA', 'SUPORTE CLINICO', 'ANALGESICOS', 50.00, 7, 'N', 'NENHUMA');
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA LEPTOSPIROSE', 'ANTIBIOTICO', 'DOXICICLINA', 200.00, 10, 'N', 'NENHUMA');
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA ZIKA', 'SUPORTE CLINICO', 'ANALGESICOS', 40.00, 10, 'N', 'NENHUMA');
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA CHIKUNGUNYA', 'SUPORTE CLINICO', 'ANTI-INFLAMATORIOS', 60.00, 10, 'N', 'NENHUMA');
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TERAPIA RESPIRATÓRIA', 'FISIOTERAPIA', 'NENHUM', 200.00, 5, 'N', 'APARELHO DE PRESSAO POSITIVA');
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('CUIDADOS DE UTI PARA INFECCOES GRAVES', 'SUPORTE INTENSIVO', 'CORTICOIDES E VASOATIVOS', 1500.00, 14, 'S', 'VENTILADOR MECANICO');
+insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('ANTIVIRAL PARA SARAMPO', 'ANTIVIRAL', 'VITAMINA A', 30.00, 5, 'S', 'NENHUMA');
 
 insert into requer (doenca, tratamento) values ('PLASMODIUM FALCIPARUM','TRATAMENTO DA MALARIA' );
 insert into requer (doenca, tratamento) values ('MYCOBACTERIUM TUBERCULOSIS', 'TRATAMENTO DA GRIPE' );
@@ -188,3 +218,4 @@ insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
 
 commit;
+
