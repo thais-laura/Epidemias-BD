@@ -143,6 +143,11 @@ INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telef
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('34567890000170', 'INSTITUTO ESPERANCA', '20040001', 'CENTRO', 'RUA DA CARIOCA', '120', '2122234455', '21988881122');
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('45678901000160', 'ONG SAUDE PARA TODOS', '04012090', 'PARAISO', 'RUA VERGUEIRO', '1500', '1133334444', '11999995555');
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('23423789120180', 'HOSPITAL THAIS LAURA', '13560980', 'CENTRO', 'RUA MAJOR LEONARDO INACIO', '450', '3133621234', '3133645678');
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('56789012000150', 'HOSPITAL SANTA CLARA', '30150012', 'CENTRO', 'AV. AMAZONAS', '1200', '3133552244', '31999887766');
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('67890123000140', 'CLINICA VIDA PLENA', '40255080', 'BROTAS', 'RUA WALDEMAR FAGUNDES', '300', '7133445566', '71988887777');
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('78901234000130', 'POSTO SAUDE CENTRAL', '88015200', 'CENTRO', 'RUA ALMIRANTE LAMEGO', '900', '4833332211', '48999911223');
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('89012345000120', 'HOSPITAL REGIONAL NORTE', '60015200', 'ALDEOTA', 'AV. DOM LUIS', '1500', '8533567788', '85977776666');
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('90123456000110', 'CLINICA SANTO ANTONIO', '69005100', 'CENTRO', 'AV. EDUARDO RIBEIRO', '700', '9232334455', '92999988877');
 
 insert into tipo_orgao (orgao, tipo) values ( '23423789120180', 'REDE DE SAUDE' );
 insert into tipo_orgao (orgao, tipo) values ( '12345678000190', 'REDE DE SAUDE' );
@@ -150,6 +155,12 @@ insert into tipo_orgao (orgao, tipo) values ('12345678000190', 'BENEFICENTE' );
 insert into tipo_orgao (orgao, tipo) values ('23456789000180', 'REDE DE SAUDE' );
 insert into tipo_orgao (orgao, tipo) values ('34567890000170', 'BENEFICENTE' );
 insert into tipo_orgao (orgao, tipo) values ('45678901000160', 'BENEFICENTE' );
+insert into tipo_orgao (orgao, tipo) values ('56789012000150', 'REDE DE SAUDE');
+insert into tipo_orgao (orgao, tipo) values ('56789012000150', 'BENEFICENTE');
+insert into tipo_orgao (orgao, tipo) values ('67890123000140', 'REDE DE SAUDE');
+insert into tipo_orgao (orgao, tipo) values ('78901234000130', 'BENEFICENTE');
+insert into tipo_orgao (orgao, tipo) values ('89012345000120', 'REDE DE SAUDE');
+insert into tipo_orgao (orgao, tipo) values ('90123456000110', 'BENEFICENTE');
 
 INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('SAO CARLOS', 'SP', 254000, 1137.00);
 INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('IPATINGA', 'MG', 270000, 165.00);
@@ -180,21 +191,16 @@ insert into beneficente (cnpj, qtdvolunt, datafundacao, areaatuacao) values ('45
 insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('12345678000190', 250, 500);
 insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('23456789000180', 120, 200);
 insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('23423789120180', 100, 300);
+INSERT INTO rede_de_saude (cnpj, qtdleitos, qtdfuncion) VALUES ('56789012000150', 180, 400);
+INSERT INTO rede_de_saude (cnpj, qtdleitos, qtdfuncion) VALUES ('67890123000140', 90, 150);
+INSERT INTO rede_de_saude (cnpj, qtdleitos, qtdfuncion) VALUES ('89012345000120', 220, 520);
 
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('23423789120180', 17.0, 223.5, 'IPATINGA', 'MG' );
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('12345678000190', 15.0, 223.5, 'SAO CARLOS', 'SP' );
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('23456789000180', 30.0, 526.7, 'BRASILIA', 'DF' );
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('11122233000110', 20.0, 1523.0, 'SAO PAULO', 'SP');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('22233344000120', 25.0, 5620.0, 'RIO DE JANEIRO', 'RJ');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('33344455000130', 18.0, 7630.0, 'FORTALEZA', 'CE');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('44455566000140', 22.0, 7630.0, 'RECIFE', 'PE');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('55566677000150', 12.0, 3240.0, 'CURITIBA', 'PR');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('66677788000160', 28.0, 3820.0, 'BELO HORIZONTE', 'MG');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('77788899000170', 16.0, 2980.0, 'PORTO ALEGRE', 'RS');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('88899900000180', 19.0, 1750.0, 'CAMPINAS', 'SP');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('99900011000190', 21.0, 1530.0, 'NITERÓI', 'RJ');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('10111213000100', 35.0, 204.0, 'CUIABÁ', 'MT');
-commit;
+INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('23423789120180', 17.0, 223.5, 'IPATINGA', 'MG');
+INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('12345678000190', 15.0, 500.0, 'SAO CARLOS', 'SP');
+INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('23456789000180', 30.0, 526.7, 'BRASILIA', 'DF');
+INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('56789012000150', 18.0, 14000.0, 'SAO PAULO', 'SP');
+INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('67890123000140', 14.0, 4500.0, 'CURITIBA', 'PR');
+INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('89012345000120', 22.0, 3500.0, 'RIO DE JANEIRO', 'RJ');
 
 INSERT INTO programas (beneficente, programa) VALUES ('12345678000190', 'OUTUBRO ROSA – CONSCIENTIZACAO SOBRE CANCER DE MAMA' );
 INSERT INTO programas (beneficente, programa) VALUES ('12345678000190', 'MUTIRAO DE EXAMES PREVENTIVOS' );
@@ -291,6 +297,7 @@ insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
 
 commit;
+
 
 
 
