@@ -42,6 +42,17 @@ insert into agente (nomecientif,agente) values ( 'PLASMODIUM FALCIPARUM', 'PROTO
 insert into agente (nomecientif,agente) values ( 'MYCOBACTERIUM TUBERCULOSIS', 'BACTERIA' );
 insert into agente (nomecientif,agente) values ( 'INFLUENZA VIRUS A', 'VIRUS' );
 insert into agente (nomecientif,agente) values ( 'SARS-COV-2', 'VIRUS' );
+insert into agente (nomecientif, agente) values ('DENV', 'VIRUS');
+insert into agente (nomecientif, agente) values ('CHIKUNGUNYA VIRUS', 'VIRUS');
+insert into agente (nomecientif, agente) values ('ZIKA VIRUS', 'VIRUS');
+insert into agente (nomecientif, agente) values ('NEISSERIA MENINGITIDIS', 'BACTERIA');
+insert into agente (nomecientif, agente) values ('MUMPS VIRUS', 'VIRUS');
+insert into agente (nomecientif, agente) values ('VARICELLA ZOSTER VIRUS', 'VIRUS');
+insert into agente (nomecientif, agente) values ('MEASLES VIRUS', 'VIRUS');
+insert into agente (nomecientif, agente) values ('YELLOW FEVER VIRUS', 'VIRUS');
+insert into agente (nomecientif, agente) values ('LEPTOSPIRA INTERROGANS', 'BACTERIA');
+insert into agente (nomecientif, agente) values ('RUBELLA VIRUS', 'VIRUS');
+insert into agente (nomecientif, agente) values ('HEPATITIS A VIRUS', 'VIRUS');
 
 insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'PLASMODIUM FALCIPARUM', 'USO DE MOSQUITEIROS' );
 insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'PLASMODIUM FALCIPARUM', 'REPELENTES' );
@@ -50,6 +61,23 @@ insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'INFLUENZA V
 insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'INFLUENZA VIRUS A','HIGIENE DAS MAOS' );
 insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'SARS-COV-2','USO DE MASCARAS');
 insert into metodoprevencao (nomecientif, metodoprevencao) values ( 'SARS-COV-2','ISOLAMENTO EM CASOS SUSPEITOS') ;
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('DENV', 'COMBATE AO MOSQUITO AEDES AEGYPTI');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('DENV', 'ELIMINACAO DE AGUA PARADA');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('ZIKA VIRUS', 'USO DE REPELENTE');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('ZIKA VIRUS', 'REDUCAO DA EXPOSICAO A MOSQUITOS');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('CHIKUNGUNYA VIRUS', 'TELAS EM JANELAS E PORTAS');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('CHIKUNGUNYA VIRUS', 'INSPECAO E LIMPEZA DE CALHAS E RECIPIENTES');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('NEISSERIA MENINGITIDIS', 'VACINA MENINGOCOCICA');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('NEISSERIA MENINGITIDIS', 'EVITAR CONTATO COM SECRECOES RESPIRATORIAS');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('MUMPS VIRUS', 'VACINA TRIPICE VIRAL (MMR)');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('VARICELLA ZOSTER VIRUS', 'VACINA CONTRA CATAPORA');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('MEASLES VIRUS', 'VACINA TRIPICE VIRAL (MMR)');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('YELLOW FEVER VIRUS', 'VACINA CONTRA FEBRE AMARELA');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('LEPTOSPIRA INTERROGANS', 'EVITAR AGUAS CONTAMINADAS');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('LEPTOSPIRA INTERROGANS', 'CONTROLE DE ROEDORES');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('RUBELLA VIRUS', 'VACINA TRIPICE VIRAL (MMR)');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('HEPATITIS A VIRUS', 'HIGIENIZACAO ADEQUADA DOS ALIMENTOS');
+insert into metodoprevencao (nomecientif, metodoprevencao) values ('HEPATITIS A VIRUS', 'SANEAMENTO BASICO');
 
 insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA MALARIA', 'MEDICAMENTO', 'ARTEMISININA', 150.00, 14, 'N', 'NENHUMA' );
 insert into tratamento (nome, tipo, remedio, customedio, duracaomedia, isolamento, maquina) values ('TRATAMENTO DA TUBERCULOSE', 'MEDICAMENTO', 'RIFAMPICINA', 300.00, 180, 'N', 'NENHUMA' );
@@ -83,6 +111,16 @@ INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (7, 
 INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (8, '15975348600', to_date('28/10/1976','DD/MM/YYYY'), 'M', 'S');
 INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (9, '25814736900', to_date('05/06/1999','DD/MM/YYYY'), 'F', 'N');
 INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (10, '96385274100', to_date('01/01/1960','DD/MM/YYYY'), 'M', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (11, '11122233344', to_date('22/04/1982','DD/MM/YYYY'), 'F', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (12, '22233344455', to_date('10/09/1975','DD/MM/YYYY'), 'M', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (13, '33344455566', to_date('30/01/1990','DD/MM/YYYY'), 'F', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (14, '44455566677', to_date('18/08/1968','DD/MM/YYYY'), 'M', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (15, '55566677788', to_date('07/03/2005','DD/MM/YYYY'), 'F', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (16, '66677788899', to_date('29/12/1983','DD/MM/YYYY'), 'M', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (17, '77788899900', to_date('11/11/1997','DD/MM/YYYY'), 'F', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (18, '88899900011', to_date('06/02/1955','DD/MM/YYYY'), 'M', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (19, '99900011122', to_date('14/07/1988','DD/MM/YYYY'), 'M', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (20, '10111213141', to_date('19/09/1972','DD/MM/YYYY'), 'F', 'S');
 
 insert into vacinas (idpaciente, vacina) values (1, 'BCG');
 insert into vacinas (idpaciente, vacina) values (2, 'INFLUENZA' );
@@ -146,6 +184,17 @@ insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('23423789120180
 insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('23423789120180', 17.0, 223.5, 'IPATINGA', 'MG' );
 insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('12345678000190', 15.0, 223.5, 'SAO CARLOS', 'SP' );
 insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('23456789000180', 30.0, 526.7, 'BRASILIA', 'DF' );
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('11122233000110', 20.0, 1523.0, 'SAO PAULO', 'SP');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('22233344000120', 25.0, 5620.0, 'RIO DE JANEIRO', 'RJ');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('33344455000130', 18.0, 7630.0, 'FORTALEZA', 'CE');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('44455566000140', 22.0, 7630.0, 'RECIFE', 'PE');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('55566677000150', 12.0, 3240.0, 'CURITIBA', 'PR');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('66677788000160', 28.0, 3820.0, 'BELO HORIZONTE', 'MG');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('77788899000170', 16.0, 2980.0, 'PORTO ALEGRE', 'RS');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('88899900000180', 19.0, 1750.0, 'CAMPINAS', 'SP');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('99900011000190', 21.0, 1530.0, 'NITERÓI', 'RJ');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('10111213000100', 35.0, 204.0, 'CUIABÁ', 'MT');
+commit;
 
 INSERT INTO programas (beneficente, programa) VALUES ('12345678000190', 'OUTUBRO ROSA – CONSCIENTIZACAO SOBRE CANCER DE MAMA' );
 INSERT INTO programas (beneficente, programa) VALUES ('12345678000190', 'MUTIRAO DE EXAMES PREVENTIVOS' );
@@ -242,6 +291,7 @@ insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
 
 commit;
+
 
 
 
