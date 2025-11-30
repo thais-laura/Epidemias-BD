@@ -337,7 +337,7 @@ CREATE TABLE regiao (
 
     -- densidade populacional nao pode ser negativa
     CONSTRAINT chk_regiao_densidade
-        CHECK ((densidadpop is not null and densidpop >= 0) or densidadpop is null)
+        CHECK ((densidpop is not null and densidpop >= 0) or densidpop is null)
 );
 
 
@@ -479,3 +479,4 @@ CREATE TABLE metricas_sessoes(
 );
 
 commit;
+
