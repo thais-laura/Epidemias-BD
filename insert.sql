@@ -89,6 +89,16 @@ insert into vacinas (idpaciente, vacina) values (2, 'INFLUENZA' );
 insert into vacinas (idpaciente, vacina) values (3, 'COVID-19' );
 insert into vacinas (idpaciente, vacina) values (5, 'FEBRE AMARELA' );
 insert into vacinas (idpaciente, vacina) values (8, 'COVID-19' );
+insert into vacinas (idpaciente, vacina) values (4, 'INFLUENZA');
+insert into vacinas (idpaciente, vacina) values (6, 'HEPATITE A');
+insert into vacinas (idpaciente, vacina) values (7, 'TRÍPLICE VIRAL');
+insert into vacinas (idpaciente, vacina) values (9, 'HPV');
+insert into vacinas (idpaciente, vacina) values (10, 'PNEUMOCOCICA');
+insert into vacinas (idpaciente, vacina) values (11, 'COVID-19');
+insert into vacinas (idpaciente, vacina) values (12, 'TETANO');
+insert into vacinas (idpaciente, vacina) values (13, 'INFLUENZA');
+insert into vacinas (idpaciente, vacina) values (14, 'MENINGITE ACWY');
+insert into vacinas (idpaciente, vacina) values (15, 'VARICELA');
 
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('12345678000190', 'HOSPITAL SAO LUCAS', '13560970', 'CENTRO', 'RUA MAJOR JOSE INACIO', '450', '1633621234', '1633625678');
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('23456789000180', 'CLINICA VIDA SAUDAVEL', '30140120', 'SAVASSI', 'AV. CRISTOVAO COLOMBO', '900', '3132547788', '3132548899');
@@ -220,5 +230,6 @@ insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
 
 commit;
+
 
 
