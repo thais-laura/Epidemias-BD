@@ -100,6 +100,16 @@ insert into requer (doenca, tratamento) values ('PLASMODIUM FALCIPARUM','TRATAME
 insert into requer (doenca, tratamento) values ('MYCOBACTERIUM TUBERCULOSIS', 'TRATAMENTO DA GRIPE' );
 insert into requer (doenca, tratamento) values ('SARS-COV-2', 'TRATAMENTO DA COVID-19' );
 insert into requer (doenca, tratamento) values ('SARS-COV-2','HEMODIALISE' );
+INSERT INTO requer (doenca, tratamento) VALUES ('INFLUENZA VIRUS A', 'TRATAMENTO DA GRIPE');
+INSERT INTO requer (doenca, tratamento) VALUES ('DENV', 'TRATAMENTO DA CHIKUNGUNYA');
+INSERT INTO requer (doenca, tratamento) VALUES ('ZIKA VIRUS', 'TRATAMENTO DA ZIKA');
+INSERT INTO requer (doenca, tratamento) VALUES ('CHIKUNGUNYA VIRUS', 'TRATAMENTO DA CHIKUNGUNYA');
+INSERT INTO requer (doenca, tratamento) VALUES ('NEISSERIA MENINGITIDIS', 'TRATAMENTO DA MENINGITE');
+INSERT INTO requer (doenca, tratamento) VALUES ('VARICELLA ZOSTER VIRUS', 'TRATAMENTO DA CATAPORA');
+INSERT INTO requer (doenca, tratamento) VALUES ('RUBELLA VIRUS', 'TRATAMENTO DA RUBEOLA');
+INSERT INTO requer (doenca, tratamento) VALUES ('YELLOW FEVER VIRUS', 'TRATAMENTO DA FEBRE AMARELA');
+INSERT INTO requer (doenca, tratamento) VALUES ('LEPTOSPIRA INTERROGANS', 'TRATAMENTO DA LEPTOSPIROSE');
+INSERT INTO requer (doenca, tratamento) VALUES ('MEASLES VIRUS', 'ANTIVIRAL PARA SARAMPO');
 
 INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (1, '12345678901', to_date('12/03/1985','DD/MM/YYYY'), 'F', 'S');
 INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (2, '98765432100', to_date('25/07/1992','DD/MM/YYYY'), 'M', 'N');
@@ -297,6 +307,7 @@ insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
 
 commit;
+
 
 
 
