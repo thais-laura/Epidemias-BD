@@ -61,7 +61,7 @@ select o_rs.nome as regiao,
     on o_b.cnpj = bt.beneficente;
 
 
--- para cada paciente, indica a doença mais recorrente, o tempo médio de infecção e se este é maior ou menor que o tempo geral da doença
+-- para cada paciente, indica a doença recorrente com o maior tempo médio de infecção e se este é maior ou menor que o tempo geral da doença
 select paciente,
        doenca,
        nomepopular,
