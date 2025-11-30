@@ -124,6 +124,16 @@ INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('BELO HORIZONTE', 
 INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('CURITIBA', 'PR', 1964000, 434.89);
 INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('PORTO ALEGRE', 'RS', 1493000, 497.00);
 INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('RECIFE', 'PE', 1653000, 218.84);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('CAMPINAS', 'SP', 1214000, 795.00);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('NITERÓI', 'RJ', 516000, 133.90);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('MANAUS', 'AM', 2322000, 11401.00);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('GOIÂNIA', 'GO', 1556000, 739.49);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('SALVADOR', 'BA', 2887000, 692.82);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('FLORIANÓPOLIS', 'SC', 577000, 675.41);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('JOÃO PESSOA', 'PB', 833000, 210.07);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('TERESINA', 'PI', 868000, 1367.00);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('ARACAJU', 'SE', 672000, 181.80);
+INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES ('CUIABÁ', 'MT', 630000, 3538.00);
 
 insert into beneficente (cnpj, qtdvolunt, datafundacao, areaatuacao) values ('12345678000190', 100, to_date('07/10/2004','DD/MM/YYYY'), 'CAMPANHAS SOBRE CANCER DE MAMA' );
 insert into beneficente (cnpj, qtdvolunt, datafundacao, areaatuacao) values ('34567890000170', 45, to_date('12/03/2005','DD/MM/YYYY'), 'APOIO A FAMILIAS CARENTES E CAMPANHAS DE VACINACAO' );
@@ -230,6 +240,7 @@ insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
 
 commit;
+
 
 
 
