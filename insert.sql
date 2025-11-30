@@ -178,6 +178,8 @@ insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede
 insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (13, 8, 'MYCOBACTERIUM TUBERCULOSIS', to_date('30/10/25','DD/MM/YY'), null, 'GRAVE', '12345678000190', 'N', 'S' );
 insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (14, 3, 'MYCOBACTERIUM TUBERCULOSIS', to_date('30/10/25','DD/MM/YY'), null, 'GRAVE', '12345678000190', 'N', 'S' );
 insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (15, 3, 'MYCOBACTERIUM TUBERCULOSIS', to_date('15/05/24','DD/MM/YY'), to_date('13/06/24','DD/MM/YY'), 'GRAVE', '12345678000190', 'N', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (16, 7, 'SARS-COV-2', to_date('10/02/25','DD/MM/YY'), to_date('25/02/25','DD/MM/YY'), 'MODERADO', '12345678000190', 'N', 'S' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (17, 7, 'SARS-COV-2', to_date('30/06/25','DD/MM/YY'), null, 'LEVE', '12345678000190', 'N', 'S' );
 
 insert into sessao (idsessao, idcaso, tratamento, datahora, rede_de_saude, obsmedicas, resultadoesperado) values ( 1, 1, 'TRATAMENTO DA GRIPE', TO_DATE('12/03/24 09:30', 'DD/MM/YY HH24:MI'), '12345678000190', 'PACIENTE APRESENTOU FEBRE LEVE, RECEITADO OSELTAMIVIR.', 'RECUPERACAO TOTAL' );
 insert into sessao (idsessao, idcaso, tratamento, datahora, rede_de_saude, obsmedicas, resultadoesperado) values ( 2, 2, 'TRATAMENTO DA DENGUE', to_date('07/01/25 10:00','DD/MM/YY HH24:MI'), '12345678000190', 'HIDRATACAO VENOSA E CONTROLE DE PLAQUETAS.', 'ESTABILIZACAO DO QUADRO' );
@@ -240,6 +242,7 @@ insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
 
 commit;
+
 
 
 
