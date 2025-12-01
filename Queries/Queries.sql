@@ -1,78 +1,37 @@
--- pesquisar histórico de campanhas realizadas na região
--- para cada região, mostra a quantidade de alertas, a doença e o beneficente mais recorrentes
-select o_rs.nome as regiao,
-      (case when al.qtd_alertas is null then 0 else al.qtd_alertas end) as qtd_alertas,      -- número real de alertas
-      dt.doenca,           -- doença mais recorrente
-       o_b.nome as beneficente_mais_freq
-  from rede_de_saude rs
-  LEFT join orgao o_rs
-    on rs.cnpj = o_rs.cnpj
-
-  -- total de alertas por região (correto)
-  left join (
-        select regiao_rede_de_saude as regiao,
-               count(*) as qtd_alertas
-          from abrange
-         group by regiao_rede_de_saude
-       ) al
-    on al.regiao = rs.cnpj
-
-  -- beneficente mais recorrente
-  left join (
-        select *
-          from (
-                select ab.regiao_rede_de_saude as regiao,
-                       al.beneficente,
-                       count(*) as qtd,
-                       row_number() over (
-                           partition by ab.regiao_rede_de_saude
-                           order by count(*) desc
-                       ) rn
-                  from alerta al
-                  join abrange ab
-                    on al.idalerta = ab.idalerta
-                 group by ab.regiao_rede_de_saude, al.beneficente
-               )
-         where rn = 1
-       ) bt
-    on bt.regiao = rs.cnpj
-
-  -- doença mais recorrente
-  left join (
-        select *
-          from (
-                select ab.regiao_rede_de_saude as regiao,
-                       al.doenca,
-                       count(*) as qtd,
-                       row_number() over (
-                           partition by ab.regiao_rede_de_saude
-                           order by count(*) desc
-                       ) rn
-                  from alerta al
-                  join abrange ab
-                    on al.idalerta = ab.idalerta
-                 group by ab.regiao_rede_de_saude, al.doenca
-               )
-         where rn = 1
-       ) dt
-    on dt.regiao = rs.cnpj
-
-  left join orgao o_b
-    on o_b.cnpj = bt.beneficente;
+-- CONSULTA 1
+-- Divisão relacional
+-- Todas as cidades que tiveram casos de todas as doenças transmitidas por certo transmissor.
+SELECT DISTINCT *
+FROM cidade cid
+WHERE NOT EXISTS(   (SELECT doenca 
+                    FROM transmite
+                    WHERE transmissor = 'AR'
+                    )
+                MINUS
+                    (
+                    SELECT c.doenca
+                    FROM caso c JOIN regiao r
+                    ON c.REDE_DE_SAUDE = r.rede_de_saude
+                    WHERE (r.nomecidade = cid.nome AND r.estadocidade = cid.estado)
+                    )
+                );
 
 
+-- CONSULTA 2
 -- para cada paciente, indica a doença recorrente com o maior tempo médio de infecção e se este é maior ou menor que o tempo geral da doença
 select paciente,
        doenca,
        nomepopular,
        tempo_medio_paciente,
-       tempo_medio_doenca,
        case
           when tempo_medio_paciente > tempo_medio_doenca then
              'maior'
-          else
+          when tempo_medio_paciente < tempo_medio_doenca then
              'menor'
-       end as comparacao
+          else
+             'igual'
+       end as comparacao,
+       tempo_medio_doenca
   from (
     -- ordena o tempo médio de cada doenca por paciente
    select mp.paciente,
@@ -81,9 +40,9 @@ select paciente,
           d.nomepopular,
           d.tempomedio as tempo_medio_doenca,
         -- dentro de cada partição (paciente), ordena o tempo médio de forma decrescente
-          row_number()
-          over(partition by mp.paciente
-               order by mp.tempo_medio_paciente desc
+          dense_rank() over(
+            partition by mp.paciente
+            order by mp.tempo_medio_paciente desc
           ) as rn
      from ( -- para cada paciente com sua doenca, tem a media da duracao
       select c.paciente,
@@ -92,15 +51,13 @@ select paciente,
         from caso c
         join ( 
             -- todas os casos que tem doenças reincidentes
-         select distinct paciente,
-                         doenca
+         select distinct paciente, doenca
            from caso
           where reincidente = 'S'
       ) dr
       on dr.paciente = c.paciente
          and dr.doenca = c.doenca
-       group by c.paciente,
-                c.doenca
+       group by c.paciente, c.doenca
    ) mp
      join doenca d
    on d.nomecientif = mp.doenca
@@ -109,10 +66,10 @@ select paciente,
  order by paciente;
 
 
+-- CONSULTA 3
 -- Contar o número de óbitos por cidade, para cada doença registrada.
 -- A consulta identifica os casos com óbito, relaciona-os com a doença
 -- e localiza a cidade correspondente via a rede de saúde.
-
 SELECT
     rg.nomecidade,
     rg.estadocidade,
@@ -134,9 +91,9 @@ ORDER BY
     total_obitos DESC;
 
 
+-- CONSULTA 4
 -- Identificar, para cada rede de saúde, as duas doenças mais frequentes
 -- com base na contagem de casos registrados. Porem, se tiver empate, sera exibido tambem.
-
 SELECT 
     c1.rede_de_saude,
     d.nomepopular AS doenca,
@@ -175,6 +132,7 @@ ORDER BY
     c1.total_casos DESC;          -- mostra das mais frequentes para as menos frequentes
 
 
+-- CONSULTA 5
 -- Identificar os órgãos que fornecem serviços para a rede de saúde,
 -- listando cada órgão que compõe a rede (tabela REDE_DE_SAUDE) e
 -- agregando suas especialidades cadastradas.
@@ -193,11 +151,13 @@ GROUP BY o.cnpj, o.nome
 ORDER BY o.nome;
 
 
+-- CONSULTA 6
 --Número de Casos de uma doença por Faixa Etária em uma cidade, por ano.
 SELECT S3.ano_caso, COUNT(*) AS nro_casos , S3.faixa_etaria
 FROM    (
         SELECT S2.idcaso,
         (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) AS idade,
+      -- Separacao por idade
         (CASE 
         WHEN (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) BETWEEN 0 AND 9  THEN 'CRIANCA'
         WHEN (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) BETWEEN 10 AND 19 THEN 'JOVEM'
@@ -217,19 +177,65 @@ FROM    (
         ORDER BY S3.ano_caso DESC, S3.faixa_etaria;
 
 
---Divisão; Todas as cidades que tiveram casos de todas as doenças transmitidas por certo transmissor.
+-- CONSULTA 7
+-- pesquisar histórico de campanhas realizadas na região
+-- para cada região, mostra a quantidade de alertas, a doença e o beneficente mais recorrentes
+select o_rs.nome as regiao,
+      (case when al.qtd_alertas is null then 0 else al.qtd_alertas end) as qtd_alertas,      -- número real de alertas
+      (case when dt.doenca is null then 'nenhuma' else dt.doenca end) as doenca,           -- doença mais recorrente
+      (case when o_b.nome is null then 'nenhuma' else o_b.nome end) as beneficente_mais_freq
+  from rede_de_saude rs
+  LEFT join orgao o_rs
+    on rs.cnpj = o_rs.cnpj
 
-SELECT DISTINCT *
-FROM cidade cid
-WHERE NOT EXISTS(   (SELECT doenca 
-                    FROM transmite
-                    WHERE transmissor = 'AR'
-                    )
-                MINUS
-                    (
-                    SELECT c.doenca
-                    FROM caso c JOIN regiao r
-                    ON c.REDE_DE_SAUDE = r.rede_de_saude
-                    WHERE (r.nomecidade = cid.nome AND r.estadocidade = cid.estado)
-                    )
-                );
+  -- total de alertas por região (correto)
+  left join (
+        select regiao_rede_de_saude as regiao,
+               count(*) as qtd_alertas
+          from abrange
+         group by regiao_rede_de_saude
+       ) al
+    on al.regiao = rs.cnpj
+
+  -- beneficente mais recorrente
+  left join (
+        select *
+          from (
+                select ab.regiao_rede_de_saude as regiao,
+                       al.beneficente,
+                       count(*) as qtd,
+                       dense_rank() over (
+                           partition by ab.regiao_rede_de_saude
+                           order by count(*) desc
+                       ) rn
+                  from alerta al
+                  join abrange ab
+                    on al.idalerta = ab.idalerta
+                 group by ab.regiao_rede_de_saude, al.beneficente
+               )
+         where rn = 1
+       ) bt
+    on bt.regiao = rs.cnpj
+
+  -- doença mais recorrente
+  left join (
+        select *
+          from (
+                select ab.regiao_rede_de_saude as regiao,
+                       al.doenca,
+                       count(*) as qtd,
+                       dense_rank() over (
+                           partition by ab.regiao_rede_de_saude
+                           order by count(*) desc
+                       ) rn
+                  from alerta al
+                  join abrange ab
+                    on al.idalerta = ab.idalerta
+                 group by ab.regiao_rede_de_saude, al.doenca
+               )
+         where rn = 1
+       ) dt
+    on dt.regiao = rs.cnpj
+
+  left join orgao o_b
+    on o_b.cnpj = bt.beneficente;
