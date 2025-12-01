@@ -84,12 +84,19 @@ VALUES (
     'ALTA'
 );
 
--- ABRANGE ajustado para ids 1, 2 e 3
+-- ABRANGE (corrigido: coluna agora é "regiao")
 
-INSERT INTO abrange VALUES ('12345678000190', 1);
-INSERT INTO abrange VALUES ('23423789120180', 1);
-INSERT INTO abrange VALUES ('23456789000180', 2);
-INSERT INTO abrange VALUES ('12345678000190', 3);
+INSERT INTO abrange (regiao, idalerta)
+VALUES ('12345678000190', 1);
+
+INSERT INTO abrange (regiao, idalerta)
+VALUES ('23423789120180', 1);
+
+INSERT INTO abrange (regiao, idalerta)
+VALUES ('23456789000180', 2);
+
+INSERT INTO abrange (regiao, idalerta)
+VALUES ('12345678000190', 3);
 
 -- caso (continuação: assumindo que você já usou 1..17 antes)
 
