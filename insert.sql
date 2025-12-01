@@ -324,6 +324,8 @@ insert into alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, me
 insert into alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprincipal, prioridade) values ( 3, '45678901000160', 'MYCOBACTERIUM TUBERCULOSIS', to_date('15/03/25','DD/MM/YY'), to_date('30/04/25','DD/MM/YY'), 'CONSCIENTIZACAO', 'CAMPANHA INFORMATIVA SOBRE SINTOMAS E TRATAMENTO DA TUBERCULOSE, COM FOCO EM DIAGNOSTICO PRECOCE.' , 'TELEVISAO LOCAL', 'MEDIA' );
 insert into alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprincipal, prioridade) values ( 4, '34567890000170', 'INFLUENZA VIRUS A', to_date('01/05/25','DD/MM/YY'), to_date('30/06/25','DD/MM/YY'), 'VACINACAO', 'CAMPANHA DE VACINACAO CONTRA A GRIPE PARA GRUPOS DE RISCO.', 'POSTOS DE SAUDE', 'ALTA' );
 insert into alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprincipal, prioridade) values ( 5, '45678901000160', 'SARS-COV-2', to_date('10/07/25','DD/MM/YY'), null, 'ACOMPANHAMENTO', 'MONITORAMENTO DE NOVOS CASOS DE COVID-19 E REFORCO DA VACINACAO DE REFORCO.', 'APLICATIVO DE SAUDE', 'MEDIA' );
+INSERT INTO alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprincipal, prioridade) VALUES (6, '34567890000170', 'RUBELLA VIRUS', DATE '2025-08-01', DATE '2025-08-30','VACINACAO', 'REFORCO DA CAMPANHA DE VACINACAO CONTRA RUBEOLA.', 'POSTOS DE SAUDE', 'MEDIA');
+INSERT INTO alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprincipal, prioridade) VALUES (7, '45678901000160', 'MEASLES VIRUS', DATE '2025-09-10', NULL,'CONSCIENTIZACAO', 'AUMENTO DE CASOS DE SARAMPO – ORIENTACOES SOBRE SINTOMAS.', 'REDES SOCIAIS', 'ALTA');
 
 insert into abrange (idalerta, regiao_rede_de_saude) values (1, '12345678000190');
 insert into abrange (idalerta, regiao_rede_de_saude) values (1, '23456789000180');
@@ -337,3 +339,4 @@ insert into transmite (doenca, transmissor) values ('PLASMODIUM FALCIPARUM','MOS
 insert into transmite (doenca, transmissor) values ('MYCOBACTERIUM TUBERCULOSIS','PESSOA INFECTADA');
 insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
+
