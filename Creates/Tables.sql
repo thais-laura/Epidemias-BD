@@ -10,7 +10,6 @@ CREATE TABLE transmite (
   CONSTRAINT fk_transmite_transmissor
     FOREIGN KEY (transmissor) REFERENCES transmissor (nome)
 );
-sql
 
 CREATE TABLE requer (
   doenca      VARCHAR2(120)  NOT NULL,  -- FK -> doenca(nomecientif)
