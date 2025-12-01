@@ -54,7 +54,13 @@ def user_login():
 def in_treatm(text, max_len=120):
     text = str(text).strip() # retira acentos com str
     if len(text) > max_len:
+        print(f"Valor muito longo. Limitando a {max_len} caracteres.")
         text = text[:max_len]
+    proibidos = ['<', '>', '{', '}', ';', '--', "'", '"']
+    for c in proibidos:
+        if c in text:
+            print("Caracter proibido detectado. Usando NULL.")
+            return " "
     return text.upper()
     
 def is_float(element: any) -> bool:
@@ -94,7 +100,6 @@ def dias_tempo_medio(valor):
     elif unidade == "ANOS":
         dias = numero * 365
 
-    # Arredonda para inteiro
     return round(dias,2)
 
 def inserir_cidade(connection):
@@ -202,7 +207,7 @@ def inserir_doenca(connection):
 
     print("o que vamos inserir para doenca....")
     print(query_nomecientif, '\n', query_nomepopular, query_letalidade, query_sazonalidade, query_cid10, query_tempomedio)
-    
+
     try:
         with connection.cursor() as cursor:
             sql_cidade = "insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values (:query_nomecientif, :query_nomepopular, :query_letalidade, :query_sazonalidade, :query_cid10, :query_tempomedio)"
@@ -241,60 +246,75 @@ def inserir_dados(log, user, connection):
     return
 
 def consulta_cidade(connection):
-    with connection.cursor() as cursor:
-        sql_cidade = "SELECT nome, estado FROM cidade"
-        cursor.execute(sql_cidade)
-        columns = [col.name for col in cursor.description]
-        print (columns)
-        for (r) in cursor:
-            print(r)
-    return
+    try:
+        with connection.cursor() as cursor:
+            sql_cidade = "SELECT nome, estado FROM cidade"
+            cursor.execute(sql_cidade)
+            columns = [col.name for col in cursor.description]
+            print (columns)
+            for (r) in cursor:
+                print(r)
+    except oracledb.DatabaseError as e:
+        error_obj, = e.args
+        print("Erro ao consultar cidades:", error_obj.message)
 
 def consulta_doenca(connection):
-    with connection.cursor() as cursor:
-        sql_doenca = "SELECT nomecientif FROM doenca"
-        cursor.execute(sql_doenca)
-        columns = [col.name for col in cursor.description]
-        print (columns)
-        for (r) in cursor:
-            print(r)
-    return
+    try:
+        with connection.cursor() as cursor:
+            sql_doenca = "SELECT nomecientif, nomepopular FROM doenca"
+            cursor.execute(sql_doenca)
+            columns = [col.name for col in cursor.description]
+            print (columns)
+            for (r) in cursor:
+                print(r)
+    except oracledb.DatabaseError as e:
+        error_obj, = e.args
+        print("Erro ao consultar doenças:", error_obj.message)
 
 def consulta_especial(connection):
     print("Número de casos de uma doenca por faixa etária, de uma cidade, por ano.")
-    cidade_estado = input("Digite o nome de uma cidade e seu estado (Ex: SAO PAULO-SP): ").upper()
+    buffer = input("Digite o nome de uma cidade e seu estado (Ex: SAO PAULO-SP): ")
+    cidade_estado = in_treatm(buffer)
+    ce_pattern = r'^[A-ZÀ-Ú ]+-[A-Z]{2}$'
+    if not re.match(ce_pattern, cidade_estado):
+        print("Formato inválido para cidade e estado. Encerrando...")
+        return
     print(cidade_estado)
     tokens = cidade_estado.split('-')
-    #tratar erro
-    doenca = input("Digite o nome cientifico de uma doenca (Ex: SARS-COV-2): ").upper()
-    #tratar erro
+
+    buffer = input("Digite o nome cientifico de uma doenca (Ex: SARS-COV-2): ")
+    doenca = in_treatm(buffer)
+
     print(tokens, doenca)
-    with connection.cursor() as cursor:
-        sql_especial = """SELECT S3.ano_caso, COUNT(*) AS nro_casos , S3.faixa_etaria FROM   (SELECT S2.idcaso,
-        (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) AS idade,
-        (CASE 
-        WHEN (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) BETWEEN 0 AND 9  THEN 'CRIANCA'
-        WHEN (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) BETWEEN 10 AND 19 THEN 'JOVEM'
-        WHEN (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) BETWEEN 20 AND 59 THEN 'ADULTO'
-        ELSE 'IDOSO' END) AS faixa_etaria,
-        EXTRACT(YEAR FROM S2.datainicio) AS ano_caso
-        FROM (SELECT c.idcaso, c.paciente, c.datainicio 
-            FROM caso c JOIN (SELECT *
-            FROM regiao r
-            WHERE (r.nomecidade = :query_city AND r.estadocidade = :query_state)) S1
-            ON ( c.REDE_DE_SAUDE = S1.rede_de_saude)
-            WHERE c.doenca = :query_disease 
-            ) S2 JOIN paciente p
-            ON (S2.paciente=p.idpaciente)
-        ) S3
-        GROUP BY S3.ano_caso, S3.faixa_etaria
-        ORDER BY S3.ano_caso DESC, S3.faixa_etaria """
-        cursor.execute(sql_especial,query_city = tokens[0], query_state = tokens[1], query_disease = doenca)
-        columns = [col.name for col in cursor.description]
-        print (columns)
-        for (r) in cursor:
-            print(r)
-    return
+    try:
+        with connection.cursor() as cursor:
+            sql_especial = """SELECT S3.ano_caso, COUNT(*) AS nro_casos , S3.faixa_etaria FROM   (SELECT S2.idcaso,
+            (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) AS idade,
+            (CASE 
+            WHEN (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) BETWEEN 0 AND 9  THEN 'CRIANCA'
+            WHEN (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) BETWEEN 10 AND 19 THEN 'JOVEM'
+            WHEN (TRUNC(months_between(S2.datainicio, p.datanascim) / 12)) BETWEEN 20 AND 59 THEN 'ADULTO'
+            ELSE 'IDOSO' END) AS faixa_etaria,
+            EXTRACT(YEAR FROM S2.datainicio) AS ano_caso
+            FROM (SELECT c.idcaso, c.paciente, c.datainicio 
+                FROM caso c JOIN (SELECT *
+                FROM regiao r
+                WHERE (r.nomecidade = :query_city AND r.estadocidade = :query_state)) S1
+                ON ( c.REDE_DE_SAUDE = S1.rede_de_saude)
+                WHERE c.doenca = :query_disease 
+                ) S2 JOIN paciente p
+                ON (S2.paciente=p.idpaciente)
+            ) S3
+            GROUP BY S3.ano_caso, S3.faixa_etaria
+            ORDER BY S3.ano_caso DESC, S3.faixa_etaria """
+            cursor.execute(sql_especial,query_city = tokens[0], query_state = tokens[1], query_disease = doenca)
+            columns = [col.name for col in cursor.description]
+            print (columns)
+            for (r) in cursor:
+                print(r)
+    except oracledb.DatabaseError as e:
+        error_obj, = e.args
+        print("Erro ao realizar a consulta especial:", error_obj.message)
 
 def consultar(log, user, connection):
     opt = 0
@@ -339,7 +359,6 @@ def main():
 
         if opt == 1:
             if (not log):
-                #print("logando....")
                 connection, user, log = user_login()
             else:
                 print("Deslogando....")
@@ -347,7 +366,6 @@ def main():
                 if(log):connection.close()
                 log=False
         elif opt == 2:
-            #print("inserindo dados....")
             inserir_dados(log=log, user=user, connection=connection)
         elif opt == 3:
             consultar(log=log, user=user, connection=connection)
