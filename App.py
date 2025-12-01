@@ -31,9 +31,9 @@ def menu_inserir(user):
 
 def user_login():
     user = input("Digite seu usuario: ")
-
+    # Tratamento de senha (seguranca)
     psswrd = getpass.getpass(prompt="Digite sua senha: ")
-
+    # Tentativa de conexao da base
     try:
         connection = oracledb.connect(
             user = user, password = psswrd,
@@ -41,21 +41,22 @@ def user_login():
         )
         log = True
         print("Conectado a base de dados com sucesso!")
+    # Se houver algum erro no login, apresenta a mensagem da aplicacao e nao da base de dados
     except oracledb.Error as e:
         log = False
         connection = 0
         user = None
-        #print(f"Erro conectando a base de dados: {e}")
         print('Login e/ou senha inválidos')
 
     finally:
         return connection, user, log
     
-def in_treatm(text, max_len=120):
+def in_treatm(text, max_len=100):
     text = str(text).strip() # retira acentos com str
     if len(text) > max_len:
         print(f"Valor muito longo. Limitando a {max_len} caracteres.")
         text = text[:max_len]
+    # Os caracteres são proibidos devido à possibilidade de tags, links WEB
     proibidos = ['<', '>', '{', '}', ';', '--', "'", '"']
     for c in proibidos:
         if c in text:
@@ -79,7 +80,7 @@ def is_null(value):
 def dias_tempo_medio(valor):
     if is_null(valor):
         return None
-    
+    # Pode utilizar tanto virgula como ponto para separacao decimal
     valor = valor.strip().upper().replace(",", ".") 
 
     match = re.match(r'^(\d+(\.\d+)?)\s*(DIAS|SEMANAS|MESES|ANOS)$', valor)
@@ -104,13 +105,13 @@ def dias_tempo_medio(valor):
 
 def inserir_cidade(connection):
     print("Adicione, pelo menos, o nome e o estado da cidade")
-
+    # Nome da cidade
     buffer = input("Digite o nome da cidade (Ex: SAO PAULO): ")
-    query_city = in_treatm(buffer)
+    query_city = in_treatm(buffer,50)
     if is_null(query_city):
         print("Nome da cidade é obrigatório. Encerrando...")
         return
-    
+    # Sigla do estado da cidade
     buffer = input("Digite o nome do estado (EX: SP): ")
     query_state = in_treatm(buffer,2)
     if is_null(query_state):
@@ -119,7 +120,7 @@ def inserir_cidade(connection):
     if len(query_state) != 2:
         print("Estado deve ter 2 caracteres. Encerrando...")
         return
-
+    # Quantidade de habitantes da cidade
     buffer = input("Digite o numero de habitantes (Ex: 10235): ")
     query_pop = in_treatm(buffer)
     if is_null(query_pop):
@@ -129,7 +130,7 @@ def inserir_cidade(connection):
     else:
         print("Valor inválido para habitantes. Usando NULL.")
         query_pop = None
-    
+    # Area territorial da cidade
     buffer = input("Digite a área em km² (Ex: 1032.00): ")
     query_area = in_treatm(buffer)
     if is_null(query_area):
@@ -139,16 +140,15 @@ def inserir_cidade(connection):
     else:
         print("Valor inválido para área. Usando NULL.")
         query_area = None
-
-    print("o que vamos inserir para cidade....")
-    print(query_city, query_state, query_pop, query_area)
-
+        
+    # Tentativa de insercao da tupla na base
     try:
         with connection.cursor() as cursor:
             sql_cidade = "INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES (:query_city, :query_state, :query_pop, :query_area)"
             cursor.execute(sql_cidade,query_city=query_city,query_state=query_state,query_pop=query_pop,query_area=query_area)
             connection.commit()
         return
+    # Se houver algum erro na insercao, apresenta a mensagem da aplicacao e nao da base de dados
     except oracledb.IntegrityError as e:
         error_obj, = e.args
         if error_obj.code == 1:
@@ -160,18 +160,20 @@ def inserir_cidade(connection):
 
 
 def inserir_doenca(connection):
-    buffer = input("Digite o nome cientifico da doenca (Ex: SARS-COV-2): ")
-    query_nomecientif = in_treatm(buffer)
+    print("Adicione, pelo menos, o nome cientifico da doenca")
+    # Nome científico de doneca
+    buffer = input("Digite o nome cientifico da doenca (Ex: SARS-COV-2): ") 
+    query_nomecientif = in_treatm(buffer,60)
     if is_null(query_nomecientif):
         print("Nome cientifico é obrigatório. Encerrando...")
         return
-    
+    # Nome popular de doenca
     buffer = input("Digite o nome popular da doenca (Ex: COVID-19): ")
-    query_nomepopular = in_treatm(buffer)
+    query_nomepopular = in_treatm(buffer,60)
     if is_null(query_nomepopular):
         print("Nome popular é obrigatório. Encerrando...")
         return
-    
+    # Taxa de letalidade da doenca
     buffer = input("Digite a taxa de letalidade da doenca (Ex: 0.03, entre 0 e 1): ")
     query_letalidade = in_treatm(buffer)
     if is_null(query_letalidade):
@@ -186,33 +188,36 @@ def inserir_doenca(connection):
     else:
         print("Valor inválido para letalidade. Usando NULL.")
         query_letalidade = None
-
+    # Estacao do ano predominante da doenca
     buffer = input("Digite a estacao do ano com maior taxa de casos da doenca (Opções: INVERNO, PRIMAVERA, VERAO, OUTONO, TODAS): ")
     query_sazonalidade = in_treatm(buffer,10)
-    if query_sazonalidade not in {"INVERNO", "PRIMAVERA", "VERAO", "OUTONO", "TODAS"}:
+    if is_null(query_sazonalidade):
+        query_sazonalidade = None
+    elif query_sazonalidade not in {"INVERNO", "PRIMAVERA", "VERAO", "OUTONO", "TODAS"}:
         print("Valor inválido para sazonalidade. Usando NULL.")
         query_sazonalidade = None
-
+    # Codigo CID 10 da doenca
     buffer = input("Digite o codigo CID10 da doenca (ex: A15): ")
     query_cid10 = in_treatm(buffer,6)
     # REGEX CID10
     cid10_pattern = r"^[A-TV-Z][0-9]{2}(\.[0-9A-TV-Z]{1,4})?$"
-    if query_cid10 and not re.match(cid10_pattern, query_cid10):
+    if is_null(query_cid10):
+        query_cid10 = None
+    elif query_cid10 and not re.match(cid10_pattern, query_cid10):
         print("Código CID10 inválido. Usando NULL.")
         query_cid10 = None
-
+    # Tempo medio de duracao da doenca
     buffer = input("Digite o tempo medio de duracao da doenca (ex: 15 DIAS, 3 MESES): ")
     query_tempomedio = in_treatm(buffer, 15)
-    query_tempomedio = dias_tempo_medio(query_tempomedio)
+    query_tempomedio = dias_tempo_medio(query_tempomedio) # Na funcao, já há tratamento de nulo
 
-    print("o que vamos inserir para doenca....")
-    print(query_nomecientif, '\n', query_nomepopular, query_letalidade, query_sazonalidade, query_cid10, query_tempomedio)
-
+    # Tentativa de insercao da tupla na base
     try:
         with connection.cursor() as cursor:
             sql_cidade = "insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values (:query_nomecientif, :query_nomepopular, :query_letalidade, :query_sazonalidade, :query_cid10, :query_tempomedio)"
             cursor.execute(sql_cidade, query_nomecientif=query_nomecientif, query_nomepopular=query_nomepopular, query_letalidade=query_letalidade, query_sazonalidade=query_sazonalidade, query_cid10=query_cid10, query_tempomedio=query_tempomedio)
             connection.commit()
+    # Se houver algum erro na insercao, apresenta a mensagem da aplicacao e nao da base de dados
     except oracledb.IntegrityError as e:
         error_obj, = e.args
         if error_obj.code == 1:
@@ -246,6 +251,7 @@ def inserir_dados(log, user, connection):
     return
 
 def consulta_cidade(connection):
+    # Tentativa de buscar todas as cidades inseridas na base
     try:
         with connection.cursor() as cursor:
             sql_cidade = "SELECT nome, estado FROM cidade"
@@ -254,11 +260,13 @@ def consulta_cidade(connection):
             print (columns)
             for (r) in cursor:
                 print(r)
+    # Se houver algum erro na busca, apresenta a mensagem da aplicacao e nao da base de dados
     except oracledb.DatabaseError as e:
         error_obj, = e.args
         print("Erro ao consultar cidades:", error_obj.message)
 
 def consulta_doenca(connection):
+    # Tentativa de buscar todas as doencas inseridas na base
     try:
         with connection.cursor() as cursor:
             sql_doenca = "SELECT nomecientif, nomepopular FROM doenca"
@@ -267,12 +275,15 @@ def consulta_doenca(connection):
             print (columns)
             for (r) in cursor:
                 print(r)
+    # Se houver algum erro na busca, apresenta a mensagem da aplicacao e nao da base de dados
     except oracledb.DatabaseError as e:
         error_obj, = e.args
         print("Erro ao consultar doenças:", error_obj.message)
 
 def consulta_especial(connection):
+    # Explicacao da consulta a ser realizada
     print("Número de casos de uma doenca por faixa etária, de uma cidade, por ano.")
+    # Nome e estado da cidade
     buffer = input("Digite o nome de uma cidade e seu estado (Ex: SAO PAULO-SP): ")
     cidade_estado = in_treatm(buffer)
     ce_pattern = r'^[A-ZÀ-Ú ]+-[A-Z]{2}$'
@@ -281,11 +292,12 @@ def consulta_especial(connection):
         return
     print(cidade_estado)
     tokens = cidade_estado.split('-')
-
+    # Doenca
     buffer = input("Digite o nome cientifico de uma doenca (Ex: SARS-COV-2): ")
     doenca = in_treatm(buffer)
 
     print(tokens, doenca)
+    # Tentativa de busca
     try:
         with connection.cursor() as cursor:
             sql_especial = """SELECT S3.ano_caso, COUNT(*) AS nro_casos , S3.faixa_etaria FROM   (SELECT S2.idcaso,
@@ -312,6 +324,7 @@ def consulta_especial(connection):
             print (columns)
             for (r) in cursor:
                 print(r)
+    # Se houver algum erro na busca, apresenta a mensagem da aplicacao e nao da base de dados
     except oracledb.DatabaseError as e:
         error_obj, = e.args
         print("Erro ao realizar a consulta especial:", error_obj.message)
@@ -354,16 +367,14 @@ def main():
         if not opt.isdigit():
             print("Opção inválida")
             continue
-        
         opt = int(opt)
-
         if opt == 1:
             if (not log):
                 connection, user, log = user_login()
             else:
                 print("Deslogando....")
                 user=None
-                if(log):connection.close()
+                if(log): connection.close()
                 log=False
         elif opt == 2:
             inserir_dados(log=log, user=user, connection=connection)
