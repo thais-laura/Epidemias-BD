@@ -31,7 +31,6 @@ SELECT
     COUNT(apa.idalerta) AS qtde_alertas
 FROM beneficente b
 LEFT JOIN (
-        -- Subconsulta equivalente ao alcance_por_alerta
         SELECT
             a.idalerta,
             a.beneficente,
