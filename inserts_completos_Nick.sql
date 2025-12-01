@@ -50,16 +50,17 @@ INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('23423789120180', 6
 INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('23456789000180', 7);
 INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('12345678000190', 8);
 
--- CASO (corrigido)
-INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
-VALUES (12, 'INFLUENZA VIRUS A', DATE '2025-03-01', DATE '2025-03-10', 'LEVE', '12345678000190', 'N', 'N');
+-- caso (continuação: assumindo que você já usou 1..17 antes)
 
-INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
-VALUES (14, 'DENV', DATE '2025-01-20', DATE '2025-02-05', 'MODERADO', '23456789000180', 'N', 'N');
+INSERT INTO caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
+VALUES (18, 12, 'INFLUENZA VIRUS A', DATE '2025-03-01', DATE '2025-03-10', 'LEVE', '12345678000190', 'N', 'N');
 
-INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
-VALUES (19, 'SARS-COV-2', DATE '2025-04-12', NULL, 'LEVE', '23423789120180', 'N', 'N');
+INSERT INTO caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
+VALUES (19, 14, 'DENV', DATE '2025-01-20', DATE '2025-02-05', 'MODERADO', '23456789000180', 'N', 'N');
 
-INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
-VALUES (6, 'HEPATITIS A VIRUS', DATE '2024-11-01', DATE '2024-11-20', 'LEVE', '12345678000190', 'N', 'N');
+INSERT INTO caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
+VALUES (20, 19, 'SARS-COV-2', DATE '2025-04-12', NULL, 'LEVE', '23423789120180', 'N', 'N');
+
+INSERT INTO caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
+VALUES (21, 6, 'HEPATITIS A VIRUS', DATE '2024-11-01', DATE '2024-11-20', 'LEVE', '12345678000190', 'N', 'N');
 
