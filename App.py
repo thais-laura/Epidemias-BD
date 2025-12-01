@@ -51,8 +51,11 @@ def user_login():
     finally:
         return connection, user, log
     
-def in_treatm(buffer):
-    return str(buffer).upper().strip()
+def in_treatm(text, max_len=120):
+    text = str(text).strip() # retira acentos com str
+    if len(text) > max_len:
+        text = text[:max_len]
+    return text.upper()
     
 def is_float(element: any) -> bool:
     try:
@@ -67,6 +70,33 @@ def is_null(value):
     text = str(value).strip().lower()
     return text in {"", "null", "nulo", "none"}
 
+def dias_tempo_medio(valor):
+    if is_null(valor):
+        return None
+    
+    valor = valor.strip().upper().replace(",", ".") 
+
+    match = re.match(r'^(\d+(\.\d+)?)\s*(DIAS|SEMANAS|MESES|ANOS)$', valor)
+    if not match:
+        print("Valor inválido para tempo médio. Usando NULL.")
+        return None
+
+    numero = float(match.group(1))
+    unidade = match.group(3)
+
+    # Conversão por unidade
+    if unidade == "DIAS":
+        dias = numero
+    elif unidade == "SEMANAS":
+        dias = numero * 7
+    elif unidade == "MESES":
+        dias = numero * 30
+    elif unidade == "ANOS":
+        dias = numero * 365
+
+    # Arredonda para inteiro
+    return round(dias,2)
+
 def inserir_cidade(connection):
     print("Adicione, pelo menos, o nome e o estado da cidade")
 
@@ -77,7 +107,7 @@ def inserir_cidade(connection):
         return
     
     buffer = input("Digite o nome do estado (EX: SP): ")
-    query_state = in_treatm(buffer)
+    query_state = in_treatm(buffer,2)
     if is_null(query_state):
         print("Nome do estado é obrigatório. Encerrando...")
         return
@@ -108,11 +138,21 @@ def inserir_cidade(connection):
     print("o que vamos inserir para cidade....")
     print(query_city, query_state, query_pop, query_area)
 
-    with connection.cursor() as cursor:
-        sql_cidade = "INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES (:query_city, :query_state, :query_pop, :query_area)"
-        cursor.execute(sql_cidade,query_city=query_city,query_state=query_state,query_pop=query_pop,query_area=query_area)
-        connection.commit()
-    return
+    try:
+        with connection.cursor() as cursor:
+            sql_cidade = "INSERT INTO cidade (nome, estado, qtdhab, areaterrit) VALUES (:query_city, :query_state, :query_pop, :query_area)"
+            cursor.execute(sql_cidade,query_city=query_city,query_state=query_state,query_pop=query_pop,query_area=query_area)
+            connection.commit()
+        return
+    except oracledb.IntegrityError as e:
+        error_obj, = e.args
+        if error_obj.code == 1:
+            print("Essa cidade já existe (violação de UNIQUE/PK).")
+        elif error_obj.code == 1400:
+            print("Campo obrigatório não pode ser NULL.")
+        else:
+            print("Erro de integridade:", error_obj.message)
+
 
 def inserir_doenca(connection):
     buffer = input("Digite o nome cientifico da doenca (Ex: SARS-COV-2): ")
@@ -143,37 +183,39 @@ def inserir_doenca(connection):
         query_letalidade = None
 
     buffer = input("Digite a estacao do ano com maior taxa de casos da doenca (Opções: INVERNO, PRIMAVERA, VERAO, OUTONO, TODAS): ")
-    query_sazonalidade = in_treatm(buffer)
+    query_sazonalidade = in_treatm(buffer,10)
     if query_sazonalidade not in {"INVERNO", "PRIMAVERA", "VERAO", "OUTONO", "TODAS"}:
         print("Valor inválido para sazonalidade. Usando NULL.")
         query_sazonalidade = None
 
     buffer = input("Digite o codigo CID10 da doenca (ex: A15): ")
-    query_cid10 = in_treatm(buffer)
+    query_cid10 = in_treatm(buffer,6)
     # REGEX CID10
     cid10_pattern = r"^[A-TV-Z][0-9]{2}(\.[0-9A-TV-Z]{1,4})?$"
     if query_cid10 and not re.match(cid10_pattern, query_cid10):
         print("Código CID10 inválido. Usando NULL.")
         query_cid10 = None
-        
+
     buffer = input("Digite o tempo medio de duracao da doenca (ex: 15 DIAS, 3 MESES): ")
-    query_tempomedio = in_treatm(buffer)
-    if is_null(query_tempomedio):
-        query_tempomedio = None
-    elif query_tempomedio.isdigit(): 
-        query_tempomedio = int(query_tempomedio)
-    else:
-        print("Valor inválido para habitantes. Usando NULL.")
-        query_tempomedio = None
+    query_tempomedio = in_treatm(buffer, 15)
+    query_tempomedio = dias_tempo_medio(query_tempomedio)
 
     print("o que vamos inserir para doenca....")
     print(query_nomecientif, '\n', query_nomepopular, query_letalidade, query_sazonalidade, query_cid10, query_tempomedio)
-
-    with connection.cursor() as cursor:
-        sql_cidade = "insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values (:query_nomecientif, :query_nomepopular, :query_letalidade, :query_sazonalidade, :query_cid10, :query_tempomedio)"
-        cursor.execute(sql_cidade, query_nomecientif=query_nomecientif, query_nomepopular=query_nomepopular, query_letalidade=query_letalidade, query_sazonalidade=query_sazonalidade, query_cid10=query_cid10, query_tempomedio=query_tempomedio)
-        connection.commit()
-    return
+    
+    try:
+        with connection.cursor() as cursor:
+            sql_cidade = "insert into doenca (nomecientif, nomepopular, letalidade, sazonalidade, cid10, tempomedio) values (:query_nomecientif, :query_nomepopular, :query_letalidade, :query_sazonalidade, :query_cid10, :query_tempomedio)"
+            cursor.execute(sql_cidade, query_nomecientif=query_nomecientif, query_nomepopular=query_nomepopular, query_letalidade=query_letalidade, query_sazonalidade=query_sazonalidade, query_cid10=query_cid10, query_tempomedio=query_tempomedio)
+            connection.commit()
+    except oracledb.IntegrityError as e:
+        error_obj, = e.args
+        if error_obj.code == 1:
+            print("Essa doença já existe (violação de UNIQUE/PK).")
+        elif error_obj.code == 1400:
+            print("Campo obrigatório não pode ser NULL.")
+        else:
+            print("Erro de integridade:", error_obj.message)
 
 def inserir_dados(log, user, connection):
     opt = 0
@@ -260,7 +302,7 @@ def consultar(log, user, connection):
     if(log):
         while(flag):
             menu_consulta(user)
-            opt = input("Escolha uma opção:")
+            opt = input("Escolha uma opção: ")
             if not opt.isdigit():
                 print("Opção inválida")
                 continue
