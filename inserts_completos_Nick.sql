@@ -34,21 +34,62 @@ INSERT INTO infecta VALUES (10, 'HEPATITIS A VIRUS');
 INSERT INTO infecta VALUES (12, 'NEISSERIA MENINGITIDIS');
 INSERT INTO infecta VALUES (14, 'MEASLES VIRUS');
 
--- alerta (IDs assumed sequential)
-INSERT INTO alerta (beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprincipal, prioridade)
-VALUES ('12345678000190', 'DENV', DATE '2025-02-10', DATE '2025-03-10', 'PREVENCAO', 'AUMENTO DE CASOS DE DENGUE – ORIENTACAO SOBRE ELIMINACAO DE FOCOS.', 'REDES SOCIAIS', 'MEDIA');
+-- ALERTA (com idalerta explícito)
 
-INSERT INTO alerta (beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprincipal, prioridade)
-VALUES ('34567890000170', 'VARICELLA ZOSTER VIRUS', DATE '2025-04-01', DATE '2025-04-30', 'VACINACAO', 'REFORCO PARA VACINA DE CATAPORA EM CRIANCAS.', 'RADIO COMUNITARIA', 'BAIXA');
+INSERT INTO alerta (
+    idalerta, beneficente, doenca, datainicio, datafim, tipo,
+    mensagem, canalprincipal, prioridade
+)
+VALUES (
+    1,
+    '12345678000190',
+    'DENV',
+    DATE '2025-02-10',
+    DATE '2025-03-10',
+    'PREVENCAO',
+    'AUMENTO DE CASOS DE DENGUE – ORIENTACAO SOBRE ELIMINACAO DE FOCOS.',
+    'REDES SOCIAIS',
+    'MEDIA'
+);
 
-INSERT INTO alerta (beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprincipal, prioridade)
-VALUES ('45678901000160', 'LEPTOSPIRA INTERROGANS', DATE '2025-01-15', NULL, 'PREVENCAO', 'ALERTA SOBRE RISCO DE LEPTOSPIROSE EM AREAS ALAGADAS.', 'APLICATIVO DE SAUDE', 'ALTA');
+INSERT INTO alerta (
+    idalerta, beneficente, doenca, datainicio, datafim, tipo,
+    mensagem, canalprincipal, prioridade
+)
+VALUES (
+    2,
+    '34567890000170',
+    'VARICELLA ZOSTER VIRUS',
+    DATE '2025-04-01',
+    DATE '2025-04-30',
+    'VACINACAO',
+    'REFORCO PARA VACINA DE CATAPORA EM CRIANCAS.',
+    'RADIO COMUNITARIA',
+    'BAIXA'
+);
 
--- ABRANGE (corrigido com nomes explícitos)
-INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('12345678000190', 6);
-INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('23423789120180', 6);
-INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('23456789000180', 7);
-INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('12345678000190', 8);
+INSERT INTO alerta (
+    idalerta, beneficente, doenca, datainicio, datafim, tipo,
+    mensagem, canalprincipal, prioridade
+)
+VALUES (
+    3,
+    '45678901000160',
+    'LEPTOSPIRA INTERROGANS',
+    DATE '2025-01-15',
+    NULL,
+    'PREVENCAO',
+    'ALERTA SOBRE RISCO DE LEPTOSPIROSE EM AREAS ALAGADAS.',
+    'APLICATIVO DE SAUDE',
+    'ALTA'
+);
+
+-- ABRANGE ajustado para ids 1, 2 e 3
+
+INSERT INTO abrange VALUES ('12345678000190', 1);
+INSERT INTO abrange VALUES ('23423789120180', 1);
+INSERT INTO abrange VALUES ('23456789000180', 2);
+INSERT INTO abrange VALUES ('12345678000190', 3);
 
 -- caso (continuação: assumindo que você já usou 1..17 antes)
 
