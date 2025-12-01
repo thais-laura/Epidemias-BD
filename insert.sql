@@ -334,9 +334,14 @@ insert into abrange (idalerta, regiao_rede_de_saude) values (3, '23456789000180'
 insert into abrange (idalerta, regiao_rede_de_saude) values (4, '12345678000190');
 insert into abrange (idalerta, regiao_rede_de_saude) values (5, '12345678000190');
 insert into abrange (idalerta, regiao_rede_de_saude) values (5, '23456789000180');
+INSERT INTO abrange (idalerta, regiao_rede_de_saude) VALUES (6, '12345678000190');
+INSERT INTO abrange (idalerta, regiao_rede_de_saude) VALUES (6, '23423789120180');
+INSERT INTO abrange (idalerta, regiao_rede_de_saude) VALUES (7, '23456789000180');
+
 
 insert into transmite (doenca, transmissor) values ('PLASMODIUM FALCIPARUM','MOSQUITO ANOPHELES');
 insert into transmite (doenca, transmissor) values ('MYCOBACTERIUM TUBERCULOSIS','PESSOA INFECTADA');
 insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
+
 
