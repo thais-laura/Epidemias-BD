@@ -44,21 +44,22 @@ VALUES ('34567890000170', 'VARICELLA ZOSTER VIRUS', DATE '2025-04-01', DATE '202
 INSERT INTO alerta (beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprincipal, prioridade)
 VALUES ('45678901000160', 'LEPTOSPIRA INTERROGANS', DATE '2025-01-15', NULL, 'PREVENCAO', 'ALERTA SOBRE RISCO DE LEPTOSPIROSE EM AREAS ALAGADAS.', 'APLICATIVO DE SAUDE', 'ALTA');
 
--- abrange (IDs hypothetical 6, 7, 8)
-INSERT INTO abrange VALUES ('12345678000190', 6);
-INSERT INTO abrange VALUES ('23423789120180', 6);
-INSERT INTO abrange VALUES ('23456789000180', 7);
-INSERT INTO abrange VALUES ('12345678000190', 8);
+-- ABRANGE (corrigido com nomes explícitos)
+INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('12345678000190', 6);
+INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('23423789120180', 6);
+INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('23456789000180', 7);
+INSERT INTO abrange (regiao_rede_de_saude, idalerta) VALUES ('12345678000190', 8);
 
--- caso
-INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, cnpj, obito)
-VALUES (12, 'INFLUENZA VIRUS A', DATE '2025-03-01', DATE '2025-03-10', 'LEVE', '12345678000190', 'N');
+-- CASO (corrigido)
+INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
+VALUES (12, 'INFLUENZA VIRUS A', DATE '2025-03-01', DATE '2025-03-10', 'LEVE', '12345678000190', 'N', 'N');
 
-INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, cnpj, obito)
-VALUES (14, 'DENV', DATE '2025-01-20', DATE '2025-02-05', 'MODERADO', '23456789000180', 'N');
+INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
+VALUES (14, 'DENV', DATE '2025-01-20', DATE '2025-02-05', 'MODERADO', '23456789000180', 'N', 'N');
 
-INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, cnpj, obito)
-VALUES (19, 'SARS-COV-2', DATE '2025-04-12', NULL, 'LEVE', '23423789120180', 'N');
+INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
+VALUES (19, 'SARS-COV-2', DATE '2025-04-12', NULL, 'LEVE', '23423789120180', 'N', 'N');
 
-INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, cnpj, obito)
-VALUES (6, 'HEPATITIS A VIRUS', DATE '2024-11-01', DATE '2024-11-20', 'LEVE', '12345678000190', 'N');
+INSERT INTO caso (paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente)
+VALUES (6, 'HEPATITIS A VIRUS', DATE '2024-11-01', DATE '2024-11-20', 'LEVE', '12345678000190', 'N', 'N');
+
