@@ -163,20 +163,6 @@ CREATE TABLE requer (
     on delete cascade
 );
 
-CREATE TABLE infecta (
-  paciente  NUMBER         NOT NULL,     -- FK -> paciente(idpaciente)
-  doenca    VARCHAR2(120)  NOT NULL,     -- FK -> doenca(nomecientif)
-
-  CONSTRAINT pk_infecta PRIMARY KEY (paciente, doenca),
-
-  CONSTRAINT fk_infecta_paciente
-    FOREIGN KEY (paciente) REFERENCES paciente (idpaciente) 
-    on delete cascade,
-  CONSTRAINT fk_infecta_doenca
-    FOREIGN KEY (doenca)   REFERENCES doenca (nomecientif) 
-    on delete cascade
-);
-
 CREATE TABLE transmissor(
     nome                VARCHAR2(50) NOT NULL,
     vetor               VARCHAR2(40),
@@ -467,3 +453,4 @@ CREATE TABLE metricas_sessoes(
 );
 
 commit;
+
