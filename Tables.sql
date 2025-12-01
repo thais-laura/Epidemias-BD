@@ -62,15 +62,16 @@ CREATE TABLE alerta (
 );
 
 CREATE TABLE abrange (
-  regiao_rede_de_saude  VARCHAR2(14) NOT NULL,  -- FK -> regiao(rede_de_saude)
-  idalerta              NUMBER       NOT NULL,  -- FK -> alerta(idalerta)
+  regiao       VARCHAR2(14) NOT NULL,   -- FK -> regiao(rede_de_saude)
+  idalerta     NUMBER       NOT NULL,   -- FK -> alerta(idalerta)
 
-  CONSTRAINT pk_abrange PRIMARY KEY (regiao_rede_de_saude, idalerta),
+  CONSTRAINT pk_abrange PRIMARY KEY (regiao, idalerta),
 
   CONSTRAINT fk_abrange_regiao
-    FOREIGN KEY (regiao_rede_de_saude) REFERENCES regiao (rede_de_saude),
+    FOREIGN KEY (regiao) REFERENCES regiao (rede_de_saude),
+
   CONSTRAINT fk_abrange_alerta
-    FOREIGN KEY (idalerta)             REFERENCES alerta (idalerta)
+    FOREIGN KEY (idalerta) REFERENCES alerta (idalerta)
 );
 
 CREATE TABLE caso (
@@ -107,4 +108,5 @@ CREATE TABLE caso (
   CONSTRAINT ck_caso_reincidente
     CHECK (reincidente IN ('S','N') OR reincidente IS NULL)
 );
+
 
