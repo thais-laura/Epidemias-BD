@@ -28,7 +28,7 @@ ORDER BY
 -- Consulta 2 – Gabi
 -- Objetivo:
 -- Identificar, para cada rede de saúde, as duas doenças mais frequentes
--- com base na contagem de casos registrados.
+-- com base na contagem de casos registrados. Porem, se tiver empate, sera exibido tambem.
 
 SELECT 
     c1.rede_de_saude,
