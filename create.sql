@@ -1,8 +1,8 @@
 CREATE TABLE cidade (
     nome        VARCHAR2(100) NOT NULL,
     estado      CHAR(2) NOT NULL,
-    qtdhab      NUMBER NOT NULL,
-    areaterrit  NUMBER(10,2) NOT NULL,
+    qtdhab      NUMBER,
+    areaterrit  NUMBER(10,2),
 
     -- chave primaria composta
     CONSTRAINT pk_cidade PRIMARY KEY (nome, estado),
@@ -21,9 +21,9 @@ CREATE TABLE cidade (
 CREATE TABLE paciente (
     idpaciente   NUMBER PRIMARY KEY,
     cpf          VARCHAR2(11) UNIQUE NOT NULL,
-    datanascim   DATE NOT NULL,
-    sexo         CHAR(1) NOT NULL,
-    gruporisco   CHAR(1) NOT NULL,
+    datanascim   DATE,
+    sexo         CHAR(1),
+    gruporisco   CHAR(1),
 
     -- sexo deve ser M ou F
     CONSTRAINT chk_paciente_sexo
@@ -60,9 +60,9 @@ CREATE TABLE vacinas (
 CREATE TABLE doenca (
     nomecientif     VARCHAR2(120) NOT NULL,
     nomepopular   VARCHAR2(120) NOT NULL,
-    letalidade    NUMBER(4,2)   NOT NULL,
-    sazonalidade  VARCHAR2(20)  NOT NULL,
-    cid10         VARCHAR2(10)  NOT NULL,
+    letalidade    NUMBER(4,2),
+    sazonalidade  VARCHAR2(20),
+    cid10         VARCHAR2(10),
     tempomedio      NUMBER(10,2),
 
     -- chave primaria
@@ -74,7 +74,7 @@ CREATE TABLE doenca (
 
     -- sazonalidade deve ser uma das estacoes
     CONSTRAINT chk_doenca_sazonalidade
-        CHECK (sazonalidade IN ('VERAO', 'OUTONO', 'INVERNO', 'PRIMAVERA')),
+        CHECK (sazonalidade IN ('VERAO', 'OUTONO', 'INVERNO', 'PRIMAVERA', 'TODAS')),
 
     -- CID-10 no formato (letra + numeros + opcional ponto)
     CONSTRAINT chk_doenca_cid10
@@ -92,11 +92,7 @@ CREATE TABLE sintomas (
     CONSTRAINT fk_sintomas_doenca
         FOREIGN KEY (nomecientif)
         REFERENCES doenca (nomecientif)
-        ON DELETE CASCADE,
-
-    -- sintoma nao pode ser vazio
-    CONSTRAINT chk_sintomas_nome
-        CHECK (sintoma IS NOT NULL AND sintoma <> '')
+        ON DELETE CASCADE
 );
 
 CREATE TABLE agente (
@@ -110,11 +106,7 @@ CREATE TABLE agente (
     CONSTRAINT fk_agente_doenca
         FOREIGN KEY (nomecientif)
         REFERENCES doenca (nomecientif)
-        ON DELETE CASCADE,
-
-    -- agente nao pode ser vazio
-    CONSTRAINT chk_agente_nome
-        CHECK (agente IS NOT NULL AND agente <> '')
+        ON DELETE CASCADE
 );
 
 CREATE TABLE metodoprevencao (
@@ -128,21 +120,17 @@ CREATE TABLE metodoprevencao (
     CONSTRAINT fk_metodoprevencao_doenca
         FOREIGN KEY (nomecientif)
         REFERENCES doenca (nomecientif)
-        ON DELETE CASCADE,
-
-    -- metodo prevencao nao pode ser vazio
-    CONSTRAINT chk_metodoprevencao_nome
-        CHECK (metodoprevencao IS NOT NULL AND metodoprevencao <> '')
+        ON DELETE CASCADE
 );
 
 CREATE TABLE tratamento (
     nome          VARCHAR2(150) NOT NULL,  
-    tipo          VARCHAR2(50)  NOT NULL,  
-    remedio       VARCHAR2(120) NOT NULL,  
-    customedio    NUMBER(10,2)  NOT NULL,  
-    duracaomedia  NUMBER        NOT NULL,  
-    isolamento    CHAR(1)   NOT NULL,  
-    maquina       VARCHAR2(120) NOT NULL,  
+    tipo          VARCHAR2(50)  ,  
+    remedio       VARCHAR2(120) ,  
+    customedio    NUMBER(10,2)  ,  
+    duracaomedia  NUMBER        ,  
+    isolamento    CHAR(1)   ,  
+    maquina       VARCHAR2(120) ,  
 
     -- chave primaria
     CONSTRAINT pk_tratamento 
@@ -479,4 +467,3 @@ CREATE TABLE metricas_sessoes(
 );
 
 commit;
-
