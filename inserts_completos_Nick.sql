@@ -84,18 +84,18 @@ VALUES (
     'ALTA'
 );
 
--- ABRANGE (corrigido: coluna agora é "regiao")
+-- ABRANGE ajustado aos ids dos alertas (1, 2, 3)
 
-INSERT INTO abrange (regiao, idalerta)
+INSERT INTO abrange (regiao_rede_de_saude, idalerta)
 VALUES ('12345678000190', 1);
 
-INSERT INTO abrange (regiao, idalerta)
+INSERT INTO abrange (regiao_rede_de_saude, idalerta)
 VALUES ('23423789120180', 1);
 
-INSERT INTO abrange (regiao, idalerta)
+INSERT INTO abrange (regiao_rede_de_saude, idalerta)
 VALUES ('23456789000180', 2);
 
-INSERT INTO abrange (regiao, idalerta)
+INSERT INTO abrange (regiao_rede_de_saude, idalerta)
 VALUES ('12345678000190', 3);
 
 -- caso (continuação: assumindo que você já usou 1..17 antes)
