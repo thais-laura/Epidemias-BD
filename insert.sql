@@ -229,8 +229,8 @@ insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) va
 insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('66677788000160', 28.0, 3820.0, 'BELO HORIZONTE', 'MG');
 insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('77788899000170', 16.0, 2980.0, 'PORTO ALEGRE', 'RS');
 insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('88899900000180', 19.0, 1750.0, 'CAMPINAS', 'SP');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('99900011000190', 21.0, 1530.0, 'NITERÓI', 'RJ');
-insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('10111213000100', 35.0, 204.0, 'CUIABÁ', 'MT');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('99900011000190', 21.0, 1530.0, 'NITEROI', 'RJ');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('10111213000100', 35.0, 204.0, 'CUIABA', 'MT');
 
 INSERT INTO programas (beneficente, programa) VALUES ('12345678000190', 'OUTUBRO ROSA – CONSCIENTIZACAO SOBRE CANCER DE MAMA' );
 INSERT INTO programas (beneficente, programa) VALUES ('12345678000190', 'MUTIRAO DE EXAMES PREVENTIVOS' );
@@ -347,3 +347,4 @@ INSERT INTO transmite (doenca, transmissor) VALUES ('MUMPS VIRUS', 'AR');
 INSERT INTO transmite (doenca, transmissor) VALUES ('RUBELLA VIRUS', 'AR');
 INSERT INTO transmite (doenca, transmissor) VALUES ('HEPATITIS A VIRUS', 'CONTATO DIRETO');
 INSERT INTO transmite (doenca, transmissor) VALUES ('YELLOW FEVER VIRUS', 'MOSQUITO ANOPHELES');
+
