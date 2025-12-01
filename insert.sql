@@ -343,6 +343,10 @@ insert into transmite (doenca, transmissor) values ('PLASMODIUM FALCIPARUM','MOS
 insert into transmite (doenca, transmissor) values ('MYCOBACTERIUM TUBERCULOSIS','PESSOA INFECTADA');
 insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
+INSERT INTO transmite (doenca, transmissor) VALUES ('MUMPS VIRUS', 'AR');
+INSERT INTO transmite (doenca, transmissor) VALUES ('RUBELLA VIRUS', 'AR');
+INSERT INTO transmite (doenca, transmissor) VALUES ('HEPATITIS A VIRUS', 'CONTATO DIRETO');
+INSERT INTO transmite (doenca, transmissor) VALUES ('YELLOW FEVER VIRUS', 'MOSQUITO ANOPHELES');
 
 
 
