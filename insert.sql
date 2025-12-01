@@ -132,6 +132,16 @@ INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (18,
 INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (19, '99900011122', to_date('14/07/1988','DD/MM/YYYY'), 'M', 'N');
 INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (20, '10111213141', to_date('19/09/1972','DD/MM/YYYY'), 'F', 'S');
 
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (21, '10112375141', to_date('23/10/1972','DD/MM/YYYY'), 'M', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (22, '23411213141', to_date('07/02/2002','DD/MM/YYYY'), 'F', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (23, '10111259341', to_date('19/11/2013','DD/MM/YYYY'), 'M', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (24, '12582304826', to_date('10/06/1960','DD/MM/YYYY'), 'F', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (25, '10111235941', to_date('19/08/2019','DD/MM/YYYY'), 'M', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (26, '12293804826', to_date('10/08/1994','DD/MM/YYYY'), 'F', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (27, '29811235941', to_date('24/03/2007','DD/MM/YYYY'), 'M', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (28, '23493804826', to_date('15/04/1999','DD/MM/YYYY'), 'F', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (29, '23493634564', to_date('15/07/2002','DD/MM/YYYY'), 'M', 'N');
+
 insert into vacinas (idpaciente, vacina) values (1, 'BCG');
 insert into vacinas (idpaciente, vacina) values (2, 'INFLUENZA' );
 insert into vacinas (idpaciente, vacina) values (3, 'COVID-19' );
@@ -158,6 +168,7 @@ INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telef
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('78901234000130', 'POSTO SAUDE CENTRAL', '88015200', 'CENTRO', 'RUA ALMIRANTE LAMEGO', '900', '4833332211', '48999911223');
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('89012345000120', 'HOSPITAL REGIONAL NORTE', '60015200', 'ALDEOTA', 'AV. DOM LUIS', '1500', '8533567788', '85977776666');
 INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('90123456000110', 'CLINICA SANTO ANTONIO', '69005100', 'CENTRO', 'AV. EDUARDO RIBEIRO', '700', '9232334455', '92999988877');
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('67967967967967', 'HOSPITAL CATHERINE', '17329349', 'VARJOTA', 'RUA EPISCOPAL ', '2600', '3136721234', '3133646878');
 
 insert into tipo_orgao (orgao, tipo) values ( '23423789120180', 'REDE DE SAUDE' );
 insert into tipo_orgao (orgao, tipo) values ( '12345678000190', 'REDE DE SAUDE' );
@@ -204,13 +215,22 @@ insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('23423789120180
 INSERT INTO rede_de_saude (cnpj, qtdleitos, qtdfuncion) VALUES ('56789012000150', 180, 400);
 INSERT INTO rede_de_saude (cnpj, qtdleitos, qtdfuncion) VALUES ('67890123000140', 90, 150);
 INSERT INTO rede_de_saude (cnpj, qtdleitos, qtdfuncion) VALUES ('89012345000120', 220, 520);
+insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('67967967967967', 167, 267);
 
-INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('23423789120180', 17.0, 223.5, 'IPATINGA', 'MG');
-INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('12345678000190', 15.0, 500.0, 'SAO CARLOS', 'SP');
-INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('23456789000180', 30.0, 526.7, 'BRASILIA', 'DF');
-INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('56789012000150', 18.0, 14000.0, 'SAO PAULO', 'SP');
-INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('67890123000140', 14.0, 4500.0, 'CURITIBA', 'PR');
-INSERT INTO regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) VALUES ('89012345000120', 22.0, 3500.0, 'RIO DE JANEIRO', 'RJ');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('67967967967967', 20.0, 1523.0, 'SAO PAULO', 'SP');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('23423789120180', 17.0, 223.5, 'IPATINGA', 'MG' );
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('12345678000190', 15.0, 223.5, 'SAO CARLOS', 'SP' );
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('23456789000180', 30.0, 526.7, 'BRASILIA', 'DF' );
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('11122233000110', 20.0, 1523.0, 'SAO PAULO', 'SP');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('22233344000120', 25.0, 5620.0, 'RIO DE JANEIRO', 'RJ');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('33344455000130', 18.0, 7630.0, 'FORTALEZA', 'CE');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('44455566000140', 22.0, 7630.0, 'RECIFE', 'PE');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('55566677000150', 12.0, 3240.0, 'CURITIBA', 'PR');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('66677788000160', 28.0, 3820.0, 'BELO HORIZONTE', 'MG');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('77788899000170', 16.0, 2980.0, 'PORTO ALEGRE', 'RS');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('88899900000180', 19.0, 1750.0, 'CAMPINAS', 'SP');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('99900011000190', 21.0, 1530.0, 'NITERÓI', 'RJ');
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('10111213000100', 35.0, 204.0, 'CUIABÁ', 'MT');
 
 INSERT INTO programas (beneficente, programa) VALUES ('12345678000190', 'OUTUBRO ROSA – CONSCIENTIZACAO SOBRE CANCER DE MAMA' );
 INSERT INTO programas (beneficente, programa) VALUES ('12345678000190', 'MUTIRAO DE EXAMES PREVENTIVOS' );
@@ -245,6 +265,18 @@ insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede
 insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (15, 3, 'MYCOBACTERIUM TUBERCULOSIS', to_date('15/05/24','DD/MM/YY'), to_date('13/06/24','DD/MM/YY'), 'GRAVE', '12345678000190', 'N', 'N' );
 insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (16, 7, 'SARS-COV-2', to_date('10/02/25','DD/MM/YY'), to_date('25/02/25','DD/MM/YY'), 'MODERADO', '12345678000190', 'N', 'S' );
 insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (17, 7, 'SARS-COV-2', to_date('30/06/25','DD/MM/YY'), null, 'LEVE', '12345678000190', 'N', 'S' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (18, 21, 'SARS-COV-2', to_date('03/04/23','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (19, 22, 'SARS-COV-2', to_date('03/04/24','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (20, 23, 'SARS-COV-2', to_date('03/04/25','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (21, 24, 'SARS-COV-2', to_date('03/04/23','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (22, 25, 'SARS-COV-2', to_date('03/04/23','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (23, 26, 'SARS-COV-2', to_date('03/04/24','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (24, 27, 'SARS-COV-2', to_date('03/04/25','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (25, 28, 'SARS-COV-2', to_date('03/04/23','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (26, 26, 'INFLUENZA VIRUS A', to_date('03/04/24','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'N', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (27, 27, 'INFLUENZA VIRUS A', to_date('03/04/24','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'N', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (28, 28, 'INFLUENZA VIRUS A', to_date('03/04/22','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'N', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (29, 29, 'SARS-COV-2', to_date('03/04/10','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
 
 insert into sessao (idsessao, idcaso, tratamento, datahora, rede_de_saude, obsmedicas, resultadoesperado) values ( 1, 1, 'TRATAMENTO DA GRIPE', TO_DATE('12/03/24 09:30', 'DD/MM/YY HH24:MI'), '12345678000190', 'PACIENTE APRESENTOU FEBRE LEVE, RECEITADO OSELTAMIVIR.', 'RECUPERACAO TOTAL' );
 insert into sessao (idsessao, idcaso, tratamento, datahora, rede_de_saude, obsmedicas, resultadoesperado) values ( 2, 2, 'TRATAMENTO DA DENGUE', to_date('07/01/25 10:00','DD/MM/YY HH24:MI'), '12345678000190', 'HIDRATACAO VENOSA E CONTROLE DE PLAQUETAS.', 'ESTABILIZACAO DO QUADRO' );
@@ -305,13 +337,3 @@ insert into transmite (doenca, transmissor) values ('PLASMODIUM FALCIPARUM','MOS
 insert into transmite (doenca, transmissor) values ('MYCOBACTERIUM TUBERCULOSIS','PESSOA INFECTADA');
 insert into transmite (doenca, transmissor) values ('INFLUENZA VIRUS A','AR');
 insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
-
-commit;
-
-
-
-
-
-
-
-
