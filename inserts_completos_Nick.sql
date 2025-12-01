@@ -8,11 +8,6 @@ INSERT INTO requer (doenca, tratamento) VALUES ('HEPATITIS A VIRUS', 'HEMODIALIS
 INSERT INTO requer (doenca, tratamento) VALUES ('PLASMODIUM FALCIPARUM', 'HEMODIALISE');
 INSERT INTO requer (doenca, tratamento) VALUES ('MEASLES VIRUS', 'CUIDADOS DE UTI PARA INFECCOES GRAVES');
 
-INSERT INTO infecta VALUES (3, 'DENV');
-INSERT INTO infecta VALUES (9, 'INFLUENZA VIRUS A');
-INSERT INTO infecta VALUES (11, 'ZIKA VIRUS');
-INSERT INTO infecta VALUES (15, 'CHIKUNGUNYA VIRUS');
-
 
 INSERT INTO alerta (idalerta, beneficente, doenca, datainicio, datafim, tipo, mensagem, canalprincipal, prioridade)
 VALUES (6, '34567890000170', 'RUBELLA VIRUS', DATE '2025-08-01', DATE '2025-08-30',
