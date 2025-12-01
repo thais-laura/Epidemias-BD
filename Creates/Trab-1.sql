@@ -4,7 +4,7 @@ CREATE TABLE transmissor(
     tipo                CHAR(8) NOT NULL,
     estacaoanopredom    VARCHAR2(10),
     nomecientif         VARCHAR2(100) NOT NULL,
-    tempovida           CHAR(5),
+    tempovida           CHAR(6),
     regiaovivencia      VARCHAR2(100),
 
     --chave primaria
@@ -15,7 +15,7 @@ CREATE TABLE transmissor(
 
     --restricoes
     CONSTRAINT ck_tipo CHECK (UPPER(TIPO) IN ('BIOTICO','ABIOTICO')),
-    CONSTRAINT ck_estacaoanopredom CHECK (UPPER(estacaoanopredom) IN ('PRIMAVERA','VERAO','OUTONO','INVERNO')),
+    CONSTRAINT ck_estacaoanopredom CHECK (UPPER(estacaoanopredom) IN ('PRIMAVERA','VERAO','OUTONO','INVERNO','TODAS')),
     CONSTRAINT ck_tempovida CHECK ((REGEXP_LIKE(UPPER(tempovida),'\d{2}\s\w+')) AND ((UPPER(SUBSTR(tempovida, -3,3)))) IN ('DIA','SEM','MES','ANO'))
 );
 

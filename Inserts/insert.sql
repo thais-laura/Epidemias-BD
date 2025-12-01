@@ -293,7 +293,39 @@ insert into transmite (doenca, transmissor) values ('SARS-COV-2','AR');
 commit;
 
 
+--CONSULTA 1 PONCI QUERIES
+
+INSERT INTO orgao (cnpj, nome, cep, bairro, logradouro, numero, telefone1, telefone2) VALUES ('67967967967967', 'HOSPITAL CATHERINE', '17329349', 'VARJOTA', 'RUA EPISCOPAL ', '2600', '3136721234', '3133646878');
+
+
+insert into rede_de_saude ( cnpj, qtdleitos, qtdfuncion) values ('67967967967967', 167, 267);
+
+insert into regiao (rede_de_saude, raio, densidpop, nomecidade, estadocidade) values ('67967967967967', 20.0, 1523.0, 'SAO PAULO', 'SP');
+
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (21, '10112375141', to_date('23/10/1972','DD/MM/YYYY'), 'M', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (22, '23411213141', to_date('07/02/2002','DD/MM/YYYY'), 'F', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (23, '10111259341', to_date('19/11/2013','DD/MM/YYYY'), 'M', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (24, '12582304826', to_date('10/06/1960','DD/MM/YYYY'), 'F', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (25, '10111235941', to_date('19/08/2019','DD/MM/YYYY'), 'M', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (26, '12293804826', to_date('10/08/1994','DD/MM/YYYY'), 'F', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (27, '29811235941', to_date('24/03/2007','DD/MM/YYYY'), 'M', 'N');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (28, '23493804826', to_date('15/04/1999','DD/MM/YYYY'), 'F', 'S');
+INSERT INTO paciente (idpaciente, cpf, datanascim, sexo, gruporisco) VALUES (29, '23493634564', to_date('15/07/2002','DD/MM/YYYY'), 'M', 'N');
+
+
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (18, 21, 'SARS-COV-2', to_date('03/04/23','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (19, 22, 'SARS-COV-2', to_date('03/04/24','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (20, 23, 'SARS-COV-2', to_date('03/04/25','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (21, 24, 'SARS-COV-2', to_date('03/04/23','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (22, 25, 'SARS-COV-2', to_date('03/04/23','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (23, 26, 'SARS-COV-2', to_date('03/04/24','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (24, 27, 'SARS-COV-2', to_date('03/04/25','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (25, 28, 'SARS-COV-2', to_date('03/04/23','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (26, 26, 'INFLUENZA VIRUS A', to_date('03/04/24','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'N', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (27, 27, 'INFLUENZA VIRUS A', to_date('03/04/24','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'N', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (28, 28, 'INFLUENZA VIRUS A', to_date('03/04/22','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'N', 'N' );
+insert into caso (idcaso, paciente, doenca, datainicio, datafim, gravidade, rede_de_saude, obito, reincidente) values (29, 29, 'SARS-COV-2', to_date('03/04/10','DD/MM/YY'), null, 'GRAVE', '67967967967967', 'S', 'N' );
 
 
 
-
+commit;
