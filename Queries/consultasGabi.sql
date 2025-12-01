@@ -24,34 +24,46 @@ GROUP BY
 ORDER BY
     total_obitos DESC;
 
+
 -- Consulta 2 – Gabi
 -- Objetivo:
 -- Identificar, para cada rede de saúde, as duas doenças mais frequentes
 -- com base na contagem de casos registrados.
 
-SELECT
-    t.rede_de_saude,
+SELECT 
+    c1.rede_de_saude,
     d.nomepopular AS doenca,
-    t.total_casos
+    c1.total_casos
 FROM (
-        -- Subconsulta que conta e ranqueia as doenças por rede 
-        SELECT
+        -- Conta quantos casos cada doença tem por rede
+        SELECT 
             c.rede_de_saude,
             c.doenca,
-            COUNT(*) AS total_casos,
-            -- ROW_NUMBER reinicia a contagem dentro de cada rede (PARTITION BY) e ordena pela quantidade de casos (ORDER BY).
-            ROW_NUMBER() OVER (
-                PARTITION BY c.rede_de_saude
-                ORDER BY COUNT(*) DESC
-            ) AS pos
+            COUNT(*) AS total_casos
         FROM caso c
-        GROUP BY
+        GROUP BY c.rede_de_saude, c.doenca
+     ) c1
+LEFT JOIN (
+        -- Repete a mesma contagem para comparar frequências
+        SELECT 
             c.rede_de_saude,
-            c.doenca
-     ) t
-    -- Mostra o nome popular ao invés do nome científico
-    JOIN doenca d
-        ON d.nomecientif = t.doenca
-WHERE t.pos <= 2                    -- pega apenas as 2 mais frequentes
-ORDER BY t.rede_de_saude,
-         t.total_casos DESC;        -- mais frequentes primeiro
+            c.doenca,
+            COUNT(*) AS total_casos
+        FROM caso c
+        GROUP BY c.rede_de_saude, c.doenca
+     ) c2
+     ON c1.rede_de_saude = c2.rede_de_saude      -- só compara dentro da mesma rede
+    AND c2.total_casos > c1.total_casos           -- pega doenças mais frequentes que c1
+JOIN doenca d
+    ON d.nomecientif = c1.doenca                  -- pega o nome popular
+GROUP BY
+    c1.rede_de_saude,
+    c1.doenca,
+    c1.total_casos,
+    d.nomepopular
+HAVING COUNT(c2.doenca) < 2       -- só mantém doenças que têm no máximo 1 doença acima delas
+                                  -- ou seja: as 2 maiores (com empate possível)
+ORDER BY
+    c1.rede_de_saude,
+    c1.total_casos DESC;          -- mostra das mais frequentes para as menos frequentes
+
