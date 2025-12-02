@@ -209,7 +209,7 @@ SELECT DISTINCT *
 FROM cidade cid
 WHERE NOT EXISTS(   (SELECT doenca 
                     FROM transmite
-                    WHERE transmissor = 'AR'
+                    WHERE transmissor = 'PESSOA INFECTADA'
                     )
                 MINUS
                     (
