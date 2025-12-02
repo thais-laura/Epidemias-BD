@@ -135,25 +135,6 @@ ORDER BY
 
 
 -- CONSULTA 5
--- Identificar os órgãos que fornecem serviços para a rede de saúde,
--- listando cada órgão que compõe a rede (tabela REDE_DE_SAUDE) e
--- agregando suas especialidades cadastradas.
--- A consulta relaciona REDE_DE_SAUDE com ORGAO e ESPECIALIDADES.
-SELECT
-    o.cnpj,
-    o.nome,
-    -- Agrupa todas as especialidades do órgão em uma única string
-    LISTAGG(e.especialidade, ', ') WITHIN GROUP (ORDER BY e.especialidade) AS especialidades
-FROM rede_de_saude r
-JOIN orgao o
-  ON o.cnpj = r.cnpj
-LEFT JOIN especialidades e
-  ON e.rede_de_saude = r.cnpj
-GROUP BY o.cnpj, o.nome
-ORDER BY o.nome;
-
-
--- CONSULTA 6
 --Número de Casos de uma doença por Faixa Etária em uma cidade, por ano.
 SELECT S3.ano_caso, COUNT(*) AS nro_casos , S3.faixa_etaria
 FROM    (
@@ -178,6 +159,20 @@ FROM    (
         GROUP BY S3.ano_caso, S3.faixa_etaria
         ORDER BY S3.ano_caso DESC, S3.faixa_etaria;
 
+
+-- CONSULTA 6
+-- Lista todas as especialidades medicas oferecidas pelas redes de saude
+SELECT
+    o.nome,
+    -- Agrupa todas as especialidades do órgão em uma única string
+    LISTAGG(e.especialidade, ', ') WITHIN GROUP (ORDER BY e.especialidade) AS especialidades
+FROM rede_de_saude r
+JOIN orgao o
+  ON o.cnpj = r.cnpj
+LEFT JOIN especialidades e
+  ON e.rede_de_saude = r.cnpj
+GROUP BY o.cnpj, o.nome
+ORDER BY o.nome;
 
 -- CONSULTA 7
 -- pesquisar histórico de campanhas realizadas na região
