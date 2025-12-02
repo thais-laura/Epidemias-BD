@@ -72,14 +72,14 @@ Para executar a aplicação em python e utilizar todas suas funcionalidades, é 
       ```
 * Aplicação:
     1. Clone o repositório:
-      ```sh
-      git clone https://github.com/thais-laura/Epidemias-BD.git
-      ```
+        ```sh
+        git clone https://github.com/thais-laura/Epidemias-BD.git
+        ```
     2. Mudar o git remote url para evitar pushs acidentais ao projeto base:
-      ```sh
-      git remote set-url origin github_username/repo_name
-      git remote -v # confirm the changes
-      ```
+        ```sh 
+        git remote set-url origin github_username/repo_name
+        git remote -v # confirm the changes
+        ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
