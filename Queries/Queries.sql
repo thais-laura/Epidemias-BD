@@ -95,11 +95,11 @@ ORDER BY
 -- Identificar, para cada rede de saúde, as duas doenças mais frequentes
 -- com base na contagem de casos registrados. Porem, se tiver empate, sera exibido tambem.
 SELECT 
-    c1.rede_de_saude,
+    o.nome AS nome_rede_saude,   -- nome da rede
     d.nomepopular AS doenca,
     c1.total_casos
 FROM (
-        -- Conta quantos casos cada doença tem por rede
+        -- conta quantos casos cada doença tem por rede
         SELECT 
             c.rede_de_saude,
             c.doenca,
@@ -108,7 +108,7 @@ FROM (
         GROUP BY c.rede_de_saude, c.doenca
      ) c1
 LEFT JOIN (
-        -- Repete a mesma contagem para comparar frequências
+        -- mesma contagem usada para comparar frequências
         SELECT 
             c.rede_de_saude,
             c.doenca,
@@ -116,20 +116,22 @@ LEFT JOIN (
         FROM caso c
         GROUP BY c.rede_de_saude, c.doenca
      ) c2
-     ON c1.rede_de_saude = c2.rede_de_saude      -- só compara dentro da mesma rede
-    AND c2.total_casos > c1.total_casos           -- pega doenças mais frequentes que c1
+     ON c1.rede_de_saude = c2.rede_de_saude      -- compara apenas dentro da mesma rede
+    AND c2.total_casos > c1.total_casos           -- procura doenças mais frequentes que c1
 JOIN doenca d
-    ON d.nomecientif = c1.doenca                  -- pega o nome popular
+    ON d.nomecientif = c1.doenca                  -- obtém nome popular da doença
+JOIN orgao o
+    ON o.cnpj = c1.rede_de_saude                  -- obtém o nome da rede
 GROUP BY
+    o.nome,
     c1.rede_de_saude,
     c1.doenca,
     c1.total_casos,
     d.nomepopular
-HAVING COUNT(c2.doenca) < 2       -- só mantém doenças que têm no máximo 1 doença acima delas
-                                  -- ou seja: as 2 maiores (com empate possível)
+HAVING COUNT(c2.doenca) < 2       -- mantém apenas as 2 maiores frequências (com empate)
 ORDER BY
-    c1.rede_de_saude,
-    c1.total_casos DESC;          -- mostra das mais frequentes para as menos frequentes
+    o.nome,                       -- ordena pelo nome da rede
+    c1.total_casos DESC;          -- mostra primeiro as doenças mais frequentes
 
 
 -- CONSULTA 5
